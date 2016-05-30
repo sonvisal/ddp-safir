@@ -773,7 +773,7 @@ Meteor.publish('productsWebzine', function(limit, name) {
         return products.find({});
     }
 });
-TAPi18n.publish('productsHome', function(limit) {
+Meteor.publish('productsHome', function(limit) {
     if (limit != -1) {
         return products.find({}, { limit: limit, fields: { _id: 1, title: 1, image: 1, price: 1 } }); //return products.find({},{limit:limit});
     } else {
