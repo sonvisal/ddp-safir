@@ -11,6 +11,7 @@ Meteor.publish('attribute', function(userid) {
         }
         
     });
+    console.log("attribute");
     return attribute.find({_id:{$in:arr}});
 });
 /*Meteor.publish('attribute', function(userid) {
@@ -29,6 +30,7 @@ Meteor.publish('attribute', function(userid) {
 });*/
 
 Meteor.publish('parentattr', function() {
+    console.log("parentattr");
   return parentattr.find({});
 });
 
@@ -50,6 +52,7 @@ Meteor.publish('attrhome', function() {
                 })*/
             }
         })
+    console.log("attrhome");
         //console.log('ATTRID===='+arrAttr);
     return attribute.find({ _id: { $in: arrAttr } });
 });
@@ -64,6 +67,7 @@ Meteor.publish('productCheckout', function(userid){
     }
     var proData =  products.find({_id:{$in:allid}});
     var attrData = attribute.find({_id:{$in:attrId}});
+    console.log("productCheckout");
     return [proData,attrData ]; 
 });
 
@@ -73,7 +77,7 @@ Meteor.publish('productFavorite', function() {
   result.forEach(function(value){
     arr.push(value.proId);
   });
-
+console.log("productFavorite");
   return products.find({_id:{$in:arr}});
 });
 
@@ -142,6 +146,7 @@ Meteor.publish('attrlistproduct', function(name, limitproduct) {
             }
         }
     }
+    console.log("attrlistproduct");
     return attribute.find({ _id: { $in: arr } });
 
 });
@@ -163,6 +168,7 @@ Meteor.publish('attradvace', function(list_tags,list_categories,list_brand) {
                 arrLp = arrLp.concat(l.oldId);
             }
         });
+        console.log("attradvace");
         return attribute.find({ product: { $in: arrLp } });
     }
     // return attribute.find();
