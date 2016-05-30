@@ -184,6 +184,7 @@ Meteor.publish('productsSearch', function(keyword, groupid) {
     }
 });
 Meteor.publish('contentsSearch', function(keyword, groupid) {
+    console.log("contentsSearch");
     if (keyword != "") {
         if (groupid == 4) {
             var webzine = contents_type.findOne({ type: "Webzine" });
@@ -198,6 +199,7 @@ Meteor.publish('contentsSearch', function(keyword, groupid) {
     }
 });
 Meteor.publish('attrsearch', function(keyword, groupid) {
+    console.log("attrsearch");
     if (keyword != "") {
         if (groupid == 1) {
             var pro = products.find({ $or: [{ $and: [{ title: { $regex: new RegExp(keyword, "i") } }, { category: { $ne: 'tester' } }] }, { $and: [{ description: { $regex: new RegExp(keyword, "i") } }, { category: { $ne: 'tester' } }] }] });
@@ -234,6 +236,7 @@ Meteor.publish('attrdetail', function(title) {
             arrayAttr.push(v._id);
         })
     })
+    console.log("attrdetail");
     return attribute.find({ _id: { $in: arrayAttr } });
 });
 
@@ -259,11 +262,13 @@ Meteor.publish('productsrewards', function() {
             resultRandom.push(arrayRandom[ran]);
         }
     }
+    console.log("productsrewards");
     //console.log('sreyden=' + resultRandom);
     return products.find({ _id: { $in: resultRandom } });
 
 });
 TAPi18n.publish("categories", function() {
+    console.log("categories");
     return categories.i18nFind({});
 });
 Meteor.publish('publishBrandsByAlphabet', function( cats, alphabet ) {
@@ -305,6 +310,7 @@ Meteor.publish('publishBrandsByAlphabet', function( cats, alphabet ) {
         }
         var list = products.find({_id:{$in:ID}});
         //console.log('Num:', list.fetch().length);
+        console.log("publishBrandsByAlphabet");
         return list;
 
     }
@@ -366,6 +372,7 @@ Meteor.publish('advanceSearchTags', function( cats ) {
         var child = tags.find({_id:{$in:listID}});
         // console.log("all parent:", parent.fetch().length)
         // console.log("all child:", child.fetch().length)
+        console.log("advanceSearchTags");
         return [parent, child];
     }
 })
@@ -384,6 +391,7 @@ Meteor.publish('advanceSearch', function(limit, cats, brands, tags, max_price) {
         }
         console.log('List ID:', listID.length);*/
         //console.log('List ID:', listID);
+        console.log("advanceSearch");
         return result;
     }
 });
@@ -485,7 +493,7 @@ getProductList = function( cats, brands, tags, max_price){
         console.log('List Tags:', mytags);
         */
         
-       
+       console.log("getProductList");
         return [result,attrdata ];
 }
 uniqueArray = function(a) {
