@@ -11,8 +11,10 @@ Meteor.publish('attribute', function(userid) {
         }
         
     });
-    console.log("attribute");
-    return attribute.find({_id:{$in:arr}});
+    
+     var data = attribute.find({_id:{$in:arr}});
+     console.log("attribute"+data);
+     return data;
 });
 /*Meteor.publish('attribute', function(userid) {
     var arr=[];
@@ -30,8 +32,10 @@ Meteor.publish('attribute', function(userid) {
 });*/
 
 Meteor.publish('parentattr', function() {
-    console.log("parentattr");
-  return parentattr.find({});
+    
+  var data=  parentattr.find({});
+  console.log("parentattr"+data);
+  return data;
 });
 
 
@@ -52,9 +56,11 @@ Meteor.publish('attrhome', function() {
                 })*/
             }
         })
-    console.log("attrhome");
+    
         //console.log('ATTRID===='+arrAttr);
-    return attribute.find({ _id: { $in: arrAttr } });
+     var data =attribute.find({ _id: { $in: arrAttr } });
+     console.log("attrhome"+data);
+     return data;
 });
 
 Meteor.publish('productCheckout', function(userid){
@@ -67,7 +73,7 @@ Meteor.publish('productCheckout', function(userid){
     }
     var proData =  products.find({_id:{$in:allid}});
     var attrData = attribute.find({_id:{$in:attrId}});
-    console.log("productCheckout");
+    console.log("productCheckout"+attrData);
     return [proData,attrData ]; 
 });
 
@@ -77,7 +83,7 @@ Meteor.publish('productFavorite', function() {
   result.forEach(function(value){
     arr.push(value.proId);
   });
-console.log("productFavorite");
+console.log("productFavorite"+result);
   return products.find({_id:{$in:arr}});
 });
 
@@ -146,7 +152,7 @@ Meteor.publish('attrlistproduct', function(name, limitproduct) {
             }
         }
     }
-    console.log("attrlistproduct");
+    console.log("attrlistproduct"+arr);
     return attribute.find({ _id: { $in: arr } });
 
 });
@@ -168,7 +174,7 @@ Meteor.publish('attradvace', function(list_tags,list_categories,list_brand) {
                 arrLp = arrLp.concat(l.oldId);
             }
         });
-        console.log("attradvace");
+        console.log("attradvace"+arrLp);
         return attribute.find({ product: { $in: arrLp } });
     }
     // return attribute.find();
