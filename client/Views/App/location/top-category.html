@@ -1,0 +1,125 @@
+<template name="topcategory">
+	{{#if Isblock category._id}}
+	    <section class="bg_home">
+	        <div class="container">
+	            <div class="advertise">
+	                {{#with newsBlockBanners "1" "category" "top" category._id}}
+	                <div class="ads-lg">
+	                    <div class="img-hover-lg item-type-line-lg">
+	                        <a class="item-hover-lg" href="{{link}}" target="_blank">
+	                            <div class="item-info-lg">
+	                                <div class="headline-lg">{{name}}</div>
+	                                <div class="date-lg"></div>
+	                            </div>
+	                            <div class="mask-lg"></div>
+	                        </a>
+	                        <div class="item-img-lg"><img src="{{image}}" onError="this.onerror=null;this.src='{{imageCDN}}';" alt="" width="100%" /></div>
+	                    </div>
+	                </div>
+	                {{/with}} {{#with newsBlockBanners "2" "category" "top" category._id}}
+	                <div class="ads-sm-right">
+	                    <div class="img-hover-sm item-type-line-sm">
+	                        <a class="item-hover-sm" href="{{link}}" target="_blank">
+	                            <div class="item-info-sm">
+	                                <div class="headline-sm">{{name}}</div>
+	                                <div class="date-sm"></div>
+	                            </div>
+	                            <div class="mask-sm"></div>
+	                        </a>
+	                        <div class="item-img-sm"><img src="{{image}}" onError="this.onerror=null;this.src='{{imageCDN}}';" alt="" width="100%" /></div>
+	                    </div>
+	                </div>
+	                {{/with}}
+	            </div>
+	            <div class="clearfix"></div>
+	        </div>
+	    </section>
+	{{/if}}
+    <section>
+        <div class="container">
+            {{#with list1 category._id}}
+            <!-- <h1 class="text-center h1">{{name}}</h1> -->
+            <div class="title_header_best_categ">
+                <h1 class="h1">{{name}}</h1>
+            </div>
+            <!-- CLIENT SLIDER STARTS-->
+            <div class="carousel slide clients-carousel" id="clients-slider">
+                <div class="carousel-inner">
+                    {{{oneSlide1 productid}}}
+                </div>
+                <a data-slide="prev" href="#clients-slider" class="left carousel-control"></a>
+                <a data-slide="next" href="#clients-slider" class="right carousel-control"></a>
+            </div>
+            {{/with}}
+            <!-- /CLIENT SLIDER ENDS-->
+            {{#with list2 category._id}}
+            <!-- <h1 class="text-center h1">{{name}}</h1> -->
+            <div class="title_header_justarrived_categ">
+                <h1 class="text-right h1">{{name}}</h1>
+            </div>
+            <!-- CLIENT SLIDER STARTS-->
+            <div class="carousel slide clients-carousel" id="clients-slider1">
+                <div class="carousel-inner">
+                    {{{oneSlide2 productid}}}
+                </div>
+                <a data-slide="prev" href="#clients-slider1" class="left carousel-control"></a>
+                <a data-slide="next" href="#clients-slider1" class="right carousel-control"></a>
+            </div>
+            <!-- /CLIENT SLIDER ENDS-->
+            {{/with}}
+            <!-- /LIFET STYLE-->
+            {{#if Isblock category._id}}
+            <div class="row">
+                <div class="lifestyle">
+                    {{#if lifeStyleBanners category._id}}
+                    <div class="title_header_lifestyle_categ">
+                        <h1 class="h1">Lifestyle</h1>
+                    </div>
+                    {{#each lifeStyleBanners category._id}}
+                    <div class="col-sm-4 ">
+                        <div>
+                            <a href="{{link}}">
+                                <img class="img-responsive" height="376" src="{{image}}">
+                            </a>
+                        </div>
+                    </div>
+                    {{/each}} {{/if}}
+                </div>
+            </div>
+            {{/if}}
+            <!-- /LIFESTYLE ENDS-->
+            <!-- /LOCATION 4-5-->
+            {{#if Isblock category._id}}
+            <div class="advertise">
+                {{#with newsBlockBanners "1" "category" "bottom" category._id}}
+                <div class="ads-lg">
+                    <div class="img-hover-lg item-type-line-lg">
+                        <a class="item-hover-lg" href="{{link}}" target="_blank">
+                            <div class="item-info-lg">
+                                <div class="headline-lg">{{name}}</div>
+                                <div class="date-lg"></div>
+                            </div>
+                            <div class="mask-lg"></div>
+                        </a>
+                        <div class="item-img-lg"><img src="{{image}}" alt="" width="100%" onError="this.onerror=null;this.src='{{imageCDN}}';" /></div>
+                    </div>
+                </div>
+                {{/with}} {{#with newsBlockBanners "2" "category" "bottom" category._id}}
+                <div class="ads-sm-right">
+                    <div class="img-hover-sm item-type-line-sm">
+                        <a class="item-hover-sm" href="{{link}}" target="_blank">
+                            <div class="item-info-sm">
+                                <div class="headline-sm">{{name}}</div>
+                                <div class="date-sm"></div>
+                            </div>
+                            <div class="mask-sm"></div>
+                        </a>
+                        <div class="item-img-sm"><img src="{{image}}" onError="this.onerror=null;this.src='{{imageCDN}}';" alt="" width="100%" /></div>
+                    </div>
+                </div>
+                {{/with}}
+            </div>
+            {{/if}}
+        </div>
+    </section>
+</template>

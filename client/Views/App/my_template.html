@@ -1,0 +1,37 @@
+<template name="sendEmailBack">
+    <section>
+        <div class="container">
+            <div class="row">
+                <div>
+                    <table>
+                        <tr>
+                            <td rowspan="2">
+                                <img src="http://54.169.87.6/images/alogomail.png" width="100" />
+                            </td>
+                            <td colspan="2">
+                                <p style="color: #333; font-weight: bold; margin-bottom: 27px;">{{title}}</p>
+                                <p style="color: #333; font-weight: bold;">{{message}}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p style="color: #333; font-weight: bold; margin-bottom: 70px;">{{text}}</p>
+                                 <td>
+                                <img src = "http://54.169.87.6/images/successbackcomment.png" style="margin-top: 0px;position: bottom right;width:255px;"/>
+                            </td>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+</template>
+
+<template name ="getEmail">
+    <p><b>FirstName :</b> {{firstname}}</p>
+    <p><b>Lastname : </b>{{lastname}}</p>
+    <p><b>Email : </b>{{emails}}</p>
+    <p><b>Subject :</b>{{subject}}</p>
+    <p><b>Comment :</b> {{comment}}</p>
+</template>

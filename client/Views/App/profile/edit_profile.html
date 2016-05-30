@@ -1,0 +1,367 @@
+<template name="editprofile">
+    <style type="text/css">
+    .editePrfile {
+        margin-left: 0px;
+    }
+    
+    #updateProfile {
+        background-color: #000;
+        color: #fff;
+        margin-bottom: 0px;
+        margin-left: 20%;
+        font-size: 18px;
+        border-radius: 0px;
+        width: 28%;
+    }
+    
+    .back {
+        border-radius: 0px;
+        color: #000;
+        font-size: 18px;
+        width: 28%;
+    }
+    
+    input#upload {
+        margin-left: 12px;
+        width: 206px;
+        margin-top: 16px;
+    }
+    
+    .textlabel {
+        margin-left: 20px;
+    }
+    input#upload {
+        margin-left: 0px;
+        width: 206px;
+        margin-top: 16px;
+        background: none;
+    }
+    .btn-second-action{
+        background: none;
+        color: #000;
+        border-radius: 0px;
+        font-size: 14px;
+        padding: 0.5rem 1rem;
+        border: 1px solid #333;
+    }
+    .btn-second-action:hover, .btn-second-action:focus{
+        background: none;
+        color: #c00;
+        border-radius: 0px;
+        font-size: 14px;
+        padding: 0.5rem 1rem;
+        border: 1px solid #c00;
+    }
+    .btn-fir-action{
+        background: #000;
+        color: #fff;
+        border-radius: 0px;
+        font-size: 14px;
+        padding: 0.5rem 1.5rem;
+        border: none;
+    }
+    .btn-fir-action:hover, .btn-fir-action:focus {
+        background: #c00;
+        color: #fff;
+        border-radius: 0px;
+        font-size: 14px;
+        padding: 0.5rem 1.5rem;
+        border: none;
+    }
+    .btn-fir-action-des2{
+        background: #c00;
+        color: #fff;
+        border-radius: 0px;
+        font-size: 14px;
+        padding: 0.5rem 1.5rem;
+        border: none;
+
+    }
+    .btn-fir-action-des2:hover, .btn-fir-action-des2:focus {
+        background: #333;
+        color: #fff;
+        border-radius: 0px;
+        font-size: 14px;
+        padding: 0.5rem 1.5rem;
+        border: none;
+    }
+    </style>
+    <div class="container">
+        <div class="row" style="margin:13px;">
+            <div class="col-md-4 col-xs-12 first">
+                {{#if error_message}}
+                <div class="alert alert-danger" role="alert">
+                    <span style="display:inline-block" class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <!-- <span style="display:inline-block" class="sr-only">Error:</span> -->
+                    {{error_message}}
+                </div>
+                {{/if}}
+                 {{> profileimage }}
+                <!-- <div class="panel-heading">
+                    {{_ "EDIT"}}
+                </div> -->
+                <!--<div class="col-xs-12 col-sm-6 col-lg-9">
+                    <h1 style="font-weight:bold">{{#with getprofile}}{{profile.firstname}} {{profile.lastname}}{{/with}}</h1>
+                    <small>{{profile.name}}</small>
+                </div>-->
+                
+            </div>
+            <div class="col-md-4 col-xs-12 second">
+                <div class="row">
+                    <form role="form">
+                        {{#each getprofile}}
+                        <div class="form-group">
+                            <label>{{_ "First name"}}</label>
+                            <div class="input-group">
+                                <input type="text" class="set-due-date form-control" value="{{profile.firstname}}" id="firstname" style="width: 100%; background: #fff;">
+                            </div>
+                            <p class="error_firstname" style="margin-top:10px;color:red"></p>
+                        </div>
+                        <div class="form-group">
+                            <label>{{_ "Last name"}}</label>
+                            <div class="input-group ">
+                                <input type="text" class="set-due-date form-control" value="{{profile.lastname}}" id="lastname" style="width: 100%; background: #fff;">
+                            </div>
+                            <p class="error_lastname" style="margin-top:10px;color:red"></p>
+                        </div>
+                        <div class="form-group">
+                            <label>{{_ "BIRTH DATE"}}</label>
+                            <div class="input-group all_birthday" style="margin-left:-15px; background: #fff;">
+                                <!--<span class="input-group-addon "><i class="glyphicon glyphicon-calendar"></i></span>
+                                <input id="birth" dateformat="d M y" type="date" class="set-due-date form-control" value="{{profile.birth}}">
+                                <span class="datepicker_label" style="pointer-events: none;"></span>-->
+                                <div class="col-md-4 col-xs-4 p_date">
+                                    <select class="form-control month" required="required" style="background: #fff;">
+                                         <option value="{{currentMonth profile.birth}}" style="display: none">{{currentMonth profile.birth}}</option>
+                                        <option value="">Month</option>
+                                        <option value="Jan">Jan</option>
+                                        <option value="Feb">Feb</option>
+                                        <option value="Mar">Mar</option>
+                                        <option value="Apr">Apr</option>
+                                        <option value="May">May</option>
+                                        <option value="Jun">Jun</option>
+                                        <option value="Jul">Jul</option>
+                                        <option value="Aug">Aug</option>
+                                        <option value="Sep">Sep</option>
+                                        <option value="Oct">Oct</option>
+                                        <option value="Nov">Nov</option>
+                                        <option value="Dec">Dec</option>
+                                    </select>
+                                     <!-- <p class="error_dob" style="margin-top:10px;color:red"></p> -->
+                                </div>
+                               
+                                <div class="col-md-4 col-xs-4 p_date">
+                                    <select class="form-control day" required="required" style="background: #fff;">
+                                        <option value="{{currentDay profile.birth}}" style="display: none">{{currentDay profile.birth}}</option>
+                                        <option value="">Day</option>
+                                        {{#each getDay}}
+                                            <option value="{{num}}">{{num}}</option>
+                                        {{/each}}
+                                    </select>
+                                    <!-- <p class="error_dob" style="margin-top:10px;color:red"></p> -->
+                                </div>
+                                
+                                <div class="col-md-4 col-xs-4 p_date">
+                                    <select class="form-control year" required="required" style="background: #fff;">
+                                        <option value="{{currentYear profile.birth}}" style="display: none">{{currentYear profile.birth}}</option>
+                                        <option value="">Year</option>
+                                        {{#each getYear}}
+                                            <option value="{{year}}">{{year}}</option>
+                                        {{/each}}
+                                    </select>
+                                      <!-- <p class="error_dob" style="margin-top:10px;color:red"></p> -->
+                                </div>
+                                <p class="error_dob" style="margin-top:10px;color:red"></p>
+                              
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>{{_ "PHONE"}}</label>
+                            <div class="input-group ">
+                                <input type="text" class="set-due-date form-control" value="{{profile.phone}}" id="phone" style="background: #fff;">
+                            </div>
+                            <p class="error_phone" style="margin-top:10px;color:red"></p>
+                        </div>
+                        <div class="form-group">
+                            <label>{{_ "EMAIL"}}</label>
+                            <div class="input-group ">
+                            
+                                <input type="text" class="set-due-date form-control" value="{{emails.[0].address}}" id="email" style="background: #fff;">
+                            
+                            </div>
+                            <p class="error_email" style="margin-top:10px;color:red"></p>
+                        </div>
+                        {{/each}}
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-12 third">
+                <div class="row">
+                    <form role="form">
+                        {{#each getprofile}}
+                        <div class="form-group" style="border-radius:0px;">
+                            <label>{{_ "SEX"}}</label>
+                            <select class="form-control" id="gender" style="border-radius: 0px;
+                                width: 36%;; background: #fff;">
+                                <option value="{{profile.sex}}" style="display: none;">{{profile.sex}}</option>
+                                <option value="">Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                        <p class="error_sex" style="margin-top:10px;color:red"></p>
+
+                        <div class="form-group" style="border-radius:0px;">
+                            <label>{{_ "Language"}}</label>
+                            <select class="form-control" id="language" style="border-radius: 0px;width: 36%; background: #fff;">
+                                <option value="{{profile.language}}" style="display: none;">{{profile.language}}</option>
+                                <option value="Persian">Persian</option>
+                                <option value="English">English</option>
+                            </select>
+                        </div>
+                        <p class="error_language" style="margin-top:10px;color:red;"></p>
+
+                        <div class="form-group">
+                            <label>{{_ "ADDRESS"}}</label>
+                            <textarea name="address" id="address" rows="8" cols="42" style="width: 100%; background: #fff; border: 1px solid #ccc;">{{profile.address}}</textarea>
+                        </div>
+                        <p class="error_address" style="margin-top:10px;color:red"></p>
+                        {{/each}}
+                    </form>
+                    <div class="editePrfile">
+                        <!-- <button class="btn btn-sm" id="updateProfile" data-toggle="modal" data-target="#myModal">{{_ "EDIT"}}</button> -->
+                        <button class="btn btn-fir-action" id="updatePro">{{_"Submit"}}</button>
+                        <a href="/profile">
+                            <button class="btn btn-second-action">{{_"Back"}}</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <hr style="border:1px solid #ccc;"> -->
+    </div>
+    <!-- first popup -->
+    <div class="container">
+        <div class="modal alert" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document" style="border-radius:none;">
+                <div class="modal-content">
+                    <div class="modal-header header-win" style="padding: 11px;
+                            margin-top: 30px;">
+                        <div class="header-popup">
+                            <button type="button" class="close" data-dismiss="modal">
+                                <img src="/images/x-close.png" id="popup1" class="img-responsive pull-right" width="20%">
+                            </button>
+                        </div>
+                    </div>
+                    <div class=" modal-body">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2">
+                                <h3 class="title-win text-center">Congratulations you win your first Safir points</h3>
+                            </div>
+                            <div class="col-md-12">
+                                <img src="/images/celebrate.png" class="img-responsive center-block" width="30%">
+                            </div>
+                            <div class="col-md-12">
+                                <h3 class="win reward text-center">A lot of rewards to win</h3>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="col-md-5">
+                                    <div class="gift-image">
+                                        <img src="/images/gift.png" class="img-gift pull-right img-responsive" width="50%">
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <h3 class="win " style="margin-left:15px;">For more informations</h3>
+                                    <div class="col-md-10">
+                                        <div class="btn btn-block btn-win" style="padding: 3px 0px;"><a href="/reward"> See my Reward page</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end first popup -->
+    <!-- second popup -->
+    <div class="container">
+        <div class="modal alert" id="myModal2" tabindex="-2" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document" style="border-radius:none;">
+                <div class="modal-content">
+                    <div class="modal-header header-win" style="padding: 11px;
+                            margin-top: 30px;">
+                        <div class="header-popup">
+                            <!-- <a href="/profile"> -->
+                            <button type="button" class="close">
+                                <img src="images/x-close.png" id="popup" class="img-responsive pull-right" width="20%">
+                            </button>
+                            <!-- </a> -->
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-md-12">
+                            <h3 class="title-win text-center">Continue to earn more points</h3>
+                            <div class="row">
+                                <div class="instagram-share">
+                                    <div class="col-md-4">
+                                        <a href="">
+                                            <img src="images/follow-us-instagram.png" width="60%" style="margin: 10px 40px;">
+                                        </a>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h2 class="h2-points">+30 pt</h2>
+                                        <p class="points-description">Following us on <a href="" class="link-point">Instagram</a></p>
+                                    </div>
+                                </div>
+                                <!-- instagram-share -->
+                            </div>
+                            <div class="row">
+                                <div class="sharing-content">
+                                    <div class="col-md-4">
+                                        <a href="">
+                                            <img src="images/sharing-content.png" width="60%" style="margin: 10px 40px;">
+                                        </a>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h2 class="h2-points">+20 pt</h2>
+                                        <p class="points-description">Sharing content to friend and being sponsor by a friend</p>
+                                    </div>
+                                </div>
+                                <!-- sharing-content -->
+                            </div>
+                            <!-- row -->
+                            <div class="row">
+                                <div class="shop-online">
+                                    <div class="col-md-4">
+                                        <a href="">
+                                            <img src="images/shop-online.png" width="60%" style="margin: 10px 40px;">
+                                        </a>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h2 class="h2-points">+100 pt</h2>
+                                        <p class="points-description">Shop in the online store</p>
+                                    </div>
+                                </div>
+                                <!-- shop-online -->
+                            </div>
+                            <!-- row -->
+                            <div class="row">
+                                <div class="see-more-point">
+                                    <div class="col-md-5 col-md-offset-7">
+                                        <div class="btn btn-block btn-win" style="margin-bottom: 3px;">See my Member page</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- col-md-12 -->
+                    </div>
+                    <!-- modal-body -->
+                </div>
+                <!-- modal-content -->
+            </div>
+        </div>
+    </div>
+    {{> updatepicture}}
+    <!-- end second popup -->
+</template>

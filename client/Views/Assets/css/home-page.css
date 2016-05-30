@@ -1,0 +1,130 @@
+ul.pro-listing .home-ads-list{
+   display: inline-block;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 250px;
+    margin-right: 10px;
+    float: left;
+}
+.bg_slider {
+    background: url("/images/bg_slideshow-01.svg") no-repeat;
+    background-size: 100% 409px;
+    padding-top: 30px;
+
+}
+.title_header_news {
+    padding: 4em 5em;
+    background: url("/images/bg_news.svg") no-repeat;
+    background-size: 100% 200px;
+    margin: 15px 0px;
+}
+h1.h1{
+    font-weight: normal;
+    margin: 0em 0px;
+    text-transform: capitalize;
+	/*font-family: Georgia,Times,Times New Roman,serif;*/
+	font-family: Didot,Didot LT STD,Hoefler Text,Garamond,Times New Roman,serif; 
+	font-size:5em;
+    letter-spacing: -4px;
+}
+.news-home li.li-news-home {
+    width: 250px;
+    margin-right: 10px;
+    float: left;
+}
+.news-home .advertise-news {
+    width: 395px;
+    /*float: left;*/
+}
+.advertise-news .img-hover{
+	width: 395px;
+	height: 360px;
+}
+.title_header_best_seller {
+    padding: 4em 5em;
+    background: url("/images/bg_best_seller.svg") no-repeat;
+    background-size: 100% 200px;
+    background-position: -65px center;
+    margin: 15px 0px;
+}
+.title_header_liftstyle {
+    padding: 5em 4em;
+    background: url("/images/bg_liftstyle.svg") no-repeat;
+    background-size: 100% 225px;
+    margin: 15px 0px;
+    background-position: 65px -10px;
+}
+.title_header_pinterest {
+    padding: 4em 5em;
+    background: url("/images/bg_pinterest.svg") no-repeat;
+    background-size: 100% 240px;
+    margin: 15px 0px;
+}
+.pinterest {
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+/*Menu Dropdown Topleft*/
+.header-logo{
+    height: 135px !important;
+}
+#header{
+    margin-bottom: 0px;
+}
+#header .header-logo .search{
+    top:0px;
+}
+.header-menu{
+    margin-bottom: 0px;
+    height: 44px;
+}
+#top-left
+ {
+  float: left;
+  margin-left: 0px;
+  padding: 10px;
+ }
+  #top-left ul.list-inline li a.dropdown-toggle{
+   color:#fff;
+   padding: 5px 15px;
+   font-weight: normal;
+  }
+  .dropdown-login{
+   background:#000;
+   border-radius: 0px;
+   margin:0px;
+  }
+  .dropdown-login > li > a:hover{
+   background:#000;
+  }
+.dropdown-login {
+    background: #000;
+    border-radius: 0px;
+    margin: 0px;
+}
+.header_top_left ul li:first-child{
+    margin-left:0px;
+}
+.well-profile h1.h1 {
+    font-size: 36px;
+    margin: 20px 0px;
+}
+.carousel-inner .item{
+    border-bottom: 1px solid transparent;
+}
+.bg_slider, .quick_link, #news, #advertise, #deal, #lifestyle, #pinteres{
+    margin-bottom: 10px;
+}
+
+/* products */
+.caption p.title{
+    font-size: 14px;
+    margin-bottom: 8px;
+    min-height: 60px;
+}
+.caption p a.price{
+    font-size: 24px;
+}
+.caption p a.heart{
+    font-size: 24px;
+}

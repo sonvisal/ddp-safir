@@ -1,0 +1,169 @@
+<template name="checkout">
+    <section>
+        {{#if basket}}
+        <div class="container" style="padding-top: 30px">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <div>
+                                <i class="fa fa-caret-left red-caret" aria-hidden="true"></i>
+                                <a href="#"><span class="continue-shop">{{_"CONTINUE SHOPPING"}} </span></a>
+                            </div>
+                        </div>
+                        <div class="col-sm-7">
+                            <div>
+                                <h1 class="basket_title">{{_"MY BASKET"}}</h1>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="main-basket">
+                                <div class="arrow-pickup">
+                                </div>
+                                <p class="title-basket">{{_"Items in Basket (0)"}}</p>
+                                <div class="main-basket-white">
+                                    <h3 class="text-basket-top"> {{_"Your Basket is Currently empty"}}</h3>
+                                    <p class="text-basket-second"> {{_"Please"}} <a href="/login">{{_"sign in"}}</a> {{_"if you are trying to retrive a basket created in the past"}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="hold-card">
+                        <div class="panel panel-card">
+                            <div class="panel-heading"><i>{{_"Get deliver in all Iran"}}</i></div>
+                            <div class="panel-body">
+                                <p class="panel-text-basket">{{_"ORDER SUMMARY"}}</p>
+                                <div class="row">
+                                    <div class="form-group">
+                                        <label class="col-md-7 control-label-a">{{_"Subtotal"}}</label>
+                                        <div class="col-md-5">
+                                            <span> {{_"$ 0.00"}} </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="basket-order"> {{_"This order contains 0 item"}} </span>
+                                <div class="panel-heading panel-heading-a"></div>
+                                <div class="row">
+                                    <div class="form-group last-group">
+                                        <label class="col-md-7 control-label-a">{{_"Estimate Total"}}</label>
+                                        <div class="col-md-5">
+                                            <span> {{_"$ 0.00"}} </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <button type="submit" class="btn btn-checkout form-control"> {{_"Check out"}} </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{else}}
+        <div id="exTab1" class="container">
+            <div class="progressbar">
+                <ul class="nav nav-pills">
+                    <li id="cart" class="active cart"><a href="/checkout">{{_"Cart"}}</a></li>
+                    <li id="sum" class="cart"><a href="/confirmorder">{{_"Summary"}}</a></li>
+                    <li id="conf" class="cart"><a href="{{getGetway}}">{{_"Confirmation"}}</a></li>
+                </ul>
+            </div>
+            <div class="row tab-content clearfix">
+                <div class="tab-pane active" id="1a">
+                    <div class="col-md-9">
+                        {{#each getCart}}
+                        <div class="row">
+                            {{#with getProductInfo id_product}}
+                            <div class="col-md-3">
+                                <span class="glyphicon glyphicon-remove-circle pull-left" id="removeProdInCart" data-pro="{{_id}}"  data-attr="{{../attribute}}" aria-hidden="true" style="font-size: 25px;"></span>
+                                <div class="text-center">
+                                    <!--{{#with getTitleproduct id_product}}
+                                    <a href="/details/{{slug title}}">
+                                        {{#with getImgAttr ../attribute ../id_product}}
+                                        
+                                         <img src="{{getImgForProduct ../../id_product}}" onError="this.onerror=null;this.src='{{getImgForProductCDN ../../id_product}}';" class="img-responsive">
+                                        {{/with}}
+                                    </a> {{/with}}-->
+                                    
+                                    <a href="/details/{{slug title}}"><img src="{{getImgForProduct _id}}" onError="this.onerror=null;this.src='{{getImgForProductCDN _id}}';" class="img-responsive"></a>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                               
+                                <h3 class="title-cart"><a href="/details/{{slug title}}">{{title}}</a></h3>
+                                <!-- {{#with getAttributeById ../attribute}} 
+                                <p>{{pattr.name}}:{{attr.value}}</p>
+                                {{/with}} -->
+                                {{#if ../attribute}}
+                                <b class="parent_name{{../attribute}}">
+                                    {{nameParent ../attribute}}
+                                    
+                                </b>
+                                <i class="value_attr{{../attribute}}">
+                                        {{attrValue ../attribute}}
+                                </i>
+                                {{/if}}
+                                
+                                <div class="row">
+                                    <label for="inputEmail3" class="col-md-6 col-xs-6 control-label">{{_ "Quantity"}}:</label>
+                                    <div class="col-md-6 col-xs-4">
+                                        <select class="qtyselect" id="updateqty" data-pro="{{_id}}" data-attr="{{../attribute}}">
+                                            <option value="{{../quantity}}" style="display:none">{{../quantity}}</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            {{/with}}
+                            <div class="col-md-5 row">
+                                <label for="inputEmail3" class="col-md-4 col-xs-5 control-label" style="color: #ccc;">{{_"Total"}}:</label>
+                                <div class="col-md-8 col-xs-7">
+                                    <label style="font-size: 18px;">{{subtotal}} تومان</label>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="hr" /> {{/each}}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="deliver">
+                            <p>{{_ "Get delivered in all Iran!"}}</p>
+                        </div>
+                        <div class="total">
+                            <label for="inputEmail3" class="col-md-4 control-label">{{_ "Total"}}:</label>
+                            <div class="col-md-8">
+                                <label style="font-size: 16px;">{{getTotal}} ﷼</label>
+                            </div>
+                        </div>
+                        <p id="text-order">{{_ "This order contains"}} {{numberItemCart}} {{_ "items"}} </p>
+                        <button class="btn-chechout" id="btnAdd">{{_ "Proceed to checkout"}}</button>
+                    </div>
+                    <div class="listproducts">
+                        <div class="col-md-12">
+                            <p>
+                                <label>{{_"Customers who purchased an item that you have recently consulted also bought"}}</label>
+                            </p>
+                            <br>
+                            <span style="padding: 30px;"></span>
+                        </div>
+                        <!--{{>relateDetail}}-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/if}}
+    </section>
+</template>

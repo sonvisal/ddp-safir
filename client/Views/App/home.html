@@ -1,0 +1,438 @@
+<template name="home">
+<style>
+    .zoom {
+        display: inline-block;
+        position: relative;
+    }
+    /* magnifying glass icon */
+    
+    .zoom img {
+        display: block;
+    }
+    
+    .zoom img::selection {
+        background-color: transparent;
+    }
+    
+    #ex2 img:hover {
+        cursor: url(grab.cur), default;
+    }
+    
+    #ex2 img:active {
+        cursor: url(grabbed.cur), default;
+    }
+    .bert-alert.my-error {
+        background: #fff;
+        color: #000;
+        box-shadow: 2px 2px 15px #888;
+    }
+    .fa-remove-iconbg{
+        background-image: url('../img/remove.png');
+        background-size: 32px 32px;
+        width: 32px;
+        height: 32px;
+    }
+    .fa-fav-iconbg{
+        background-image: url('../img/fav.png');
+        background-size: 32px 32px;
+        width: 32px;
+        height: 32px;
+    }
+    .fa-users-iconbg{
+        background-image: url('../img/users.png');
+        background-size: 32px 32px;
+        width: 32px;
+        height: 32px;
+    }
+    .fa-addcart-iconbg{
+        background-image: url('../img/cart.png');
+        background-size: 32px 32px;
+        width: 32px;
+        height: 32px;
+    }
+    #pinme {
+        width:750px;
+        height: 408px;
+        margin-left: 100px;
+    }
+    .btn-second-action{
+        background: none;
+        color: #000;
+        border-radius: 0px;
+        font-size: 14px;
+        padding: 0.5rem 1rem;
+        border: 1px solid #333;
+    }
+    .btn-second-action:hover, .btn-second-action:focus{
+        background: none;
+        color: #c00;
+        border-radius: 0px;
+        font-size: 14px;
+        padding: 0.5rem 1rem;
+        border: 1px solid #c00;
+    }
+     .btn-fir-action-des2{
+        background: #c00;
+        color: #fff;
+        border-radius: 0px;
+        font-size: 14px;
+        padding: 0.5rem 1.5rem;
+        border: none;
+
+    }
+    .btn-fir-action-des2:hover, .btn-fir-action-des2:focus {
+        background: #333;
+        color: #fff;
+        border-radius: 0px;
+        font-size: 14px;
+        padding: 0.5rem 1.5rem;
+        border: none;
+    }
+    </style>
+        <!-- <button class="testMail">Test Mail</button> -->
+        <section class="bg_slider">
+            <div class="container">
+                <div id="slider">
+                    <div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 1300px; height: 500px; overflow: hidden; visibility: hidden;">
+                      <!-- Loading Screen -->
+
+                        <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 1300px; height: 500px; overflow: hidden;">
+                            {{#each getbanner}}
+                                <div data-p="225.00" style="display: none;">
+                                    <a href="{{url}}">
+                                        <img data-u="image" src="{{getImg imageId}}" alt="slide" class="homebanner" />
+                                    </a>
+                                </div>
+                            {{/each}}
+                        </div>
+                          <!-- Bullet Navigator -->
+                        <div data-u="navigator" class="jssorb05" style="bottom:16px;right:16px;" data-autocenter="1">
+
+                            <div data-u="prototype" style="width:30px;height:35px;">
+                            </div>
+                        </div>
+                          <!-- Arrow Navigator -->
+                        <span data-u="arrowleft" class="jssora22l" style="top:0px;left:12px;width:40px;height:58px;" data-autocenter="2"></span>
+                        <span data-u="arrowright" class="jssora22r" style="top:0px;right:12px;width:40px;height:58px;" data-autocenter="2"></span>
+                    </div>
+                </div><!--end section slider-->
+            </div>
+        </section>
+        <!-- Quick Link -->
+        <section class="quick_link">
+            <div class="container">
+                <div class="row">
+                    <div class="blog-quicklink">
+                    <!-- <h2 style="font-size: 24px;"><b>{{_"QUICK LINKS"}}</b></h2> -->
+                      {{{getQuickLink}}}
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Quick Link -->
+        <section id='news'>
+            <div class="container">
+                <div class="title_header_news">
+                    <h1 class="col-md-offset-2 h1">{{_"News"}}</h1>
+                </div>
+                <div class="news-home">
+                    <ul class="list-inline">
+                        {{{ newsBlockProducts}}}
+                    </ul>
+                    <div class="advertise-news">
+                        <div class="img-hover item-type-line">
+                            {{#with newsBlockBanners "2" "home"}}
+                                <a class="item-hover" href="{{link}}" target="_blank">
+                                    <div class="item-info">
+                                        <div class="headline">{{name}}</div>
+                                        <div class="date"></div>
+                                    </div>
+                                    <div class="mask"></div>
+                                </a>
+                                <div class="item-img">
+                                    <img class="img-responsive" style="width:100%" alt="" src="{{image}}">
+                                </div>
+                            {{/with}}
+                        </div>   
+                    </div> 
+                </div>
+            </div>
+        </section>
+        <section id="advertise">
+            <div class="container">
+                <div class="advertise">
+                    <div class="ads-sm-left">
+                        <div class="img-hover-sm item-type-line-sm">
+                            {{#with newsBlockBanners "3" "home"}}
+                            <a class="item-hover-sm" href="{{link}}" target="_blank">
+                                <div class="item-info-sm">
+                                    <div class="headline-sm">{{name}}</div>
+                                    <div class="date-sm"></div>
+                                </div>
+                                <div class="mask-sm"></div>
+                            </a>
+                            <div class="item-img-sm">
+                                <img class="img-responsive" alt="" src="{{image}}" width="100%">
+                            </div>
+                            {{/with}}
+                        </div>
+                    </div>
+                    <div class="ads-lg">
+                        <div class="img-hover-lg item-type-line-lg">
+                            {{#with newsBlockBanners "4" "home"}}
+                                <a class="item-hover-lg" href="{{link}}" target="_blank">
+                                    <div class="item-info-lg">
+                                        <div class="headline-lg">{{name}}</div>
+                                        <div class="date-lg"></div>
+                                    </div>
+                                    <div class="mask-lg"></div>
+                                </a>
+                                <div class="item-img-lg">
+                                    <img alt="" src="{{image}}" class="img-responsive" width="100%">
+                                </div>
+                            {{/with}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="deal">
+            <div class="container">
+                <!-- CLIENT SLIDER STARTS-->
+                <div class="title_header_best_seller">
+                    <h1 class="text-right h1">{{_"Best Sellers"}}</h1>
+                </div>
+                <div class="row">
+                    {{#with Deal}}
+                      <div class="col-md-12 col-xs-12">
+                        <div class="carousel slide clients-carousel" id="clients-slider">
+                            <div class="carousel-inner inner">
+                              <!--{{#each products}}-->
+                                  {{{oneSlide1 products}}}
+                            </div>
+                            <a data-slide="prev" href="#clients-slider" class="left carousel-control hidden-xs hidden-sm"></a>
+                            <a data-slide="next" href="#clients-slider" class="right carousel-control hidden-xs hidden-sm"></a>
+                        </div>
+                      </div>
+                    {{/with}}
+                  </div>
+            </div>
+        </section>
+        <section id="lifestyle">
+            <div class="container">
+                <div class="row">
+                    <div class="title_header_liftstyle">
+                        <h1 class="text-center h1">{{_"Lifestyle"}}</h1>
+                    </div>
+                    <div class="lifestyle text-center">
+                        {{#each lifeStyleBanners}}
+                            <div class="col-sm-4 ">
+                              <div>
+                                <a href="{{link}}">
+                                  <img class="img-responsive" src="{{image}}">
+                                </a>
+                              </div>
+                            </div>
+                        {{/each }}
+                  </div>
+                </div>
+            </div>
+        </section>
+        <section id="pinteres" class="hidden-sm">
+            <div class="container">
+                <div class="row">
+                    <div class="title_header_pinterest">
+                        <h1 class="h1">{{_"Pinterest"}}</h1>
+                    </div>
+
+                    <!-- <div class="col-sm-12 text-center"> -->
+                    <div class="hidden-sm col-sm-12 col-xs-12">
+                        
+                            <iframe name="frame1" id="pinme" class="col-md-12"  src="" frameborder="0" scrolling="no"></iframe>
+                        
+                        <!--<a data-pin-do="embedBoard" data-pin-board-width="920" data-pin-scale-height="120" data-pin-scale-width="115" href="https://www.pinterest.com/safirperfumery/safir-favorite-looks/"></a>-->
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+<!-- end -->
+
+<!-- <script>
+      var numberslide=5;
+      if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        numberslide=3;
+      }
+      var swiper = new Swiper('.swiper-container3', {
+        nextButton: '#swiper4-next',
+        prevButton: '#swiper4-prev',
+        slidesPerView: numberslide,
+        loop:true,
+        paginationClickable: true,
+        spaceBetween: 5
+              //autoplay: 5000
+            });
+    </script> -->
+
+<!--new slider-->
+    <script>
+      jQuery(document).ready(function ($) {
+        var jssor_1_SlideoTransitions = [
+        [{b:5500,d:3000,o:-1,r:240,e:{r:2}}],
+        [{b:-1,d:1,o:-1,c:{x:51.0,t:-51.0}},{b:0,d:1000,o:1,c:{x:-51.0,t:51.0},e:{o:7,c:{x:7,t:7}}}],
+        [{b:-1,d:1,o:-1,sX:9,sY:9},{b:1000,d:1000,o:1,sX:-9,sY:-9,e:{sX:2,sY:2}}],
+        [{b:-1,d:1,o:-1,r:-180,sX:9,sY:9},{b:2000,d:1000,o:1,r:180,sX:-9,sY:-9,e:{r:2,sX:2,sY:2}}],
+        [{b:-1,d:1,o:-1},{b:3000,d:2000,y:180,o:1,e:{y:16}}],
+        [{b:-1,d:1,o:-1,r:-150},{b:7500,d:1600,o:1,r:150,e:{r:3}}],
+        [{b:10000,d:2000,x:-379,e:{x:7}}],
+        [{b:10000,d:2000,x:-379,e:{x:7}}],
+        [{b:-1,d:1,o:-1,r:288,sX:9,sY:9},{b:9100,d:900,x:-1400,y:-660,o:1,r:-288,sX:-9,sY:-9,e:{r:6}},{b:10000,d:1600,x:-200,o:-1,e:{x:16}}]
+        ];
+        var jssor_1_options = {
+          $AutoPlay: true,
+          $SlideDuration: 800,
+          $SlideEasing: $Jease$.$OutQuint,
+          $CaptionSliderOptions: {
+            $Class: $JssorCaptionSlideo$,
+            $Transitions: jssor_1_SlideoTransitions
+          },
+          $ArrowNavigatorOptions: {
+            $Class: $JssorArrowNavigator$
+          },
+          $BulletNavigatorOptions: {
+            $Class: $JssorBulletNavigator$
+          }
+        };
+        var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
+              //responsive code begin
+              //you can remove responsive code if you don't want the slider scales while window resizing
+              function ScaleSlider() {
+                var refSize = jssor_1_slider.$Elmt.parentNode.clientWidth;
+                if (refSize) {
+                  refSize = Math.min(refSize, 1920);
+                  jssor_1_slider.$ScaleWidth(refSize);
+                }
+                else {
+                  window.setTimeout(ScaleSlider, 30);
+                }
+              }
+              ScaleSlider();
+              $(window).bind("load", ScaleSlider);
+              $(window).bind("resize", ScaleSlider);
+              $(window).bind("orientationchange", ScaleSlider);
+              //responsive code end
+              $('.banner').css("style","block");
+            });
+        $(".homebanner").css("display", "block");
+    </script>  
+
+    <!-- start quiteview  -->
+    <div class="modal" id="quickView" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top:30px;" dir="{{getDirection}}">
+        {{#with getSelectedProduct}}
+        <div class="modal-dialog" role="document">
+            <div class="modal-content {{quickviewStyle}}">
+                <div class="modal-content">
+                    <div class="modal-header" style="background:#000; padding:0px;">
+                        <button type="button" class="close" data-dismiss="modal"><img src="/images/pop_cancel.png"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <span class='zoom' id='ex1'>
+                                        <img id="hoverZoom" width="250" height="250" class="img_principle" src="{{getImgForProduct _id}}" onError="this.onerror=null;this.src='{{getImgForProductCDN _id}}';" alt="{{title}}"/>     
+                                    </span>
+                                <script>
+                                $(document).ready(function() {
+                                    $('#ex1').zoom('{{getFirstImgProduct _id}}');
+                                    $('#ex2').zoom({
+                                        on: 'grab'
+                                    });
+                                    $('#ex3').zoom({
+                                        on: 'click'
+                                    });
+                                    $('#ex4').zoom({
+                                        on: 'toggle'
+                                    });
+                                });
+                                </script>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="quick-detail">
+                                    <h2 class="title-quick-view">{{title}}</h2>
+                                    <p class="arab-font">{{{description}}}</p>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <span>{{_"QTY"}}</span> &nbsp;
+                                        <select class="select-view" id="qty">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                            <option>6</option>
+                                            <option>7</option>
+                                            <option>8</option>
+                                             <option>9</option>
+                                            <option>10</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <a href="/details/{{slug title}}">
+                                            <button class="btn-moredetail-view left btn-second-action">{{_"MORE DETAIL"}}</button>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <a href="/details/{{slug title}}" style="font-weight:bold;color:#000;" class="price{{oldId}}">
+                                            <h3 id="quick_view_price" style="font-weight:bold;color:#000;">{{getAttribprice oldId}}</h3>
+                                        </a>
+                                        <p class="save_latter">{{{getIconlike _id}}}</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button class="btn-add-tocard left btn-fir-action-des2" id="addmycart-quickview">{{_ "ADD TO CARD"}}</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <hr style="border:1px solid #000;">
+                        </div>
+                    </div>
+                    <div class="modal-footer center-block" style="border:none">
+                        <div class="col-md-12">
+                            <h4 class="pull-left">{{_"Related products"}}</h4>
+                        </div>
+                        <div class="row">
+                            {{>recommendation}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/with}}
+        <script>
+        $('.modal-backdrop').remove();
+        </script>
+    </div>
+<!-- end quiteview -->
+
+    <div class="modal alert" id="shop_learn_it" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-head" style="height: 15px;">
+                    <button type="button" class="close" data-dismiss="modal" style="width: 4%;"><img src="/images/system/cancel_login-01.png" style=" width: 80%;" /></button>
+                </div>
+                <div class="modal-body">
+                    <!-- <iframe src="/pdf/learn_it _ shop_it_safir_3.pdf" width="570" height="500"></iframe> -->
+                    <object data="/pdf/learn_it _ shop_it_safir_3.pdf" type="application/pdf" height="500" width="100%">
+                        <param name="src" value="/pdf/learn_it _ shop_it_safir_3.pdf">
+                        <embed src="/pdf/learn_it _ shop_it_safir_3.pdf" type="application/pdf" height="100%" width="100%">
+                    </object>
+                </div>
+                <div class="modal-footer">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

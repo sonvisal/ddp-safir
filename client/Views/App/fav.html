@@ -1,0 +1,309 @@
+<template name="fav">
+    <style>
+    .zoom {
+        display: inline-block;
+        position: relative;
+    }
+    /* magnifying glass icon */
+    .bert-alert.my-error {
+        background: #fff;
+        color: #000;
+        box-shadow: 2px 2px 15px #888;
+    }
+    .fa-addcart-iconbg{
+        background-image: url('../img/cart.png');
+        background-size: 32px 32px;
+        width: 32px;
+        height: 32px;
+    }
+    .fa-fav-iconbg{
+        background-image: url('../img/fav.png');
+        background-size: 32px 32px;
+        width: 32px;
+        height: 32px;
+    }
+    .fa-remove-iconbg{
+        background-image: url('../img/remove.png');
+        background-size: 32px 32px;
+        width: 32px;
+        height: 32px;
+    }
+    .zoom img {
+        display: block;
+    }
+    
+    .zoom img::selection {
+        background-color: transparent;
+    }
+    
+    #ex2 img:hover {
+        cursor: url(grab.cur), default;
+    }
+    
+    #ex2 img:active {
+        cursor: url(grabbed.cur), default;
+    }
+    .size-product li.active a{
+        /*color: #000;
+        border: 1px solid #000;
+        font-size: 100%;*/
+        background: #000;
+        color:#fff;
+        font-size: 100%;
+    }
+    .size-product li a{
+        /*color: #ccc;
+        border: 1px solid #ccc;
+        padding: .2em .6em .2em .6em;
+        font-size: 100%;*/
+        color: #000;
+        background-color: #ccc;
+        padding: .2em .6em .2em .6em;
+        font-size: 100%;
+    }
+    #gallery{
+        width: 4000px;
+    }
+    .border_attr{
+        border: 1px solid black;
+    }
+    .sizeattr{
+        background: black;
+        color: white;
+
+    }
+    p > #gallerycontainer > #gallery{
+        z-index: 0;
+    }
+    p > #gallery{
+        z-index: 0;
+        overflow: hidden;
+    }
+    p > #gallery a{
+        overflow: hidden;
+    }
+    .img-attribute > li >a img{
+        z-index: 0;
+    }
+    div#gallerycontainer{
+        max-width: 100%;
+    }
+    li.attr{
+        padding: 5px;
+    }
+    #gallerycontainer122{
+        position: relative;
+        height: 85px;
+        width: 170%;
+        margin: 0 auto;
+        overflow: hidden!important;
+    }
+    .border_attr {
+        border: 1px solid black;
+    }
+    #pinme {
+        width:750px;
+        height: 408px;
+        margin-left: 100px;
+    }
+     .btn-fir-action-des2{
+        background: #c00;
+        color: #fff;
+        border-radius: 0px;
+        font-size: 14px;
+        padding: 0.5rem 1.5rem;
+        border: none;
+
+    }
+    .btn-fir-action-des2:hover, .btn-fir-action-des2:focus {
+        background: #333;
+        color: #fff;
+        border-radius: 0px;
+        font-size: 14px;
+        padding: 0.5rem 1.5rem;
+        border: none;
+    }
+    </style>
+    {{#if currentUser}}
+    <section class="main-refine-menu">
+        <div class="container">
+            <div class="img-banner">
+                {{#each getimagebanner}}
+                <img src="{{getImg imageId}}" onError="this.onerror=null;this.src='{{getImgCDN imageId}}';" class="img-responsive" width="1027" height="280"> {{/each}}
+            </div>
+            <br>
+            <div class="hold_result">
+                <p dir="{{getDirection}}">{{nbproducts}}/{{totalProducts}}{{_ "products result"}}
+                </p>
+            </div>
+            <div class="hold_bradcame">
+                <!-- <a id="bestSelling" class="" href="#" style="text-decoration:none;">
+                     &nbsp;{{_ "Best selling"}}</a>
+                <a id="name" class="reward-sell" href="#" style="text-decoration:none;">
+                     &nbsp;&nbsp;&nbsp;{{_ "Sort Name"}} </a>
+                <a id="price" class="reward-sell" href="#" style="text-decoration:none;">
+                      &nbsp;&nbsp;&nbsp;{{_ "Sort Price"}}
+                    </a> -->
+            </div>
+            <section class="bg_home">
+                <div class="container">
+                    <div class="row">
+                        <div class="wrapper-first-con">
+                            <div class="container">
+                                <div class="col-md-12">
+                                    <div class="space-top">
+                                        {{#each products}}
+                                        <!-- {{{favoriteProducts _id title price}}} -->
+                                        <div class="row main-fav" style="padding-top: 50px;" id="row{{_id}}">
+                                            <div class="col-md-3">
+                                                <a href="/details/{{slug title}}"><img src="{{getImgForProduct _id}}" id="zoomimage{{_id}}" onError="this.onerror=null;this.src='{{getImgForProductCDN _id}}';" alt="{{title}}" class="thumb img-responsive" width="120" height="120"></a>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="deatil-favo">
+                                                    <span>{{title}}</span>
+                                                    <div class="form-group">
+                                                        <div class="row col-xs-12">
+                                                            <label class="col-md-6 col-xs-6 control-label text-left" for="select">{{_"Quantity"}}</label>
+                                                            <div class="col-md-6 col-xs-6">
+                                                                <select id="qty{{_id}}" name="select" class="" size="1">
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                    <option value="6">6</option>
+                                                                    <option value="7">7</option>
+                                                                    <option value="8">8</option>
+                                                                    <option value="9">9</option>
+                                                                    <option value="10">10</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div style="width:100%">
+                                                    <p>
+                                                        {{#each getParentAttr oldId}} {{#with getParentDetails parent}} {{#if checkname name}}
+                                                        <p>{{_"Color"}} : <i id="current_attr{{../../_id}}">{{firstAttr ../_id}}</i></p>
+                                                        <div id="gallerycontainer122" dir="ltr" style="{{getScrollAttr ../product _id}} !important;">
+                                                            <div id="gallery" style="width:{{getCountAllAttributes ../product _id}}px !important;">
+                                                                <ul class="list-inline img-attribute color-product" style="margin-left:0px;">
+                                                                    {{#each getAllAttributes ../product _id}}
+                                                                    <li class="attr">
+                                                                        <a href="" class="color-attr" attr-id="{{_id}}">
+                                                                            <img src="{{getImg productImage}}" onError="this.onerror=null;this.src='{{getImgCDN productImage}}';" id="img_attr" class="img-responsive pull-left" width="50" alt="{{title}}">
+                                                                        </a>
+                                                                    </li>
+                                                                    {{/each}}
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        {{else}}
+                                                        <span>{{_"Size"}} : <i id="current_attr{{../../_id}}">{{firstAttr ../_id}}</i></span>
+                                                        <ul class="list-inline size-product">
+                                                            {{#each getAllAttributes ../product _id}}
+                                                            <li><a class="size-attr" href="" attr-id="{{_id}}">{{value}}</a></li>
+                                                            {{/each}}
+                                                        </ul>
+                                                        {{/if}} {{/with}} {{/each}}
+                                                    </p>
+                                                    </div>
+                                                    <script type="text/javascript">
+                                                        $(document).ready(function(){
+                                                            var selector='#gallery .img-attribute li a img';
+                                                            $('#gallery .img-attribute li a img:first').addClass('border_attr');
+                                                            $(selector).on('click', function(){
+                                                                $(selector).removeClass('border_attr');
+                                                                $(this).addClass('border_attr');
+                                                            });
+                                                        });
+                                                    </script>
+                                                    <script type="text/javascript">
+                                                    $(document).ready(function() {
+                                                        $('.size-product li:first').addClass('active');
+                                                        var selector1 = '.size-product li';
+                                                        $(selector1).on('click', function() {
+                                                            $(selector1).removeClass('active');
+                                                            $(this).addClass('active');
+                                                        });
+                                                    });
+                                                    </script>
+                                                    <!-- <p><span class="glyphicon glyphicon glyphicon-ok-sign color3" aria-hidden="true"></span></p> -->
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="deatil-favo left-textfavo">
+                                                    <span class="price-favo price{{oldId}}">{{getAttribprice oldId price}}</span><i>ریال</i>
+                                                <!-- {{#if selected_price}}
+                                                     <p class="panel-card-price"><b>ریال{{selected_price id}}</b></p>
+                                                {{/if}} -->
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="deatil-favo pull-right">
+                                                    <!-- <button style="background:#000;color:#fff;font-size:18px;" data-id="{{getIdAttr _id}}" pro-id="{{_id}}" class="btn profile-black" id="addmycart" type="button">{{_"ADD TO CART"}}</button> -->
+                                                    <button class="btn btn-fir-action-des2" data-id="{{getIdAttr _id}}" pro-id="{{_id}}" id="addmycart">{{_"ADD TO CART"}}</button>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                                <!-- <a href="#" data-id=""><span class="fa fa-heart-o"></span></a> -->
+                                                <a href="#" class="heart pull-right" data-id="{{id_product}}" id='removefav'><span class="fa fa-heart fa-heart-full like"></span></a>
+                                                <!-- <span class="glyphicon glyphicon-remove-circle pull-right" aria-hidden="true"></span> -->
+                                            </div>
+                                        </div>
+                                        <div class="border-favo">
+                                            <hr style="border:1px solid #e9e9e8;">
+                                        </div>
+                                        {{/each}}
+                                    </div>
+                                </div>
+                                <br>
+                                <span style="padding: 30px"></span>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="title_header_pinterest">
+                                            <h1 class="h1">{{_"Pinterest"}}</h1>
+                                        </div>
+                                        <div class="hidden-sm col-sm-12 col-xs-12" id="pinteres">
+                                            <iframe name="frame1" id="pinme" class="col-md-12 fav_pinteres" src="" frameborder="0" scrolling="no"></iframe>
+
+                                            <!--<a data-pin-do="embedBoard" data-pin-board-width="900" data-pin-scale-height="120" data-pin-scale-width="115" href="https://www.pinterest.com/safirperfumery/safir-favorite-looks/"></a>-->
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <span style="padding: 30px"></span>
+                                <div class="insta_title">
+                                    <h1 class="text-center h1">INSTAGRAM</h1>
+                                </div>
+                                <div class="">
+                                    <div class="col-sm-1 text-center"></div>
+                                    <div class="col-sm-10 text-center instagram">
+                                        <iframe src="http://snapwidget.com/in/?u=c2FmaXJzdG9yZXN8aW58ODB8OHwzfDNkMzkzZHx5ZXN8MTB8bm9uZXxvblN0YXJ0fHllc3x5ZXM=&ve=070416" title="Instagram Widget" class="snapwidget-widget" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:749px; height: 263px;"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <span style="padding: 30px"></span>
+            </section>
+        </div>
+    </section>
+    {{else}}
+    <section class="main-refine-menu">
+        <div class="container">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+                <div class="alert alert-success">
+                    <h3 style="margin-top: 0;"><i class="glyphicon glyphicon-info-sign" style="position: relative; top: 3px;"></i>YOUR BEAUTY BAG IS WAITING FOR YOU!</h3>
+                    <p>
+                        Sign in and discover a new way to collect your favorite beauty products and organize all your online and in-store purchases.
+                        <a href="/login">Login</a>.
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+    </section>
+    {{/if}}
+</template>

@@ -1,0 +1,109 @@
+<template name="profile">
+<style type="text/css">
+    .bert-alert.my-error {
+        background: #fff;
+        color: #000;
+        box-shadow: 2px 2px 15px #888;
+    }
+    .fa-users-iconbg{
+        background-image: url('../img/users.png');
+        background-size: 32px 32px;
+        width: 32px;
+        height: 32px;
+    }
+    .fa-earnpoint-iconbg{
+        background-image: url('../img/earn20.png');
+        background-size: 32px 32px;
+        width: 32px;
+        height: 32px;
+    }
+    .btn-second-action{
+        background: none;
+        color: #000;
+        border-radius: 0px;
+        font-size: 14px;
+        padding: 0.5rem 1rem;
+        border: 1px solid #333;
+    }
+    .btn-second-action:hover, .btn-second-action:focus{
+        background: none;
+        color: #c00;
+        border-radius: 0px;
+        font-size: 14px;
+        padding: 0.5rem 1rem;
+        border: 1px solid #c00;
+    }
+</style>
+    <div class="container">
+        <div class="row">
+            <div class="container-box">
+                <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 con-me">
+                    <section class="wrapper-first-con" style="margin-bottom:20px">
+                        <div class="container" id="con_profile">
+                            <div class="col-md-12">
+                                <div class="space-top tbl_profile" style="margin-top:30px; overflow: hidden;">
+                                    {{> profileimage }}
+                                    <div class="col-md-9">
+                                        {{#with getprofile}}
+                                        <h1 class="h1-name-profile">{{username}}</h1> {{/with}}
+                                        <h3>{{#with getprofile}}{{profile.firstname}} {{profile.lastname}}{{/with}} </h3>
+                                        <hr style="border:1px solid #000;">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <tbody>
+                                                    {{#with getprofile}}
+                                                    <tr>
+                                                        <td>{{_ "NAME"}}</td>
+                                                        <td style="font-weight:bold">{{profile.firstname}} {{ profile.lastname}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>{{_ "BIRTH DATE"}}</td>
+                                                        <td style="font-weight:bold">{{profile.birth}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        {{#if checkProfileData emails}}
+                                                            {{#each emails}}
+                                                            <td>{{_ "EMAIL"}}</td>
+                                                            <td style="font-weight:bold">{{address}}</td>
+                                                            {{/each}}
+                                                        {{/if}}
+                                                    </tr>
+                                                    <tr>
+                                                        <td>{{_ "SEX"}}</td>
+                                                        <td style="font-weight:bold">{{profile.sex}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>{{_ "ADDRESS"}}</td>
+                                                        <td style="font-weight:bold">{{profile.address}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>{{_ "PHONE"}}</td>
+                                                        <td style="font-weight:bold">{{profile.phone}}</td>
+                                                    </tr>
+                                                    {{/with}}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div>
+                                            <a href="/editprofile">
+                                                <button class="btn btn-second-action pull-right">{{_"Edit"}}</button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-12">
+								    <hr style="border:1px solid #000;">
+							    </div>
+                                <div class="col-md-12">
+								<a href="#"><img src="/img/Banniere-quiz-profil.jpg" width="100%" class="img-responsive"></a>
+							     </div>-->
+                            </div>
+                        </div>
+                    </section>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{> updatepicture}}
+</template>

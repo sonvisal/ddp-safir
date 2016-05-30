@@ -1,0 +1,16 @@
+# Required metadata
+sonar.projectKey=com.noolab.safirv1
+sonar.projectName=Safir project v1
+sonar.projectVersion=PROJECT_VERSION
+#sonar.projectDate=PROJECT_DATE
+
+# Comma-separated paths to directories with sources (required)
+sonar.sources=client,lib,server
+
+# Language
+#sonar.language=js
+#sonar.language=web
+#sonar.language=css
+
+# Encoding of sources files
+sonar.sourceEncoding=UTF-8

@@ -1,0 +1,244 @@
+<template name="member">
+<style>
+.bg_member_black {
+    background-image: url("../images/member-img-black.png");
+    background-position: right top;
+    background-repeat: no-repeat;
+    padding-bottom:0px;
+}
+.bg_member_silver {
+    background-image: url("../images/member-img-silver.png");
+    background-position: right top;
+    background-repeat: no-repeat;
+    padding-bottom:0px;
+}
+.bg_member_gold {
+    background-image: url("../images/member-img-gold.png");
+    background-position: right top;
+    background-repeat: no-repeat;
+    padding-bottom:0px;
+}
+/*.remove{
+    display: none;
+}*/
+</style>
+    <section class="wrapper-first-con">
+        <div id="bg-member">
+            <div class="container">
+                <div class="col-md-12">
+                    <div class="space-top" style="margin-top:30px;">
+                         {{> profileimage }}
+                        <div class="col-md-9">
+                            <div class="wapper-member-title b">
+                                <h1 id="title-black">{{_"BLACK MEMBER"}}</h1>
+                                <p class="member-text">{{_"You are actually a Black Member"}}</p>
+                                <!-- <p class="errorPooint" style="padding-top:10px;color:red;">{{_"You have error with your point!"}}</p> -->
+
+                            </div>
+                            <div class="wapper-member-title s">
+                                <h1 id="title-silver">{{_"SILVER MEMBER"}}</h1>
+                                <p class="member-text">{{_"You are actually a Silver Member"}}</p>
+                            </div>
+                            <div class="wapper-member-title g">
+                                <h1 id="title-gold">{{_"GOLD MEMBER"}}</h1>
+                                <p class="member-text">{{_"You are actually a Gold Member"}}</p>
+                            </div>
+                            <div class="wapper-member">
+                                <div class="pull-left box_giftGray">
+                                    <img src="images/gift.png" class="img-responsive pull-left" width="200" height="200">
+                                </div>
+                                <div class="text-member-all">
+                                    <p class="member-description">
+                                        {{#if farsi}} 
+                                        از زیبایی خود حداکثر استفاده را ببرید.
+                                        با پرداخت هر ریال، بر روی زیبایی خود سرمایه گذاری کنید. 
+                                        وب سایت سفیر یک تجربه جدید از دنیای امتیازدهی می باشد که با اشترک گذاری، دنبال کردن در شبکه های اجتماعی و راههای متعدد دیگر که در ذیل مشاهده می کنید، این امتیازات را کسب خواهید کرد.
+                                        از این امتیازات برای گرفتن هدایا استفاده کنید.
+                                        {{else}} 
+                                        Make the most of your beauty life.
+                                        Every rial spent gets you closer to your next beauty fix.
+                                        Safir website is a new website experience in which points can be won also by navigating, sharing with friends, following us on Instagram and many other ways that will be listed in the section “How to Earn more points”.
+                                        Those points can then be used to get free products.
+                                        {{/if}} 
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="hold_progress text-center">
+                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                <h3 class="text-center title_black_silver_gold">{{_"BLACK"}}</h3>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                <h3 class="text-center title_black_silver_gold">{{_"SILVER"}}</h3>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                <h3 class="text-center title_black_silver_gold">{{_"GOLD"}}</h3>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="space-member-border">
+                                    <div class="col-md-4 col-sm-4 col-xs-12 border-member1 ">
+                                        <div class="progress-member pro-black">
+                                            <div class="progress-bar progress-bar-black" role="progressbar " id="black" aria-valuenow="55" aria-valuemin="0" aria-valuemax="1000" style="width: {{getPourcentageBlack}}%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 col-xs-12 border-member2 ">
+                                        <div class="progress-member pro-black">
+                                            <div class="progress-bar progress-bar-silver" role="progressbar " id="silver" aria-valuenow="55" aria-valuemin="0" aria-valuemax="1000" style="width: {{getPourcentageSilver}}%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 col-xs-12 border-member3 ">
+                                        <div class="progress-member pro-black">
+                                            <div class="progress-bar progress-bar-gold" role="progressbar " id="gold" aria-valuenow="55" aria-valuemin="0" aria-valuemax="1000" style="width: {{getPourcentageGold}}%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <h3 class="member-require">{{_"Points required to reach next rank: "}} : {{pointLeft}}</h3>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="hold_number">
+                            <div class="col-md-10 col-md-offset-1">
+                                <div class="col-md-4 text-center">
+                                    <div class="number-border">
+                                        <div class="num-black center-block">{{nb_comments}}</div>
+                                        <div class="p-member">
+                                            <p>{{_"DISSCUSSIONS"}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 text-center">
+                                    <div class="number-border">
+                                        <div class="num-black center-block">{{nb_likes}}</div>
+                                        <div class="p-member">
+                                            <p>{{_"REPLY"}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 text-center">
+                                    <div class="number-border">
+                                        <div class="num-black center-block">0</div>
+                                        <div class="p-member">
+                                            <p>{{_"MESSAGE THIS WEEK"}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <h3 class="member-require">{{_"Be more active on the forum to earn points and gift"}}</h3>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="well-earn-more">
+                            <h2 class="text-earn">{{_"How to earn more points"}}</h2>
+                        </div>
+                    </div>
+                    <!--Start hover points-->
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 maginbotom" align="center">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 product maginbotom">
+                            <a href="#"><img src="/images/1.create-account.png" style=" width:46%;" onmouseover="this.src='/images/Creating-an-account.png'" onmouseout="this.src='/images/1.create-account.png'" class="img-responsive" alt="get points by visiting to the site"></a>
+                            <h3>
+                         {{_"Creating an account"}}
+                     </h3>
+                        </div>
+                          <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 product maginbotom">
+                            <a href="#"><img src="/images/10.translation.png" style=" width:46%;" onmouseover="this.src='/images/Translate a description.png'" onmouseout="this.src='/images/10.translation.png'" class="img-responsive" alt="{{_ " extra points for comment "}}"></a>
+                            <h3>
+                              {{_"Translate a description"}}
+                          </h3>
+                        </div>
+                       <!--  <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 product maginbotom">
+                            <a href="/listQuizz"><img src="/images/2.complete-profile.png" style="    width: 46%;" onmouseover="this.src='/images/Complete-the-profile.png'" onmouseout="this.src='/images/2.complete-profile.png'" class="img-responsive" alt="points on a specific day"></a>
+                            <h3>
+                         Complete the profile
+
+                     </h3>
+                        </div> -->
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 product">
+                            <a href="#"><img src="/images/Adding-a-review-Commenting-on-the-website.png" style=" width:46%;" onmouseover="this.src='/images/Adding a review.png'" onmouseout="this.src='/images/Adding-a-review-Commenting-on-the-website.png'" class="img-responsive" alt="points for a specific product"></a>
+                            <h3>
+                            {{#if farsi}}
+                                نظر دادن به محصولات
+                            {{else}}
+                                Adding a review: Commenting on the website
+                            {{/if}}                           
+                      </h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 maginbotom" align="center">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 product maginbotom">
+                            <a href="#"><img src="/images/4.adding-5-review.png" style=" width:46%;" onmouseover="this.src='/images/Adding a review.png'" onmouseout="this.src='/images/4.adding-5-review.png'" class="img-responsive" alt="points for watching tutorials"></a>
+                            <h3>
+                            {{#if farsi}}
+                                متیاز دادن به محصولات
+                            {{else}}
+                                Adding 5 reviews: Commenting on the website
+                            {{/if}} 
+                            </h3>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 product maginbotom">
+                            <a href="{{pathFor 'imedation'}}"><img src="/images/5.sharing-content.png" style=" width:46%;" onmouseover="this.src='/images/Complete-the-profile.png'" onmouseout="this.src='/images/5.sharing-content.png'" class="img-responsive" alt="points when shopping online"></a>
+                            <h3>
+
+                              {{_"Sharing content to a friend being sponsored by a friend"}}
+                          </h3>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 product">
+                            <a href="#"><img src="/images/6.sharing-content-to-3-friends.png" style=" width:46%;" onmouseover="this.src='/images/Sharing-content-to-3-friends.png'" onmouseout="this.src='/images/6.sharing-content-to-3-friends.png'" class="img-responsive" alt="points for sharing Safir perfumery"></a>
+                            <h3>
+
+                              {{_"Sharing content to 3 friends"}}
+                          </h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 maginbotom" align="center">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 product maginbotom">
+                            <a href="#"><img src="/images/7.follow-us-instagram.png" style=" width:46%;" onmouseover="this.src='/images/Following us on Instagram.png'" onmouseout="this.src='/images/7.follow-us-instagram.png'" class="img-responsive" alt="points for like the page"></a>
+                            <h3>
+
+                              {{_"Following us on Instagram"}}
+                          </h3>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 product maginbotom">
+                            <a href="#"><img src="/images/8.shop-online.png" style=" width:46%;" onmouseover="this.src='/images/Shop-in-the-online-store-.png'" onmouseout="this.src='/images/8.shop-online.png'" class="img-responsive" alt="write a mail to your friend"></a>
+                            <h3>
+                             {{_"Shop in the online store"}}
+
+                         </h3>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 product maginbotom">
+                            <a href="#"><img src="/images/9.visit-website.png" style=" width:46%;" onmouseover="this.src='/images/Visit-the-website-four-times.png'" onmouseout="this.src='/images/9.visit-website.png'" class="img-responsive" alt="{{_ " extra points for comment "}}"></a>
+                            <h3>                            
+                              {{_"Visit the website four times in the same month in a two week span at least"}}
+                          </h3>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 product maginbotom">
+                            <a href="#"><img src="/images/Do-more-than-10-quizz.png" style=" width:46%;" onmouseover="this.src='/images/Do more than 10 quizz_p.png'" onmouseout="this.src='/images/Do-more-than-10-quizz.png'" class="img-responsive" alt="{{_ " extra points for comment "}}"></a>
+                            <h3>
+                              {{_"Do more than 10 quizzes"}}
+                          </h3>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 product">
+                            <a href="#"><img src="/images/Do-three-quizz.png" style=" width:46%;" onmouseover="this.src='/images/Do three quizz_p.png'" onmouseout="this.src='/images/Do-three-quizz.png'" class="img-responsive" alt="{{_ " extra points for comment "}}"></a>
+                            <h3>
+                              {{_"Do three quizzes"}}
+                          </h3>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 product">
+                            <a href="#"><img src="/images/First-quizz.png" style=" width:46%;" onmouseover="this.src='/images/First quizz_p.png'" onmouseout="this.src='/images/First-quizz.png'" class="img-responsive" alt="{{_ " extra points for comment "}}"></a>
+                            <h3>
+                              {{_"First quiz"}}
+                          </h3>
+                        </div>
+                    </div>
+                    <!--End pro points-->
+                </div>
+                <!--End row -->
+            </div>
+        </div>
+    </section>
+    {{> updatepicture}}
+</template>

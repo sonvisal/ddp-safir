@@ -1,0 +1,10 @@
+.rateStar{
+	color: black;
+	font-size: 25px;
+}
+.rateStar:hover{
+	color: #e8c356;
+}
+.yellow-star{
+	color: #e8c356;
+}

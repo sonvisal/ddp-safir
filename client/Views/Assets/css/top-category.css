@@ -1,0 +1,31 @@
+.title_header_best_categ {
+    padding: 4em 5em;
+    background: url("/images/bg_categ_bestseller.png") no-repeat;
+    background-size: 100% 200px;
+    margin: 15px 0px;
+}
+.title_header_justarrived_categ {
+    padding: 4em 5em;
+    background: url("/images/bg_categ_justarrived-01.svg") no-repeat;
+    background-size: 100% 200px;
+    margin: 15px 0px;
+    background-position: -55px;
+}
+.title_header_lifestyle_categ {
+    padding: 4em 5em 4em 8em;
+	background: url("/images/bg_categ_lifestyle.svg") no-repeat;
+	background-size: 100% 200px;
+	margin: 15px 0px;
+	background-position: 25px center;
+}
+.lifestyle, .pinterest {
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+.tab-quicklink {
+    padding: 5px;
+    margin-bottom: 5em;
+}
+.nav-justified {
+    width: 100%;
+}

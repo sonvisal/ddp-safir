@@ -1,0 +1,794 @@
+<template name="header">
+    <style type="text/css">
+    .menuover {
+        color: red;
+    }
+    
+    .searchleft {
+        text-align: right;
+    }
+    .bert-alert.my-error {
+        background: #fff;
+        color: #000;
+        box-shadow: 2px 2px 15px #888;
+    }
+    .fa-users-iconbg{
+        background-image: url('../img/users.png');
+        background-size: 32px 32px;
+        width: 32px;
+        height: 32px;
+    }
+    .fa-searcherr-iconbg{
+        background-image: url('../img/searcherr.png');
+        background-size: 32px 32px;
+        width: 32px;
+        height: 32px;
+    }
+    .fa-searchsc-iconbg{
+        background-image: url('../img/searchsc.png');
+        background-size: 32px 32px;
+        width: 32px;
+        height: 32px;
+    }
+    .logform .form-control {
+        display: block;
+        width: 100%;
+        height: 34px;
+        padding: 6px 12px;
+        font-size: 14px;
+        line-height: 1.42857143;
+        color: #555;
+        background-color: #fff;
+        background-image: none;
+        border: 1px solid #000;
+        border-radius: 0px;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+        -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+        -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+        transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    }
+    
+    .logform input {
+        margin-top: 20px;
+    }
+    
+    input.form-control:focus {
+        border-color: red;
+        outline: 0;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+        box-shadow: none;
+        border: 1px solid red !important;
+    }
+    
+    .btn-black {
+        width: 100%;
+        border-radius: 0px;
+        background: #000;
+        color: #fff;
+        font-size: 14px;
+        padding: 6px 12px;
+        margin-bottom: 0px;
+    }
+    
+    .btn-black:hover {
+        width: 100%;
+        border-radius: 0px;
+        background: #ff4661;
+        color: #fff;
+        font-size: 14px;
+        padding: 6px 12px;
+        margin-bottom: 0px;
+    }
+    
+    .btn-black-re {
+        width: 100%;
+        border-radius: 0px;
+        background: #fff;
+        color: #000;
+        font-size: 14px;
+        padding: 6px 12px;
+        margin-bottom: 0px;
+    }
+    
+    .btn-black-re:hover {
+        width: 100%;
+        border-radius: 0px;
+        background: #000;
+        color: #fff;
+        font-size: 14px;
+        padding: 6px 12px;
+        margin-bottom: 0px;
+    }
+    
+    .logform label {
+        display: inline-block;
+        max-width: 100%;
+        margin-bottom: 5px;
+        font-weight: 400;
+    }
+    
+    .logform label a {
+        margin-top: 10px;
+        margin-bottom: 10px
+    }
+    
+    .btn-social {
+        background: #ff4661;
+        border-radius: 0px;
+        color: #fff;
+        font-size: 14px;
+        padding: 6px 12px;
+        margin-bottom: 0px;
+    }
+    
+    .btn-social:hover {
+        background: #ff4661;
+        border-radius: 0px;
+        color: #fff;
+        font-size: 14px;
+        padding: 6px 12px;
+        margin-bottom: 0px;
+    }
+    
+    .dropdown-fastLogin {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 1000;
+        display: none;
+        float: left;
+        min-width: 400px;
+        padding: 0px;
+        margin: 2px 0 0;
+        font-size: 14px;
+        list-style: none;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        border-radius: 0px;
+        -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+        background-clip: padding-box;
+    }
+    
+    .dropdown-fastLogin .btn {
+        margin-bottom: 0px;
+    }
+    
+    .dropdown-fastLogin .p-account {
+        color: #fff;
+        text-align: left;
+    }
+    /*information password*/
+    
+    #info_pass {
+        border: 0px solid #ddd;
+        border-radius: 4px;
+        color: #829cbd;
+        font: 12px/25px Arial, Helvetica, sans-serif;
+        height: 25px;
+        text-align: center;
+        width: 97.5%;
+        margin-bottom: 10px;
+    }
+    
+    #info_pass.weakpass {
+        background: #ffc7c7 none repeat scroll 0 0;
+        border: 1px solid #ff9191;
+        color: #94546e;
+        text-shadow: 1px 1px 1px #fff;
+    }
+    
+    #info_pass.stillweakpass {
+        background: #fdd none repeat scroll 0 0;
+        border: 1px solid #fbb;
+        color: #945870;
+        text-shadow: 1px 1px 1px #fff;
+    }
+    
+    #info_pass.goodpass {
+        background: #e4ffe4 none repeat scroll 0 0;
+        border: 1px solid #c4eec8;
+        color: #51926e;
+        text-shadow: 1px 1px 1px #fff;
+    }
+    
+    #info_pass.strongpass {
+        background: #79f079 none repeat scroll 0 0;
+        border: 1px solid #6ed66e;
+        color: #348f34;
+        text-shadow: 1px 1px 1px #fff;
+    }
+    
+    #info_pass.vrystrongpass {
+        background: #48b448 none repeat scroll 0 0;
+        border: 1px solid #379137;
+        color: #cdffcd;
+        text-shadow: 1px 1px 1px #296429;
+    }
+    
+    .megamenu li .droplast_right {
+        margin-right: 0px;
+        min-width: 500px;
+        padding: 24px 10px 10px 10px;
+    }
+    /*end information password*/
+    /*menu mobil*/
+    
+    .megamenu-mobile {
+        padding: 15px 0px;
+        white-space: nowrap;
+        overflow-x: scroll;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .menu-mobile-item {
+        color: #000;
+        /*padding-right:15px;
+    padding-left:15px;
+    border-right:1px solid #ccc;*/
+        padding: 8px;
+    }
+    
+    .mobile-item-last {
+        background: #000;
+        color: #fff;
+        border-right: 0px solid #ccc;
+    }
+    
+    .mobile-item-last:hover {
+        background: #000;
+        color: #E3382A;
+        border-right: 0px solid #ccc;
+    }
+    
+    .m-megamenu-dropdown {
+        padding: 15px 0px;
+    }
+    .title-product-in-card a strong{
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-size: 12px;
+        font-weight: normal;
+    }
+    .title-product-in-card p span{
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-size: 12px;
+        font-weight: normal;
+    }
+    #btn_invite{
+        border-radius: 0px;
+        padding: 0px;
+        padding-top: 7px;
+        padding-bottom: 7px;
+        color: white;
+        background: black;
+    }
+    #btn_invite:hover{
+        border-radius: 0px;
+        padding: 0px;
+        padding-top: 7px;
+        padding-bottom: 7px;
+        color: white;
+        background: black; 
+    }
+    .btn-second-action{
+        background: none;
+        color: #000;
+        border-radius: 0px;
+        font-size: 14px;
+        padding: 0.5rem 1rem;
+        border: 1px solid #333;
+    }
+    .btn-second-action:hover, .btn-second-action:focus{
+        background: none;
+        color: #c00;
+        border-radius: 0px;
+        font-size: 14px;
+        padding: 0.5rem 1rem;
+        border: 1px solid #c00;
+    }
+    .btn-fir-action-des2{
+        background: #c00;
+        color: #fff;
+        border-radius: 0px;
+        font-size: 14px;
+        padding: 0.5rem 1.28rem;
+        border: none;
+
+    }
+    .btn-fir-action-des2:hover, .btn-fir-action-des2:focus {
+        background: #333;
+        color: #fff;
+        border-radius: 0px;
+        font-size: 14px;
+        padding: 0.5rem 1.28rem;
+        border: none;
+    }
+    .size-productlists{
+        background: #fff;
+        color: #fff;
+        border-radius: 0px;
+        font-size: 14px;
+        padding: 0.5rem 1.5rem;
+        border: none;
+    }
+    .size-productlists:hover, .size-productlists:focus {
+        background: #000;
+        color: #fff;
+        border-radius: 0px;
+        font-size: 14px;
+        padding: 0.5rem 1.5rem;
+        border: none;
+    }
+    .caption a.size-productlist {
+        background: none;
+        padding: 5px;
+        display: inline-block;
+        border: 1px solid #000;
+        color: #000;
+    }
+    .caption a.active {
+        border: none;
+        background: #000 !important;
+        color: #fff;
+        padding: 5px;
+        display: inline-block;
+    }
+    /*end menu mobil*/
+    </style>
+    <header id="header" class="header" name="header" lang="{{getCurrentLanguage}}">
+        <div class="header_top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-md-6 col-lg-6">
+                        <div class="header_top_left">
+                            <div id="top-left">
+                                <ul class="list-inline">
+                                    <li class="dropdown ">
+                                        {{#if currentUser}}
+                                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span dir="{{getDirection}}">{{_ "Welcome"}} {{currentUser.profile.firstname}} </span> &nbsp;&nbsp; <span class="glyphicon glyphicon-user" style="color:white;"></span>
+                                        <span class="fa fa-caret-down"></span></a>
+                                        <ul style="display: none;" class="dropdown-menu dropdown-login">
+                                            <li style="margin-left: 0px;">
+                                                <a href="/profile">{{_ "My Profile"}}</a>
+                                            </li>
+                                            <li>
+                                                <a href="/reward">{{_ "Rewards and points"}}</a>
+                                            </li>
+                                            <li>
+                                                <a href="/member">{{_ "Member"}}</a>
+                                            </li>
+                                            <!-- <lyi>
+                                                <a href="/quiz">{{_ "Quiz"}}</a>
+                                            </li>-->
+                                            <li>
+                                                <a href="#" id="logout">{{_ "Log Out"}}
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        {{else}}
+                                        <a href="" class="dropdown-toggle login_register" data-toggle="dropdown">{{_ "Login/Register"}}</a>
+                                        <div class="dropdown-menu dropdown-fastLogin my_fast_login">
+                                            <div style="position: absolute;margin: -12px 0px 0px 30px;"><img src="/img/util-dropdown-arrow.png" class="img-responsive" /></div>
+                                            <div class="loginform">
+                                                <div style="padding: 15px;">
+                                                    <form class="logform" dir="{{getDirection}}">
+                                                        <label>{{_"Login"}}</label>
+                                                        <p id="loginError" style="color:red;"></p>
+                                                        <input type="email" class="form-control" placeholder="{{_" Email "}}" name="email" id="name" />
+                                                        <input type="password" class="form-control" placeholder="{{_" Password "}}" id="pass" name="password" />
+                                                        <div style="margin-top: 15px; margin-bottom: 15px; font-size: 14px; font-weight: 400;">
+                                                            <label><a style="color:#333; text-decoration: underline #d9534f;" href="/email">{{_"Forgot your Password ?"}}</a></label>
+                                                        </div>
+                                                        <a href="">
+                                                            <button class="btn btn-black fast_login">{{_"LOGIN"}}</button>
+                                                        </a>
+                                                        <hr/>
+                                                        <a href="#" id="insta-login" class="fb" target="_blank" title="instagram">
+                                                            <button class="btn btn-block btn-social"><span class="fa fa-instagram"></span> {{_"Log in with Instagram"}}</button>
+                                                        </a>
+                                                    </form>
+                                                </div>
+                                                <div style="background: #000; padding: 15px 15px 25px;">
+                                                    <p class="p-account">{{_"Don't have an account?"}}</p>
+                                                    <a href="">
+                                                        <button id="regis" class="btn btn-black-re">{{_"REGISTER"}}</button>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="registerform" style="display: none;">
+                                                <div style="padding: 15px;">
+                                                    <form id="formrigister" role="form" dir="{{getDirection}}">
+                                                        <label>{{_"Register"}}</label>
+                                                        <div class="register_msg" style="margin-top:10px;color:red"></div>
+                                                        <input type="text" class="form-control reg-username" placeholder="{{_" Username "}}"/> {{#if duplicateEmail}}
+                                                        <p style="color:red;margin-right: 227;">{{_"Email is already exists!"}}</p>
+                                                        {{/if}}
+                                                        <input class="form-control reg-email" placeholder="{{_" Email "}}" id="email" type="email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" />
+                                                        <input type="password" class="form-control reg-password" placeholder="{{_" Password "}}"/>
+                                                        <div id="info_pass"></div>
+                                                        <div class="alert alert-warning">
+                                                            <strong>{{_"Your password should be at least 6 characters and contain a capital letter and one lowercase letter"}}</strong>
+                                                        </div>
+                                                        <input type="password" class="form-control confpassword" placeholder="{{_" Confirm Password "}}"/>
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input value="" type="checkbox" checked />{{_"Sign up for Safir’s newsletter"}}</label>
+                                                        </div>
+                                                        <a href="">
+                                                            <button class="btn btn-black btn-register">{{_"REGISTER"}}</button>
+                                                        </a>
+                                                        <hr/>
+                                                        <a href="#" id="insta-login" class="fb" target="_blank" title="instagram">
+                                                            <button class="btn btn-block btn-social">
+                                                                <span class="fa fa-instagram"></span> {{_"Log in with Instagram"}}</button>
+                                                        </a>
+                                                    </form>
+                                                </div>
+                                                <div style="background: #000; padding: 15px 15px 25px;">
+                                                    <p class="p-account">{{_"Already have an account?"}}</p>
+                                                    <a href="">
+                                                        <button id="loginback" class="btn btn-black-re">{{_"LOGIN"}}</button>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{/if}}
+                                    </li>
+                                    <li class="dropdown ">
+                                <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-share-alt" aria-hidden="true"></i> Share (+ 100pt)</a>
+                                <ul class="dropdown-menu dropdown-menu dropdown-fastLogin">
+                                    <div class="left-arrow-up"></div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="top-left-login">
+                                                <h2 style="color:#000;font-size:15px; margin-bottom:15px;">
+                                                {{#if farsi}}سفیر را با هر چند نفر که می‌توانید به اشتراک بگذارید. با ایجاد حساب کاربری توسط 3 نفر از دوستانتان، 100 امتیاز دریافت خواهید کرد.
+                                            {{else}}Share Safir with as many people as you can. When three people will have created an account you will gain 100 points !
+                                                {{/if}}</h2>    
+                                                <h1 class="h1 text-center"><b> +100 pt </b></h1>
+                                                <br>
+                                                <form class="form" role="form" id="login-nav">
+                                                    <div class="form-group">
+                                                         <input type="email" class="form-control" id="emailinvite" placeholder="{{_"Email"}}" name="email" />
+                                                    </div>
+                                                    
+                                                    <div class="">
+                                                         <button style="" type="submit" id="btn_invite" class="btn btn_black btn-block"><i class="fa fa-share-alt" aria-hidden="true"></i> {{_"Share"}}</button>
+                                                    </div>                              
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ul>
+                            </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12 small_menu_drop">
+                        <div class="header_top_right pull-right">
+                            <ul class="nav nav-pills current">
+                                <li><a href="" id="en" style="background: none !important;">{{changeLanguage}}</a></li>
+                                <li><a href="/news" style="background: none !important;">{{_ "WEBZINE"}}</a></li>
+                                <li><a href="/" style="background: none !important;">{{_ "Home"}}</a></li>
+                                {{#if currentUser}}
+                                <li>
+                                    <a href="/favorite" title="like" style="background: none !important;">
+                                        <i class="fa fa-heart fa-1x"></i>
+                                        <strong id="numberfavorite" style="margin-left: 2px;">{{myfavorit}}</strong></a>
+                                </li>
+                                {{else}}
+                                <li>
+                                    <a href="/favorite" title="like" style="background: none !important;">
+                                        <i class="fa fa-heart fa-1x"></i>
+                                        <strong id="numberfavorite" style="margin-left: 2px;">0</strong></a>
+                                </li>
+                                {{/if}}
+                                <li class="dropdown_checkout">
+                                    <a style="margin:0px;padding:7px;background: none !important;" title="check out" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <img src="/images/shop-icon-01.svg" class="img-shopcart" alt="check-in check-out" /> <i class="number-item fa fa-1x"></i><strong id="numbercartitem">{{myCart}}</strong>
+                                    </a>
+                                    <ul class="dropdown-menu my-add-card">
+                                        <div class="arrow-up"></div>
+                                        <h2 style="color:#000; font-size:18px">{{myCart}} Items in Box </h2>
+                                        <div class="ka_checkout_scroll">
+                                            {{#each getCart}}
+                                            <li role="separator" class="divider"></li>
+                                            <li class="items-in-card">
+                                                <div class="row">
+                                                    <!--{{#with getTitleproduct id_product}}-->
+                                                    <div class="col-md-2" style="padding:0px">
+                                                        <a href="/details/{{slug title}}">
+                                                            <!--{{#with getImgAttr ../attribute ../id_product}}-->
+                                                            <img src="{{getImgForProduct id_product}}" onError="this.onerror=null;this.src='{{getImgForProductCDN id_product}}';" class="center-block img-responsive" alt="" width="50" height="50">
+                                                            <!--{{/with}}-->
+                                                        </a>
+                                                    </div>
+                                                    <!--{{/with}}-->
+                                                    <div class="col-md-7">
+                                                        {{#with getProductInfo id_product}}
+                                                        <div class="title-product-in-card"><a href="/details/{{slug title}}"><strong>{{title}}</strong></a></div>
+                                                        {{/with}}
+                                                        <div class="title-product-in-card"><p><span style="color:#ccc">{{_"QTY"}}:</span><span>{{quantity}}</span>&nbsp;&nbsp;
+                                                            <!-- <span style="color:#ccc">Size:</span><span>50 Cl</span> --></p></div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="title-product-in-card"><a href="#"><strong>{{Contotal subtotal}} ﷼</strong></a></div>
+                                                        <a href="" class="my-add-card-delete"><span style="color: #ccc;">{{_"Remove"}}</span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            {{/each}}
+                                        </div>
+                                        <li role="separator" class="divider"></li>
+                                        <li>
+                                            <a href="#">
+                                                <h2 style="padding:20px 0px; font-size:18px;" class="pull-left">{{_ "Total"}}:</h2>
+                                                <h2 style="padding:20px 0px; font-size:18px;" class="pull-right">{{getTotal}} ﷼</h2>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <div class="clearfix"></div>
+                                            <div class="row">
+                                            <!-- btn_viewCard 
+                                                 btn btn_checkout   -->
+                                                <span class="col-md-6 pull-left"><a href="/checkout"><button type="button" class="btn btn-second-action">{{_ "View Cart"}}</button></a></span>
+                                                <span class="col-md-6 pull-right"><button type="button" class="btn btn-fir-action-des2" id="proccedOrder">{{_"Proceed Order"}}</button></span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end header top-->
+        <div class="header_middle">
+            <div class="container">
+                <div class="header-logo clearfix">
+                    <div class="logo">
+                        <a href="/"><img height="100" src="/images/system/logo.svg"></a>
+                    </div>
+                    <div class="search pull-right">
+                        <form>
+                            <div class="input-group">
+                                <span class="input-group-addon search-push-left">
+                                    <ul class="list-inline" lang="fon-fa" id="listCatSearch">
+                                        <li><a href="" class="searchselection" id="searchpro" data-group="1">{{_"Products"}}</a></li>
+                                        <li><a href="" class="searchselection" id="searchweb" data-group="4">{{_"WEBZINE"}}</a></li>
+                                        <li><a href="" class="searchselection" id="searchtuto" data-group="5">{{_"Tutorial"}}</a></li>
+                                        <li><a href="" class="searchselection" id="searchall" data-group="0">{{_"ALL"}}</a></li>
+                                    </ul>
+                                  </span>
+                                <span class="input-group-addon all-btn slide-toggle" id="btn-all" data-group="0"><i class="fa fa-bars"></i></span>
+                                <input class="form-control input-search {{searching}}" placeholder='{{_ "Search for..."}}' type="text" id="textToSearch">
+                                <span class="input-group-addon search-btn kesearch"><i class="fa fa-search search-font"></i></span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!--/header-logo-->
+        </div>
+        <!--end header menu desktop-->
+        <div class="header_bottom">
+            <!-- Static navbar -->
+            <div class="container">
+                <div class="header-menu">
+                    <div class="main-megamenu hidden-xs">
+                        <div class="megamenu_container megamenu_dark_bar megamenu_light">
+                            <!-- Begin Menu Container -->
+                            <!-- End Mega Menu -->
+                            <ul class="megamenu">
+                                <!-- Begin Mega Menu -->
+                                {{#each getParent}}
+                                <li class="{{classItem}}">
+                                    <a href="{{pathFor 'listing' id=(slug title)}}" class="megamenu_drop menuclick" name="{{title}}" style="min-width:104px;">{{capitalWord title}}
+                                </a>
+                                    <div class="{{getMenuClass index}} {{headermenu}} dropdown_container dropdown_container_left" dir="{{getDirection}}" style="position: absolute; display: block; top: auto;right:{{getDecalage index}}px;">
+                                        {{#each getChildren _id}}
+                                        <div class="col_{{column _id}} responsive_halfs">
+                                            <h3><a href="/category/{{slug title}}" class="menuclick">{{capitalWord title}}</a></h3>
+                                            <ul class="list_unstyled">
+                                                {{#each getChildren _id}}
+                                                <li class="{{liFa}}"><a href="/category/{{slug title}}" class="menuclick">{{capitalWord title}}</a></li>
+                                                {{/each}}
+                                            </ul>
+                                        </div>
+                                        {{/each}}
+                                    </div>
+                                </li>
+                                {{/each}}
+                               <li class="{{classItem}}"><a href="/brands" class="megamenu_drop menuclick" name="{{title}}">{{_ "Brand"}}</a>
+                                    <div class="{{getMenuClass index}} {{headermenu}} dropdown_container dropdown_container_left dropdown_fullwidth" dir="{{getDirection}}">
+                                        
+                                        
+                                            <ul class="list_unstyled">
+                                                {{{getallbrand}}}
+                                            </ul>
+                                        <script type="text/javascript">
+
+                                        </script>
+                                    </div>
+                                </li>
+                                <li class="{{classCom}}"><a href="/tuto" style="background:#000; color:white;" class="megamenu_drop right-color">{{_ "Community"}}</a>
+                                    <!-- Begin Right Item -->
+                                    <div class="dropdown_12columns dropdown_right dropdown_container droplast_right" style="{{backCom}}">
+                                        <!-- Begin Right Item Container -->
+                                        <div class="col_12">
+                                            <div class="col_3 responsive_halfs {{getDiv}}">
+                                                <h3 class="{{getText}}"><a href="/tuto">{{_ "TUTO"}}</a></h3>
+                                            </div>
+                                            <div class="col_3 responsive_halfs {{getDiv}}">
+                                                <h3 class="{{getText}}"><a href="/news">{{_ "WEBZINE"}}</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Right Item Container -->
+                                </li>
+                                <!-- End Right Item -->
+                            </ul>
+                            <!-- End Mega Menu adding by chien khean!!!-->
+                        </div>
+                        <!-- End Menu Container -->
+                    </div>
+                    <!--/main-megamenu-->
+                </div>
+            </div>
+        </div>
+        <!--end header meneu desktop-->
+        <!--menu mobile-->
+        <div class="hidden-lg hidden-md hidden-sm">
+            <div class="megamenu-mobile">
+            {{#each getParent}}
+                <a class="menu-mobile-item" role="button" data-toggle="collapse" href="{{pathFor 'listing' id=(slug title)}}" data-target="#collapse-{{_id}}" data-id="collapse-{{_id}}" aria-expanded="false" aria-controls="collapseExample" name="{{title}}">{{capitalWord title}}</a>
+            {{/each}}
+                <a class="menu-mobile-item" role="button" data-toggle="collapse" href="{{pathFor 'listing' id=(slug title)}}" data-target="#collapsemobileBrand" aria-expanded="false" aria-controls="collapseExample" name="{{title}}" dir="{{getDirection}}">{{_ "Brand"}}</a>
+                <a class="menu-mobile-item mobile-item-last" role="button" data-toggle="collapse" href="#collapsemobileCommunity" aria-expanded="false" aria-controls="collapseExample">{{_ "Community"}}</a>
+            </div>
+
+            
+            <div class="section_mobile">
+            {{#each getParent}}
+                <div class="collapse" id="collapse-{{_id}}">
+                    <div class="m-megamenu-dropdown" dir="{{getDirection}}">
+                    {{#each getChildren _id}}
+                        <ul class="nav navbar-nav">
+                            {{#if haveBaby _id}}
+                            <li class="dropdown mychild">
+                                <a href="/category/{{slug title}}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{capitalWord title}}<span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                {{#each getChildren _id}}
+                                    <li class="{{liFa}} mychild">
+                                        <a href="/category/{{slug title}}">{{capitalWord title}}</a>
+                                    </li>
+                                {{/each}}
+                                </ul>
+                            </li>
+                            {{else}}
+                             <li class="active mychild">
+                                <a href="/category/{{slug title}}">{{capitalWord title}}</a>
+                            </li>
+                            {{/if}}
+                        </ul>
+                    {{/each}}
+                    </div>
+                </div>
+            {{/each}}
+            </div>
+            
+             <div class="section_mobile">
+                <div class="collapse" id="collapsemobileBrand">
+                    <div class="m-megamenu-dropdown" dir="{{getDirection}}">
+                        <ul class="nav navbar-nav">
+                        <!-- {{#each getallbrand}} -->
+                            <li class="active">
+                                <a href="/brand/{{brand}}" data-brand="{{brand}}">{{{getallbrand}}}</a>
+                            </li>
+                        <!-- {{/each}} -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="section_mobile">
+                <div class="collapse" id="collapsemobileCommunity">
+                    <div class="m-megamenu-dropdown" dir="{{getDirection}}">
+                        <ul class="nav navbar-nav">
+                        <li>
+                            <a href="/tuto">{{_ "TUTO"}}</a>
+                            <a href="/webzinelisting">{{_ "WEBZINE"}}</a>
+                        </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end menu mobile-->
+        <script>
+        $(document).on('mouseenter', '.dropdown', function() {
+            $(this).find(".dropdown-login").show();
+        }).on('mouseleave', '.dropdown', function() {
+            $(this).find(".dropdown-login").hide();
+        });
+        </script>
+        <script>
+        $(document).ready(function() {
+            $(".search-push-left").hide();
+            // var isOn = true;
+            // $(function(){
+            //    $("#btn-all").click(function(){
+            //    console.log(isOn);
+            //    if ( isOn ){
+            //        $('.search').css("width", '70%');
+            //        $(".search-push-left").show();
+            //        isOn = false;
+            //    } else {
+            //        $('.search').css("width", '44%');
+            //        $(".search-push-left").hide();
+            //        isOn = true;
+            //    }
+            //    return false;
+            //   });
+            // });
+            //$(".search-push-left").hide();
+            // var isOn = true;
+            // $(function(){
+            //    $(".searchselection").click(function(){
+            //    console.log(isOn);
+            //    if ( isOn ){
+            //        $('.search').css("width", '70%');
+            //        $(".search-push-left").show();
+            //        isOn = false;
+            //    } else {
+            //        $('.search').css("width", '44%');
+            //        $(".search-push-left").hide();
+            //        isOn = true;
+            //    }
+            //    return false;
+            //   });
+            // });
+
+        });
+        </script>
+        <!--  <script type="text/javascript">
+            $(document).ready(function(){
+                $('.dropdown_6columns div').removeClass('col_3');
+            });
+         </script> -->
+        <script>
+        $(document).on('mouseenter', '.dropdown_checkout', function() {
+            //$(this).find(".dropdown-login").show();
+            $(this).find(".my-add-card").show();
+        }).on('mouseleave', '.dropdown_checkout', function() {
+            //$(this).find(".dropdown-login").hide();
+            $(this).find(".my-add-card").hide();
+        });
+        </script>
+        <script>
+        $(document).on('mouseenter', '.items-in-card', function() {
+            $(this).find(".my-add-card-delete").show();
+        }).on('mouseleave', '.items-in-card', function() {
+            $(this).find(".my-add-card-delete").hide();
+        });
+        </script>
+        <script type="text/javascript">
+        $('li.dropdown').hover(function() {
+            $(this).find('.dropdown-fastLogin').stop(true, true).delay(200).fadeIn(500);
+        }, function() {
+            $(this).find('.dropdown-fastLogin').stop(true, true).delay(200).fadeOut(500);
+        });
+        </script>
+        <script type="text/javascript">
+            $(document).on('mouseenter', '.hold-quickview', function() {
+                $(this).find(":button").show();
+            }).on('mouseleave', '.hold-quickview', function() {
+                $(this).find(":button").hide(); 
+            });
+        </script>
+    </header>
+    <!--end header-->
+</template>

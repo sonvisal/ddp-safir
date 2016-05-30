@@ -1,0 +1,458 @@
+<template name="upload123">
+	<style type="text/css">
+    	.formlog{
+		    overflow: hidden;
+		    margin: 60px;
+		    /*box-shadow: 1px 2px 2px rgb(204, 204, 204);*/
+		}
+		.modal-body .hold_input_register input {
+		    border: 1px solid #ccc;
+		    border-radius: 4px;
+		}
+		.modal-body .hold_input_login input {
+		    border: 1px solid #ccc;
+		    border-radius: 4px;
+		}
+		input.form-control:focus {
+		    border-color: #66afe9;
+		    outline: 0;
+		    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+		    box-shadow: none;
+		    border: 1px solid #000 !important;
+		}
+		.title-form {
+		    font-size: 24px;
+		    font-weight: 700;
+		    margin-bottom: 25px;
+		}
+		label a{
+			font-size: 12px;
+		}
+		.form-login .form-horizontal .form-group {
+		    margin-left: 0px;
+		    margin-right: 0px;
+		}
+		.soc-sing{
+			font-size: 12px;
+			margin-bottom: -25px;
+		}
+		.form-group label{
+			font-size: 14px;
+		}
+		/* layout.css Style */
+		.upload-drop-zone {
+		  height: 200px;
+		  border-width: 2px;
+		  margin-bottom: 20px;
+		}
+
+		/* skin.css Style*/
+		.upload-drop-zone {
+		  color: #ccc;
+		  border-style: dashed;
+		  border-color: #ccc;
+		  line-height: 200px;
+		  text-align: center
+		}
+		.upload-drop-zone.drop {
+		  color: #222;
+		  border-color: #222;
+		}
+		div.box{
+			padding: 15px 35px;
+		}
+		div.box div.overlay {
+		    display: none;
+		    position: relative;
+		    background: #000;
+		    width: 100%;
+		    opacity: 0.6;
+		    font-weight: bold;
+		    color: #fff;
+		    margin-top: -36px;
+		    padding: 10px;
+		    font-size: 12px;
+		}
+		div.box:hover div.overlay {
+		    display: block;
+		    position: relative;
+		    background: #000;
+		    width: 100%;
+		    opacity: 0.6;
+		    font-weight: bold;
+		    color: #fff;
+		    margin-top: -36px;
+		    padding: 10px;
+		    font-size: 10px;
+		}
+		.modal-body a{
+			text-align: center;
+		}
+		.tab-load{
+			border-right: 1px solid #ccc;
+		}
+		#uploadpicture .modal-body {
+		    position: relative;
+		    padding: 0px;
+		}
+		#uploadpicture .modal-header {
+		    padding: 10px 15px;
+		    border-bottom: 1px solid #e5e5e5;
+		    min-height: 16.42857143px;
+		}
+		#uploadpicture .modalheader{
+		    padding: 15px 15px;
+		    min-height: 16.42857143px;
+		}
+
+		#uploadpicture .modalupload{
+		    padding: 3px 15px;
+		    border-bottom: 1px solid #e5e5e5;
+		    min-height: 16.42857143px;
+		    overflow: hidden;
+		}
+		#uploadpicture .modalupload .tab-pad{
+			padding: 25px 0px;
+		}
+		.space-control{
+			overflow: hidden;
+			padding: 15px;
+		}
+		.space-control p{
+			padding-top: 15px;
+		}
+		.container #uploadpicture .modal-dialog .modal-content {
+		    background: #fff;
+		    background-size: 100% 100%;
+		    overflow: hidden;
+		}
+		.btn-danger {
+		    color: #fff;
+		    background-color: #d9534f;
+		    border-color: #d43f3a;
+		    font-size: 14px;
+		}
+		.hold_input_login input.form-control {
+		    background-color: #fff;
+		    background-image: none;
+		    border: 1px solid #ccc;
+		    border-radius: 0;
+		    box-shadow: 0 1px 1px rgba(0,0,0,0.075) inset;
+		    color: #555;
+		    display: block;
+		    font-size: 14px;
+		    height: 34px;
+		    line-height: 1.42857;
+		    padding: 6px 12px;
+		    transition: border-color .15s ease-in-out 0s,box-shadow .15s ease-in-out 0s;
+		    width: 100%;
+		}
+		.hold_input_register input.form-control {
+		    background-color: #fff;
+		    background-image: none;
+		    border: 1px solid #ccc;
+		    border-radius: 0;
+		    box-shadow: 0 1px 1px rgba(0,0,0,0.075) inset;
+		    color: #555;
+		    display: block;
+		    font-size: 14px;
+		    height: 34px;
+		    line-height: 1.42857;
+		    padding: 6px 12px;
+		    transition: border-color .15s ease-in-out 0s,box-shadow .15s ease-in-out 0s;
+		    width: 100%;
+		}
+		/*validat pass*/
+
+		 #pass-infomation {
+		    border: 1px solid #ddd;
+		    border-radius: 4px;
+		    color: #829cbd;
+		    font: 12px/25px Arial,Helvetica,sans-serif;
+		    height: 25px;
+		    text-align: center;
+		    width: 97.5%;
+		}
+		#pass-infomation.weakpass {
+		    background: #ffc7c7 none repeat scroll 0 0;
+		    border: 1px solid #ff9191;
+		    color: #94546e;
+		    text-shadow: 1px 1px 1px #fff;
+		}
+		#pass-infomation.stillweakpass {
+		    background: #fdd none repeat scroll 0 0;
+		    border: 1px solid #fbb;
+		    color: #945870;
+		    text-shadow: 1px 1px 1px #fff;
+		}
+		#pass-infomation.goodpass {
+		    background: #e4ffe4 none repeat scroll 0 0;
+		    border: 1px solid #c4eec8;
+		    color: #51926e;
+		    text-shadow: 1px 1px 1px #fff;
+		}
+		#pass-infomation.strongpass {
+		    background: #79f079 none repeat scroll 0 0;
+		    border: 1px solid #6ed66e;
+		    color: #348f34;
+		    text-shadow: 1px 1px 1px #fff;
+		}
+		#pass-infomation.vrystrongpass {
+		    background: #48b448 none repeat scroll 0 0;
+		    border: 1px solid #379137;
+		    color: #cdffcd;
+		    text-shadow: 1px 1px 1px #296429;
+		}
+		.strong{
+			height: 0%;
+			line-height: 25px;
+		}
+		.camera-popup {
+		    position: fixed;
+		    z-index: 1000000;
+		    top: 20%;
+		    width: 320px;
+		    left: 50%;
+		    margin-left: -150px;
+		    font-family: sans-serif;
+		    background: white;
+		    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+		    line-height: 1.3em;
+		    pointer-events: auto;
+		    padding: 20px;
+		    border-radius: 10px;
+		}
+		.camera-popup .photo-preview {
+		    width: 278px;
+		}
+		.add-style{
+			border: 2px solid black;
+		}
+    </style>
+    <section class="bg_home">
+			<div class="container">
+				<div class="formlog">
+					<div class="col-xs-12 col-sm-5 col-md-4 col-md-offset-1">
+                        
+                        <fieldset>
+                            <form method="post" class="form-horizontal">
+
+                                <h2 class="text-center title-form">Login</h2>
+                                <p id="loginErrors" style="color:red;"></p>
+                                <div class="hold_input_login">
+                                    <div style="margin-bottom:20px;" class="form-group">
+                                        <label>Email</label>
+                                        <input class="form-control userfocus" id="log_uname" name="email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Password</label>
+                                        <input class="form-control" id="log_pass" name="password" type="password">
+                                    </div>
+                                    <div class="form-group">
+                                    	<div class="checkbox">
+      										<label><input type="checkbox" value="" checked>Receive our weekly newsletter and other occasional updates</label>
+    									</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <button class="btn btn-danger btn_login form-control">Login</button>
+                                    </div>
+                                    <div class="form-group">
+                                    	<label class="pull-right">
+                                            <a style="color:#333; text-decoration: underline #d9534f;" href="/email">Forgot Password?</a>
+                                        </label>
+                                    </div>
+                                    <hr/>
+                                    <div class="form-group">
+                                		<p class="soc-sing">Sign in with:</p>
+                                       
+                                    	<button class="btn btn-block btn-social btn-instagram">
+										    <span class="fa fa-instagram"></span> Sign in with Instagram
+										</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </fieldset>
+                    </div>
+                    <div class="hidden-xs col-sm-1 col-md-1">
+                        <div style="margin-top:20px;height:620px; border-right:2px solid #333;"></div>
+                    </div>
+                    <div dir="rtl" class="col-xs-12 col-sm-6 col-md-4 col-md-offset-1">
+                        <form dir="ltr" role="form" action="" method="post" enctype="multipart/form-data" id="js-upload-form">
+                            <h2 class="text-center title-form">Register</h2>
+                            <div class="register_msg" style="margin-top:10px;color:red">
+                            </div>
+				            <div class="box" >
+							    <a href="">
+							    {{#if picture}}
+							    	<div id="picture">
+										<img src="{{picture}}" class="img-responsive" />
+									</div>
+							    {{else}}
+							    	<img src="/img/default_profile.png" class="img-responsive">
+							    {{/if}}
+							    </a>
+							    <!-- <a href="#" data-toggle="modal" data-target="#uploadpicture">
+							    	<div class="overlay"><i class="fa fa-camera" aria-hidden="true"></i> Upload Profile Picture</div>
+							    </a> -->
+							</div>
+                            <div class="hold_input_register">
+                                <div class="form-group">
+                                    <label for="username">Username:</label>
+                                    <input name="username" id="username" class="form-control input_border reg-username" placeholder="" type="text">
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="first_name">First name:</label>
+                                            <input name="first_name" id="first_name" class="form-control input_border reg-firstname" placeholder="" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="last_name">Last name:</label>
+                                            <input name="last_name" id="last_name" class="form-control input_border reg-lastname" placeholder="" type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="pays">Country:</label>
+                                            <input type="text" name="country" id="country" class="form-control" list="languages" placeholder="Country">
+										  	<datalist id="languages">
+											    <option value="Cambodia"></option>
+											    <option value="French"></option>
+											    <option value="American"></option>
+											    <option value="Thailand"></option>
+											    <option value="Vietnames"></option>
+											    <option value="Phillipines"></option>
+											    <option value="Myanma"></option>
+											    <option value="India"></option>
+											    <option value="Indonesia"></option>
+											    <option value="Singapure"></option>
+											    <option value="Japanes"></option>
+											    <option value="Loas"></option>
+										  	</datalist>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="ville">City:</label>
+                                            <input type="text" name="city" id="city" class="form-control" list="languages" placeholder="City">
+										  	<datalist id="languages">
+											    <option value="Cambodia"></option>
+											    <option value="French"></option>
+											    <option value="American"></option>
+											    <option value="Thailand"></option>
+											    <option value="Vietnames"></option>
+											    <option value="Phillipines"></option>
+											    <option value="Myanma"></option>
+											    <option value="India"></option>
+											    <option value="Indonesia"></option>
+											    <option value="Singapure"></option>
+											    <option value="Japanes"></option>
+											    <option value="Loas"></option>
+										  	</datalist>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email:</label>
+                                    <input name="email" id="re_email" class="reg-email form-control input_border" placeholder="" type="email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$">
+                                    {{#if duplicateEmail}}
+                                    <p style="color:red">{{_"Email is already exists!"}}</p>
+                                    {{/if}}
+                                </div>                      
+                                <div class="form-group">
+                                    <label for="password">Password:</label>
+                                    <input name="password" id="re_password" class="reg-password form-control input_border" placeholder="" style="margin-bottom:20px" type="password">
+                                     <div id="pass-infomation"></div>
+                                    <div class="alert alert-warning">
+                                        <strong>{{_"Your password should be at least 6 characters and contain a capital letter and one lowercase letter"}}</strong>
+                                    </div>
+                                </div>
+                                <button class="btn btn-danger btn-register form-control" id="newregister" href="">Register</button>
+                            </div>
+                        </form>
+                    </div>
+				</div>
+				<!-- Modal -->
+				<div class="modal fade" id="uploadpicture" role="dialog">
+					<div class="modal-dialog modal-lg" style="width: 700px;">
+					
+					  <!-- Modal content-->
+					  <div class="modal-content" style=" margin-top: 90px; overflow: hidden;">
+						<div class="modal-header" style="background:#fff">
+							<label>Update Profile Picture</label>
+							<span class="pull-right close" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></span>
+						  <br>
+						</div>
+						<div class="modal-body">
+							<div class="modalupload">
+								<div class="col-md-6 text-center tab-load tab-pad">
+									<form role="form">
+	                            		<div class="form-group">
+											<!-- <a href="">
+												<label>
+													<i class="fa fa-plus" aria-hidden="true"></i> Upload Photo
+												</label> -->
+										 		<input type="file" id="upload">
+										 		
+											<!-- </a> -->
+										</div>
+									</form>
+									<button class="btn-success saveImg" style="float: right;">Save</button>
+								</div>
+								<div class="col-md-6 text-center tab-pad">
+									<a href="#" id="camera-button"><label><i class="fa fa-camera" aria-hidden="true"></i> Take Photo</label></a>
+									
+								</div>
+							</div>
+							<div class="modalheader">
+								<h4>Suggested Photos</h4>
+							</div>
+							<div class="space-control" id="img">
+								<div class="row">
+									<div class="col-md-2">
+										<a href="#"><img src="/img/img.png" class="img-responsive imageselected" id="profileImg" ></a>
+									</div>
+									<div class="col-md-2">
+										<a href="#"><img src="/img/img.png" class="img-responsive imageselected" id="profileImg"></a>
+									</div>
+									{{#each getIdImage}}
+										<div class="col-md-2">
+											<img class="img-thumbnail imageselected" style="width:100px; height:100px;" src="{{getImg image}}" id="profileImg" data-id="{{image}}">
+											
+										</div>
+									{{/each}}
+								</div>
+								<p class="pull-right"><a href="#">See more</a></p>
+								{{#each image}}
+									<button class="pull-left">Ok</button>
+								{{/each}}
+							</div>
+						</div>
+					  </div>
+					  
+					</div>
+				</div>
+				<!-- / Modal -->
+			</div>
+		</section>
+			<script>
+		$(document).on('mouseenter', '.hold-quickview', function () {
+			$(this).find(":button").show();
+		}).on('mouseleave', '.hold-quickview', function () {
+			$(this).find(":button").hide();
+		});
+	</script>
+	<script>
+		$(document).on('mouseenter', '.dropdown', function () {
+			$(this).find(".dropdown-login").show();
+			$(this).find(".my-add-card").show();
+		}).on('mouseleave', '.dropdown', function () {
+			$(this).find(".dropdown-login").hide();
+			$(this).find(".my-add-card").hide();
+		});
+	</script>
+</template>

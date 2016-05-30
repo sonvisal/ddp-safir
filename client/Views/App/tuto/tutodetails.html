@@ -1,0 +1,147 @@
+<template name="tutodetails">
+    <style type="text/css">
+    .bert-alert.my-error {
+        background: #fff;
+        color: #000;
+        box-shadow: 2px 2px 15px #888;
+    }
+    .fa-review-iconbg{
+        background-image: url('../img/reviewsc.png');
+        background-size: 32px 32px;
+        width: 32px;
+        height: 32px;
+    }
+    .fa-addcart-iconbg{
+        background-image: url('../img/cart.png');
+        background-size: 32px 32px;
+        width: 32px;
+        height: 32px;
+    }
+    .fa-fav-iconbg{
+        background-image: url('../img/fav.png');
+        background-size: 32px 32px;
+        width: 32px;
+        height: 32px;
+    }
+    .fa-remove-iconbg{
+        background-image: url('../img/remove.png');
+        background-size: 32px 32px;
+        width: 32px;
+        height: 32px;
+    }
+    </style>
+    <!-- Start contain -->
+    <section class="shadow_bottom">
+        {{#with this.result}}
+        <div class="container" id="space_cont_top">
+            <div class="clearfix"></div>
+            <div class="space_cont_top">
+                <div class="col-md-12">
+                </div>
+                <div class="col-md-7">
+                    <h1 class="txt-color">{{title}}</h1>
+                    <br>
+                    <video autoplay width="490" height="370" id="mainVideo" style="margin-top:-76px">
+                        <source src="/videos/{{url}}" type="video/mp4">
+                    </video>
+                    <div class="share-control btnShare" style="padding-top:10px; padding-bottom:50px">
+                        <div class="col-md-4">
+                        </div>
+                        <div class="col-md-12 row share-control ">
+                            <p class="p-font-sm">{{{content}}}</p>
+                            <iframe src="https://www.facebook.com/plugins/like.php?href={{getcurrentURl}}%2F&width=450&layout=standard&action=like&show_faces=true&share=true&height=80&appId" width="450" height="80" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5" style="padding-top:40px;">
+                    {{#each getRelated}}
+                    <div class="row space-row-tuto div_hover">
+                        <div class="col-md-5">
+                            <a href="/tutodetails/{{title}}" title="{{title}}">
+									{{#with getImgTuTO _id}}
+									<img src="{{getImg this}}" onError="this.onerror=null;this.src='{{getImgCDN this}}';" class="img-thumbnail" style="margin-bottom:15px; width:150px; height:113px" alt="{{title}}">
+									{{/with}}
+								</a>
+                        </div>
+                        <div class="col-md-7">
+                            <h4 class="h4-bold-tuto bold" style="padding-top:15px;"><a href="/tutodetails/{{title}}">{{title}}</a></h4>
+                            <p class="p-font-sm">
+                                {{{smaller content 10}}}
+                            </p>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+                <!-- 	<div class="col-md-12">
+						<div class="hold_btn_filter_view">
+							<div class="pull-right">
+								<a href="" id="closeFilter" style="display:none;">Close</a>
+								<button class="btn btn-filter-view" type="button" id="input">
+									<i class="fa fa-search"></i> {{_ "FILTER REVIEWS"}}</button>  
+							</div>
+						</div>
+					</div> -->
+                <div class="col-md-12">
+                    {{#if currentUser}} 
+                        {{>addreview}} 
+                    {{/if}} 
+                    <!-- {{#each getReviewBySort review}} 
+                        {{>review}} 
+                    {{/each}} -->
+                    <div class="col-md-12" id="hidemoreview" style="margin-bottom: 20px;">
+                        {{#if review}}
+                            {{#each getReviewBySort review}} 
+                                {{>review}} 
+                            {{/each}}
+                            <div class="pull-right">
+                                {{#if show_review_more5 review}}
+                                <h3 id="show1" class="morereviews" data-toggle="0">{{_ "MORE REVIEWS"}} &nbsp; <i class="fa fa-angle-down morereview"></i></h3>
+                                {{/if}}
+                            </div>
+                        {{else}}
+                            <i>{{_"No reviews"}}</i> 
+                        {{/if}}
+                    </div>
+                </div>
+                <div class="lips-box">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        {{#with related_product category}} 
+                            {{#if dataLenght}}
+                            <div class="row h1-pad" style="margin-left:15px;">
+                                <h1>{{_"RELATED PRODUCTS"}}</h1>
+                            </div>
+                            <br>
+                            <div class="on-lips">
+                                <div class="row">
+                              <!--       {{#each productsRelat}}
+                                    <div class="col-md-3">
+                                        <a href="/details/{{slug title}}"><img style="" src="{{getImgForProduct _id}}" onError="this.onerror=null;this.src='{{getImgForProductCDN _id}}';" class="img-thumbnail center-block" alt="" width="150" height="150"></a>
+                                        <p class="rel-title relatedp"><a href="{{pathFor 'details' id=_id}}" style="color:black;">{{title}}</a></p>
+                                        <h3 class="text-center" style="font-weight:bold;font-size:1em;">{{price}}</h3>
+                                    </div>
+                                    {{/each}} -->
+
+                                    {{>relateDetail}}
+                                </div>
+                            </div>
+                            {{/if}} 
+                        {{/with}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/with}}
+    </section>
+    
+    <!--<div id="fb-root"></div>
+    <script>
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=1152399321466345";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    </script>-->
+</template>

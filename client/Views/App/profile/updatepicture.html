@@ -1,0 +1,240 @@
+<template name="updatepicture">
+    <style type="text/css">
+    .modal-body .hold_input_register input {
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    
+    .modal-body .hold_input_login input {
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    
+    input.form-control:focus {
+        border-color: #66afe9;
+        outline: 0;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+        box-shadow: none;
+        border: 1px solid #000 !important;
+    }
+    
+    .title-form {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 25px;
+    }
+    
+    label a {
+        font-size: 12px;
+    }
+    
+    .form-login .form-horizontal .form-group {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    
+    .soc-sing {
+        font-size: 12px;
+        margin-bottom: -25px;
+    }
+    
+    .form-group label {
+        font-size: 14px;
+    }
+    /* layout.css Style */
+    
+    .upload-drop-zone {
+        height: 200px;
+        border-width: 2px;
+        margin-bottom: 20px;
+    }
+    /* skin.css Style*/
+    
+    .upload-drop-zone {
+        color: #ccc;
+        border-style: dashed;
+        border-color: #ccc;
+        line-height: 200px;
+        text-align: center
+    }
+    
+    .upload-drop-zone.drop {
+        color: #222;
+        border-color: #222;
+    }
+    
+    div.box {
+        padding: 15px 35px;
+    }
+    
+    div.box div.overlay {
+        display: none;
+        position: relative;
+        background: #000;
+        width: 100%;
+        opacity: 0.6;
+        font-weight: bold;
+        color: #fff;
+        margin-top: -36px;
+        padding: 10px;
+        font-size: 12px;
+    }
+    
+    div.box:hover div.overlay {
+        display: block;
+        position: relative;
+        background: #000;
+        width: 100%;
+        opacity: 0.6;
+        font-weight: bold;
+        color: #fff;
+        margin-top: -36px;
+        padding: 10px;
+        font-size: 10px;
+    }
+    
+    .modal-body a {
+        text-align: center;
+    }
+    
+    .tab-load {
+        border-right: 1px solid #ccc;
+    }
+    
+    #uploadpicture .modal-body {
+        position: relative;
+        padding: 0px;
+    }
+    
+    #uploadpicture .modal-header {
+        padding: 10px 15px;
+        border-bottom: 1px solid #e5e5e5;
+        min-height: 16.42857143px;
+    }
+    
+    #uploadpicture .modalheader {
+        padding: 15px 15px;
+        min-height: 16.42857143px;
+    }
+    
+    #uploadpicture .modalupload {
+        padding: 3px 15px;
+        border-bottom: 1px solid #e5e5e5;
+        min-height: 16.42857143px;
+        overflow: hidden;
+    }
+    
+    #uploadpicture .modalupload .tab-pad {
+        padding: 25px 0px;
+    }
+    
+    .space-control {
+        overflow: hidden;
+        padding: 15px;
+    }
+    
+    .space-control p {
+        padding-top: 15px;
+    }
+    
+    .container #uploadpicture .modal-dialog .modal-content {
+        background: #fff;
+        background-size: 100% 100%;
+        overflow: hidden;
+    }
+    .camera-popup .photo-preview {
+        width: 280px;
+        margin-bottom: 20px;
+        margin-top: -30px;
+    }
+    </style>
+    <div class="modal" id="uploadpicture" role="dialog">
+        <div class="modal-dialog modal-lg hidden-xs" style="width: 700px;">
+            <!-- Modal content-->
+            <div class="modal-content" style=" margin-top: 90px; overflow: hidden;">
+                <div class="modal-header" style="background:#fff">
+                    <label>Update Profile Picture</label>
+                    <span class="pull-right close" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></span>
+                    <br>
+                </div>
+                <div class="modal-body">
+                    <div class="modalupload">
+                        <div class="col-md-6 text-center tab-load tab-pad">
+                            <form role="form">
+                                <div class="form-group">
+                                    <a href="#" class="btn btn-lg" id="browse-upload"> Browse Upload</a>
+                                    <input type="file" id="file" style="display:none">
+                                    <!-- </a> -->
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-6 text-center tab-pad">
+                            <!--<a href="#" id="camera-button">
+                                <label><i class="fa fa-camera" aria-hidden="true"></i> Take Photo</label>
+                            </a>-->
+                            <a href="#" class="btn btn-lg" id="camara"> <i class="fa fa-camera" aria-hidden="true"></i> Take Photo</a>
+                            {{#if photo}}
+                            <img src="{{photo}}" class="img-responsive" /> {{/if}}
+                        </div>
+                    </div>
+                    <div class="modalheader">
+                        <h4>Suggested Photos</h4>
+                    </div>
+                    <div class="space-control" id="img" style="height:150px;overflow-y:scroll;">
+                        <div class="row">
+                            {{#each getHistoryPic}}
+                            <div class="col-md-2">
+                                <a href="#"><img src="uploads/{{copies.images.key}}" class="img-responsive history-pic" data-id="{{_id}}" style="height:80px;margin-bottom:5px"></a>
+                            </div>
+                            {{/each}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- mobile screen -->
+        <div class="modal-dialog hidden-lg hidden-md hidden-sm" style="width: 392px;">
+            <div class="modal-content" style=" margin-top: 90px; overflow: hidden;">
+                <div class="modal-header" style="background:#fff">
+                    <label>Update Profile Picture</label>
+                    <span class="pull-right close" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></span>
+                    <br>
+                </div>
+                <div class="modal-body">
+                    <div class="modalupload">
+                        <div class="col-md-6 col-xs-6 text-center tab-load tab-pad">
+                            <form role="form">
+                                <div class="form-group">
+                                    <a href="#" class="btn btn-lg" id="browse-upload"> Browse Upload</a>
+                                    <input type="file" id="file" style="display:none">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-6 col-xs-6 text-center tab-pad">
+                            <a href="#" class="btn btn-lg" id="camara"> <i class="fa fa-camera" aria-hidden="true"></i> Take Photo</a>
+                            {{#if photo}}
+                            <img src="{{photo}}" class="img-responsive" /> {{/if}}
+                        </div>
+                    </div>
+                    <div class="modalheader">
+                        <h4>Suggested Photos</h4>
+                    </div>
+                    <div class="space-control" id="img" style="height:150px;overflow-y:scroll;">
+                        <div class="row">
+                            {{#each getHistoryPic}}
+                                <ul class="list-inline">
+                                    <li class = "col-xs-6" style=" margin-bottom: 8px;">
+                                        <a href="#">
+                                            <img src="uploads/{{copies.images.key}}" class="img-responsive history-pic" data-id="{{_id}}" height='80'>
+                                        </a>
+                                    </li>
+                                </ul>
+                            {{/each}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end mobile screen -->
+    </div>
+</template>

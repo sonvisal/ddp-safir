@@ -1,0 +1,753 @@
+<template name="details">
+    <style>
+    .attr-color .selected {
+        background-color: #dd2a1b;
+        color: #fff;
+    }
+    /*.zoom {
+        display: inline-block;
+        position: relative;
+    }
+   
+    .zoom img {
+        display: block;
+    }
+    
+    .zoom img::selection {
+        background-color: transparent;
+    }
+    
+    #ex2 img:hover {
+        cursor: url(grab.cur), default;
+    }
+    
+    #ex2 img:active {
+        cursor: url(grabbed.cur), default;
+    }*/
+    /*#gallery{
+        width: 4000px;
+    }*/
+    
+    .border_attr {
+        border: 1px solid black;
+    }
+    .fa-fav-iconbg{
+        background-image: url('../img/fav.png');
+        background-size: 32px 32px;
+        width: 32px;
+        height: 32px;
+    }
+     .bert-alert.my-error {
+        background: #fff;
+        color: #000;
+        box-shadow: 2px 2px 15px #888;
+    }
+    .fa-addcart-iconbg{
+        background-image: url('../img/cart.png');
+        background-size: 32px 32px;
+        width: 32px;
+        height: 32px;
+    }
+    .fa-earnpoint-iconbg{
+        background-image: url('../img/earn30s.png');
+        background-size: 32px 32px;
+        width: 32px;
+        height: 32px;
+    }
+     .fa-earnpoint-iconbg{
+        background-image: url('../img/earn20.png');
+        background-size: 32px 32px;
+        width: 32px;
+        height: 32px;
+    }
+    .fa-remove-iconbg{
+        background-image: url('../img/remove.png');
+        background-size: 32px 32px;
+        width: 32px;
+        height: 32px;
+    }
+    .fa-earnpoints-iconbg{
+        background-image: url('../img/earn10s.png');
+        background-size: 32px 32px;
+        width: 32px;
+        height: 32px;
+    }
+    .sizeattr {
+        background: black;
+        color: white;
+    }
+    
+    p > #gallerycontainer122 > #gallery {
+        z-index: 0;
+    }
+    
+    p > #gallery {
+        z-index: 0;
+        overflow: hidden;
+    }
+    
+    p > #gallery a {
+        overflow: hidden;
+    }
+    
+    .img-attribute > li >a img {
+        z-index: 0;
+    }
+    /*hold-card*/
+    
+    .hold-card {
+        padding: 0px 15px 15px 15px;
+    }
+    
+    .panel-card {
+        border: 0px solid #000;
+        box-shadow: 0 0px 0px rgba(0, 0, 0, .05);
+    }
+    
+    .panel-card .panel-heading {
+        padding: 0px 0px;
+        font-weight: 400;
+    }
+    
+    .panel-card .panel-body {
+        border-top: 5px solid;
+        padding: 0px 0px 25px 0px;
+        border-top-left-radius: 2px solid #000;
+    }
+    
+    .panel-card-price {
+        font-size: 24px;
+        margin: 15px 0px 20px 0px;
+    }
+    
+    .btn-panel-card {
+        background: #000;
+        color: #fff;
+        font-weight: 900;
+        font-size: 14px;
+        display: inline-block;
+        margin-bottom: 0;
+        text-align: center;
+        vertical-align: middle;
+        cursor: pointer;
+        background-image: none;
+        border: 1px solid transparent;
+        white-space: nowrap;
+        padding: 6px 12px;
+        line-height: 1.42857143;
+        border-radius: 4px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    
+    .btn-panel-card:hover {
+        background: #000;
+        color: #A9A4A4;
+        font-weight: 900;
+        font-size: 14px;
+        display: inline-block;
+        margin-bottom: 0;
+        text-align: center;
+        vertical-align: middle;
+        cursor: pointer;
+        background-image: none;
+        border: 1px solid transparent;
+        white-space: nowrap;
+        padding: 6px 12px;
+        line-height: 1.42857143;
+        border-radius: 4px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        border: 1px solid #333;
+    }
+    
+    .buttonaddcard .btn-panel-card:focus {
+        color: #fff;
+    }
+    /*.btn-panel-card:hover{
+    background:#000;
+    color:#ccc;
+    font-weight:900;
+    font-size:14px;
+
+    display: inline-block;
+    margin-bottom: 0;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    line-height: 1.42857143;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}*/
+    
+    .main_panel_social {
+        padding: 5px 0px 2em 0px;
+    }
+    
+    .panel-card .social-icon {
+        padding-top: 5px;
+        font-size: 16px;
+        text-align: center;
+        width: 30px;
+        height: 30px;
+        border: 2px solid #000;
+        border-radius: 50%;
+        color: #000;
+        margin: 5px;
+    }
+    
+    a.social-icon:hover,
+    a.social-icon:active,
+    a.social-icon:focus {
+        text-decoration: none;
+        color: #777;
+        border-color: #777;
+    }
+    
+    .img-more-detail {
+        margin: 15px;
+        margin: 50px;
+    }
+    
+    .img-more-detail .nav-justified > li > a {
+        padding: 15px;
+    }
+    
+    .panel-card textarea {
+        background: #ffffff;
+        border: 1px solid transparent;
+    }
+    
+    .panel-card textarea.comment-translation {
+        margin-bottom: 10px;
+    }
+    
+    .panel-card .form-control::-moz-placeholder {
+        color: #777;
+        font-size: 11px;
+    }
+    
+    .panel-card .form-control:-ms-input-placeholder {
+        color: #777;
+        font-size: 11px;
+    }
+    
+    .panel-card .form-control::-webkit-input-placeholder {
+        color: #777;
+        font-size: 11px;
+    }
+    
+    .mbr-contacts__text a {
+        color: #fff;
+    }
+    
+    .mbr-contacts__text a:hover {
+        color: #ccc;
+    }
+    
+    .save_latter {
+        padding: 5px 0px;
+        margin: 5px 0px 10px 0px;
+    }
+    
+    .save_latter a,
+    .earnpoint {
+        color: #000;
+    }
+    
+    #panel,
+    #flip {
+        padding: 5px;
+        text-align: center;
+        background-color: #fff;
+        border: solid 1px #000;
+        color: #5d5b5b;
+        cursor: pointer;
+        font-size: 11px;
+    }
+    
+    #panel {
+        overflow: hidden;
+        display: none;
+    }
+    
+    .panel-body .size-product > li.active a {
+        /*color: #000;
+        border: 1px solid #000;*/
+        background: #000;
+        color:#fff;
+        font-size: 100%;
+    }
+    
+    .panel-body .size-product > li > a {
+        color: #000;
+        background-color: #ccc;
+        /*border: 1px solid #ccc;*/
+        padding: .2em .6em .2em .6em;
+        font-size: 100%;
+    }
+    
+    .cart {
+        width: 30px;
+        background: url("/../img/icon_panel_card.svg");
+    }
+    
+    .btn-panel-card:hover .cart {
+        width: 30px;
+        /*background: url("/../img/icon_panel_card_black.svg")*/
+        background: url("/../img/icon_panel_card.svg");
+    }
+    /*end ho;ld-card*/
+    
+    #gallerycontainer122 {
+        position: relative;
+        height: 85px;
+        width: 80%;
+        margin: 0 auto;
+        overflow-y: hidden!important;
+    }
+    .btn-fir-action{
+        background: #000;
+        color: #fff;
+        border-radius: 0px;
+        font-size: 14px;
+        padding: 0.5rem 1.5rem;
+        border: none;
+    }
+    .btn-fir-action:hover, .btn-fir-action:focus {
+        background: #c00;
+        color: #fff;
+        border-radius: 0px;
+        font-size: 14px;
+        padding: 0.5rem 1.5rem;
+        border: none;
+    }
+    .btn-fir-action-des2{
+        background: #c00;
+        color: #fff;
+        border-radius: 0px;
+        font-size: 14px;
+        padding: 0.5rem 1.5rem;
+        border: none;
+
+    }
+    .btn-fir-action-des2:hover, .btn-fir-action-des2:focus {
+        background: #333;
+        color: #fff;
+        border-radius: 0px;
+        font-size: 14px;
+        padding: 0.5rem 1.5rem;
+        border: none;
+    }
+      .bert-alert.my-error {
+        background: #fff;
+        color: #000;
+        box-shadow: 2px 2px 15px #888;
+    }
+    .fa-errorfield-iconbg{
+        background-image: url('../img/field.png');
+        background-size: 32px 32px;
+        width: 32px;
+        height: 32px;
+    }
+
+    .panel-body .size-product > li.active a {
+        background: none;
+        color: #000;
+        font-size: 100%;
+        border: 1px solid #000;
+    }
+    
+    .panel-body .size-product > li > a {
+        color: #000;
+        background:none;
+        border: 1px solid #000;
+        padding: .2em .6em .2em .6em;
+        font-size: 100%;
+    }
+   
+    /*.panel-body .size-product > li.active a:hover, li.active a:focus{
+        background: #000;
+        color: #fff;
+        font-size: 100%;
+        border: 1px solid #000;
+    }*/
+    </style>
+    <!--   {{> myrefine getCategory}} -->
+    <section class="shadow_bottom" id="produst_listing" dir="{{getDirection}}">
+        <div class="container" style="padding-top: 25px;">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="col-md-12">
+                        <!--<span class='zoom' id='ex1'>
+                            <img id="hoverZoom" width="210" height="210" class="img_principle" src="{{getImgForProduct _id}}" alt="{{title}}" onError="this.onerror=null;this.src='{{getImgForProductCDN _id}}';"/>
+
+                        </span>-->
+                        <img id="zoomimage" width="210" height="210" data-zoom-image="{{getImgForProductDetailZoom _id}}" src="{{getImgForProduct _id}}" alt="{{title}}" onError="this.onerror=null;this.src='{{getImgForProductCDN _id}}';">
+                    </div>
+                    <!-- <div class="col-md-12" style="padding-top:50px;">
+                        <div class="swiper-container" style="width: 175px;">
+                            <div class="swiper-wrapper">
+                                {{#each getListImg _id}}
+                                <div class="swiper-slide">
+                                    <a href=""><img src="{{getImg this}}" onError="this.onerror=null;this.src='{{getImgCDN this}}';" width="50" height="50" class="miniature" alt="type" /></a>
+                                </div>
+                                {{/each}}
+                            </div>
+                            <div class="swiper-button-next" style=""></div>
+                            <div class="swiper-button-prev" style=""></div>
+                        </div>
+                    </div> -->
+                   <!--  <script>
+                    var swiper = new Swiper('.swiper-container', {
+                        pagination: '.swiper-pagination',
+                        nextButton: '.swiper-button-next',
+                        prevButton: '.swiper-button-prev',
+                        paginationClickable: true,
+                        spaceBetween: 30,
+                        centeredSlides: true,
+                        autoplay: 5000,
+                        autoplayDisableOnInteraction: false
+                    });
+                    </script> -->
+                </div>
+                <div class="col-md-6">
+                    <div class="hold_description">
+
+                        <!-- <h3 class="bold">{{title}}</h3> {{#if currentUser}}
+                        <a href="">
+                            <p class="myAddReview" style="margin-top: -25px;">{{_"Write a review"}}</p>
+                        </a> -->
+
+                        <h3 class="bold">{{title}}</h3>
+                        {{#if currentUser}}
+                            <a href=""><p class="myAddReview" style="margin-top: -25px;">{{_"Add review"}}</p></a>
+                        {{/if}}
+                        <p class="brand"><span>{{_"Brands"}}: </span><span style="color:#dd2a1b">{{Brand}}</span></p>
+
+                        <i id="current_attr"></i>
+                        <!-- attribute -->
+                        <p>{{#each getParentAttr oldId}} {{#with getParentDetails parent}}
+                            <!-- {{name}}  -->
+                            <!-- <i id="current_attr"> </i> -->
+                            {{#if checkname name}}
+                            <div id="gallerycontainer122" dir="ltr" style="{{getScrollAttr ../product _id}} !important;">
+                                <div id="gallery" style="width:{{getCountAllAttributes ../product _id}}px !important;">
+                                    <!-- {{#each getAllAttributes ../product _id}} -->
+                                    <!-- <p style="margin:17px;">
+                                        <a href=""><img src="{{getImg productImage}}" onError="this.onerror=null;this.src='{{getImgCDN productImage}}';" id="img_attr" class="img-responsive pull-left" width="50px" height="50px" alt="{{title}}"></a>
+                                    </p> -->
+                                    <!-- {{/each}} -->
+                                    <ul class="list-inline img-attribute" style="margin-left:0px;">
+                                        {{#each getAllAttributes ../product _id}}
+                                        <li>
+                                            <a href="">
+                                                <img src="{{getImg productImage}}" onError="this.onerror=null;this.src='{{getImgCDN productImage}}';" id="img_attr" class="img-responsive pull-left" width="50" alt="{{title}}">
+                                            </a>
+                                        </li>
+                                        {{/each}}
+                                    </ul>
+                                    <script type="text/javascript">
+                                        $(document).ready(function(){
+                                            var selector='#gallery .img-attribute li a img';
+                                            $('#gallery .img-attribute li a img:first').addClass('border_attr');
+                                            $(selector).on('click', function(){
+                                                $(selector).removeClass('border_attr');
+                                                $(this).addClass('border_attr');
+                                            });
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+                            {{else}}
+                            <!-- <div class="attr-color">
+                                {{#each getAllAttributes ../product _id}}
+                                <input class="sizeattr color" id="img_attr" type="button" value="{{value}}">
+                                {{/each}}
+                            </div> -->
+                            {{/if}} {{/with}} {{/each}}
+                        </p>
+                        <!-- end attribute -->
+                        <p class="detail-txt" style="padding-top: 20px;">{{{description}}}</p>
+                        <br>
+                        <p>{{_ "Category"}} : <a href="/category/{{getCategoryName category}}"><span style="color:#000;font-weight: bold;">{{getCategoryName category}}</span></a>
+                            <br>
+                            <!--  {{_ "Brands"}} : <a href="/category/{{category}}" id="brand"><span style="color:#000;font-weight: bold;">{{Brand}}</span></a> -->
+                        </p>
+                        <br />
+                        <br />
+                        <p dir="{{getDirection}}">
+                            <li style="list-style:none">
+                                {{{getParentTagName _id}}}
+                            </li>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="hold-card">
+                        <div class="panel panel-card">
+                            <!-- Default panel contents -->
+                            <div class="panel-heading"><i>{{_ "Get delivered in all Iran!"}}</i></div>
+                            <div class="panel-body">
+                                <p class="panel-card-price"><b>ریال{{selected_price}}</b></p>
+                                <div class="row">
+                                    <div class="form-group">
+                                        <label class="col-md-6 col-xs-6 control-label" for="select">{{_ "Quantity"}}</label>
+                                        <div class="col-md-6 col-xs-6">
+                                            <select id="qty" name="select" class="" size="1">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="padding:10px;">
+                                    <!-- <li class="active"><a href="">50 cl</a></li> -->
+                                    <!-- start size -->
+                                    {{#each getParentAttr oldId}} {{#with getParentDetails parent}} {{#if checkname name}} {{else}}
+                                    <span>{{_"Size"}}:</span>
+                                    <ul class="list-inline size-product">
+                                        {{#each getAllAttributes ../product _id}}
+                                        <li><a id="img_attr" href="">{{value}}</a></li>
+                                        {{/each}}
+                                    </ul>
+                                    {{/if}} {{/with}} {{/each}}
+                                    <!-- end size -->
+                                    <script type="text/javascript">
+                                    $(document).ready(function() {
+                                        $('.size-product li:first').addClass('active');
+                                        var selector1 = '.size-product li';
+                                        $(selector1).on('click', function() {
+                                            $(selector1).removeClass('active');
+                                            $(this).addClass('active');
+                                        });
+                                    })
+                                    </script>
+                                </div>
+
+                            <!-- </div>
+                            <div class="buttonaddcard">
+                                <button id="addtocart" type="submit" class="btn btn-sm btn-panel-card btn-block"><span style="width:25px; height:25px;margin-left:8px;margin-top:-3px;" class="cart pull-left"></span> {{_ "ADD TO CART"}}</button>
+                            </div>
+                            <p class="save_latter"> -->
+
+                              </div>
+
+                             <div class="buttonaddcard">
+                                <!-- <button id="addmycart" data-id="{{getIdAttr _id}}" type="submit" class="btn btn-sm btn-panel-card btn-block"><span style="width:25px; height:25px;margin-left:8px;margin-top:-3px;" class="cart pull-left"></span> {{_ "ADD TO CART"}}</button> -->
+                                <button class="btn btn-panel-card btn-fir-action-des2 btn-block" id="addmycart" data-id="{{getIdAttr _id}}"><span style="width:25px; height:25px;margin-left:0px;margin-top:-3px;" class="cart pull-left"></span> {{_ "ADD TO CART"}}</button>
+                             </div>
+                             <p class="save_latter">
+                                <!-- <a href="#" id="unlike{{_id}}" class="unlike unlike{{_id}}" data-id="{{_id}}"><span class="fa fa-heart-o "></span> Save for latter</a>
+                                <a href="#" id="like{{_id}}" data-id="{{_id}}" class=" nonelike like like{{_id}}"><span class="fa fa-heart fa-heart-full "></span> Save for latter</a> -->
+                                {{{getIconlike _id}}}
+                            </p>
+                            <div class="main_panel_social">
+                                <div class="social-icons">
+                                    <!--<ul class="nav navbar-nav">
+                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                    </ul>-->
+                                    <div class="text-center">
+                                        <a class="fa fa-facebook social-icon" href="https://www.facebook.com/safirperfumery" target="_blank"></a>
+                                        <a class="fa fa-instagram social-icon" href="http://www.instagram.com/safirstores" target="_blank"></a>
+                                        <a class="fa fa-twitter social-icon" style="padding-right: 4px; padding-left:4px !important;" href="https://twitter.com/safirperfumery" target="_blank"></a>
+                                        <a class="fa fa-google-plus social-icon" href="https://plus.google.com/u/0/b/109953347025842075900/+Safirperfumeryofficial/posts" target="_blank"></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div id="flip">{{_ "HOW TO EARN MORE POINTS"}}</div>
+                                <div id="panel">
+                                    <form role="form">
+                                        <div class="form-group">
+                                            <textarea class="form-control comment-translation" rows="3" id="comment" placeholder="{{_"Enter your translation here..."}}" style="background:  #fff;border-radius: 4px; border: 1px solid #ccc"></textarea>
+                                            <!-- <button type="submit" id="posting" class="btn btn-sm btn-panel-card pull-right">{{_ "Post"}}</button> -->
+                                            <button class="btn btn-fir-action pull-right" id="posting">{{_"Post"}}</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- back to top -->
+            <a href="#0" class="cd-top">
+                <div class="backtop-container hidden-xs">
+                    <div class="backtop-item arrow">
+                        <div class="backtop-img">
+                            <i class="fa fa-angle-up fa-2x" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="backtop-item background_backtotop">
+                        <div class="backtop-img top-text">
+                            Back to top
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <!-- end back to top -->
+        </div>
+    </section>
+
+    <div id="addReview"></div>
+    <section id="produst_listing" class="article" dir="{{getDirection}}">
+        <div class="container">
+            <div class="row" id="article">
+                <div class="hold_product_detail">
+                    <div class="col-md-12">
+                        <!-- <div class="hold_btn_filter_view">
+                            <div class="pull-right">
+                                <a href="" id="closeFilter" style="display:none;">Close</a>
+                                <button class="btn btn-filter-view" type="button" id="input">
+                                <i class="fa fa-search"></i> {{_ "FILTER REVIEWS"}}</button>
+                            </div>
+                        </div> -->
+                        {{#if currentUser}} {{else}}
+                        <div class="pull-left">
+                            <a href="/login"> {{_"Please login to add Reviews"}} </a>
+                        </div>
+                        {{/if}}
+                    </div>
+                    <div class="col-md-12">
+                        <input type="hidden" id="productreviewid" value="{{_id}}" /> {{#if currentUser}} {{>addreview}} {{/if}}
+                        <div class="col-md-12" id="hidemoreview" style="margin-bottom: 20px;">
+                            <!-- {{#each getReviews review filterReview removeFilter}}
+                            {{#each getReviewBySort review }}
+                            {{>review }} 
+                            {{/each}} -->
+                            {{#if review}}
+                            <!-- {{#each getReviews review filterReview removeFilter}} -->
+                            {{#each getReviewBySort review }} {{>review }} {{/each}}
+                            <div class="pull-right">
+                                {{#if show_review_more5 review}}
+                                <h3 id="show1" class="morereviews" data-toggle="0">{{_ "MORE REVIEWS"}} &nbsp; <i class="fa fa-angle-down morereview"></i></h3> {{/if}}
+                            </div>
+                            {{else}}
+                            <i>{{_"No reviews"}}</i> {{/if}}
+                        </div>
+                    </div>
+                    {{#if videoUrl}}
+                    <iframe class="col-md-12" width="300" height="350" src="{{videoUrl}}" frameborder="0" allowfullscreen>
+                    </iframe>
+                    {{/if}} {{#if articles.length}}
+                    <div class="col-md-12 well">
+                        <div class="col-md-12">
+                            <h1>{{_ "ARTICLE ABOUT"}}</h1>
+                        </div>
+                        {{#each articles}} {{#with getArticle this}} {{>article}} {{/with}} {{else}}
+                        <i>{{_ "No articles about"}} {{title}}</i> {{/each}}
+                    </div>
+                    {{/if}} {{#if tutoes.length}}
+                    <div class="col-md-12 well">
+                        <div class="col-md-12">
+                            <h1>{{_ "Tutorial about"}}</h1>
+                        </div>
+                        {{#each tutoes}} {{#with getTutoes this}} {{>tutoes}} {{/with}} {{else}}
+                        <i>{{_ "No tutorial about"}}{{title}}</i> {{/each}}
+                    </div>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </section>
+    {{#if recommended}}
+    <section id="forum_question" dir="{{getDirection}}">
+        <div class="container">
+            <div class="hold_product_detail">
+                <div class="col-md-12">
+                    <h1>{{_ "Customers Who Bought This Item Also Bought"}}</h1>
+                </div>
+                <div class="row"></div>
+                {{>relateDetail}}
+            </div>
+        </div>
+        <br />
+        <br />
+        <br />
+    </section>
+    {{/if}}
+    <script>
+    /*$(document).ready(function() {
+            $('#ex1').zoom('{{getFirstImgProduct _id}}');
+            $('#ex2').zoom({
+                on: 'grab'
+            });
+            $('#ex3').zoom({
+                on: 'click'
+            });
+            $('#ex4').zoom({
+                on: 'toggle'
+            });
+        });*/
+    </script>
+    <script>
+    var galleryTop = new Swiper('.gallery-top', {
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        spaceBetween: 10,
+    });
+    var galleryThumbs = new Swiper('.gallery-thumbs', {
+        spaceBetween: 10,
+        centeredSlides: true,
+        slidesPerView: 'auto',
+        touchRatio: 0.2,
+        slideToClickedSlide: true
+    });
+    galleryTop.params.control = galleryThumbs;
+    galleryThumbs.params.control = galleryTop;
+
+    function setbg(color) {
+        document.getElementById("status").style.background = color
+    }
+    </script>
+    <script type="text/javascript">
+    // $(document).ready(function() {
+
+    //     var selector2 = '#gallery p a img';
+    //     $('#gallery p a img:first').addClass('border_attr');
+    //     $(selector2).on('click', function() {
+    //         $(selector2).removeClass('border_attr');
+    //         $(this).addClass('border_attr');
+    //     });
+    // });
+    </script>
+
+    <div id="script_div"></div>
+    <script>
+    $(document).ready(function() {
+        $('#zoomimage').elevateZoom({
+            /*zoomType: "inner",
+            cursor: "crosshair",
+            zoomWindowFadeIn: 500,
+            zoomWindowFadeOut: 750
+            lensFadeIn: 500, 
+            lensFadeOut: 500*/
+            easing: true,
+            borderSize: 0
+        });
+    })
+    </script>
+</template>

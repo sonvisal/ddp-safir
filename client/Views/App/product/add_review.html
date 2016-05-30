@@ -1,0 +1,53 @@
+<template name="add_review">
+<style type="text/css">
+	.bert-alert.my-error {
+        background: #fff;
+        color: #000;
+        box-shadow: 2px 2px 15px #888;
+    }
+    .fa-review-iconbg{
+        background-image: url('../img/reviewsc.png');
+        background-size: 32px 32px;
+        width: 32px;
+        height: 32px;
+    }
+    .fa-earnpoints-iconbg{
+        background-image: url('../img/earn10s.png');
+        background-size: 32px 32px;
+        width: 32px;
+        height: 32px;
+    }
+</style>
+<a href="" id="bt_review">Add review</a>
+<div id="add_review" style="display: none;">
+<table>
+
+<tr>
+	<td>Title</td>
+	<td><input type="text" id="title" /></td>
+</tr>
+<tr>
+	<td>Review</td>
+	<td><textarea rows="4" cols="50" id="comment">
+
+</textarea></td>
+</tr>
+<tr>
+	<td>Grade</td>
+	<td><select id="grade">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+</select></td>
+</tr>
+
+<tr>
+	<td>Send</td>
+	<td><button id="commentok">Send</button></td>
+</tr>
+
+</table>
+</div>
+</template>

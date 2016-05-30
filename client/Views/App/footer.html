@@ -1,0 +1,170 @@
+<template name="footer">
+<style type="text/css">
+.input-group .form-control {
+    width: 69%;
+    margin-bottom: 0;
+}
+.searchform button.fa-envelope-o {
+    background: #ccc;
+    border: medium none;
+    border-radius: 0;
+    margin-left: 0px; 
+    margin-top: 0px;
+    padding: 9px 17px;
+}
+.footerfarsi{
+    text-align: right;
+}
+.newsletters{
+     margin-left: 28px;
+}
+.bert-alert.my-error {
+    background: #fff;
+    color: #000;
+    box-shadow: 2px 2px 15px #888;
+}
+.fa-newslet-iconbg{
+    background-image: url('../img/newslet.png');
+    background-size: 32px 32px;
+    width: 32px;
+    height: 32px;
+}
+.fa-errorfield-iconbg{
+    background-image: url('../img/field.png');
+    background-size: 32px 32px;
+    width: 32px;
+    height: 32px;
+}
+@media (max-width: 667px){
+    .newsletters {
+        margin-left: 0px;
+    }
+    .input-group .form-control {
+        width: 60%;
+        margin-bottom: 0;
+    }
+}
+.searchform button.fa-envelope-o {
+    background: #000;
+    color: #fff;
+    border-radius: 0px;
+    font-size: 14px;
+    padding: 10px 17px;
+    border: none;
+}
+
+.searchform button.fa-envelope-o:hover, .searchform button.fa-envelope-o:focus {
+    background: #c00;
+    color: #fff;
+    border-radius: 0px;
+    font-size: 14px;
+    padding: 10px 17px;
+    border: none;
+}
+</style>
+    <section class="footer">
+        <div class="footer-widget">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="hr-footer"></div>
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="single-widget {{footerleft}}" style="margin-bottom: 25px">
+                                <h2>{{_"Service"}}</h2>
+                                <ul class="nav nav-pills nav-stacked">
+                                    <li><a href="/about-us">{{_"About Us"}}</a></li>
+                                    <li><a href="/contact-us">{{_"Contact Us"}}</a></li>
+                                    <li><a href="/shopping-guide">{{_"Shopping Guide"}}</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="single-widget {{footerleft}}" style="margin-bottom: 25px">
+                                <h2>{{_"Quick Links"}}</h2>
+                                <ul class="nav nav-pills nav-stacked">
+                                    <li><a href="/bestselling">{{_"Best Sellers"}}</a></li>
+                                    <li><a href="/newarrival">{{_"Just Arrived"}}</a></li>
+                                    <li><a href="/ideagift">{{_"Idea Gifts"}}</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="single-widget {{footerleft}}" style="margin-bottom: 25px">
+                                <h2>{{_"Life Style"}}</h2>
+                                <ul class="nav nav-pills nav-stacked">
+                                    <li><a href="/smokyeyes">{{_"Smoky Eyes"}}</a></li>
+                                    <li><a href="/nichefragrance">{{_"Niche Fragrance"}}</a></li>
+                                    <li><a href="/natural">{{_"Natural"}}</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="single-widget" style="margin-bottom: 25px">
+                                <h2 class="{{footerleft}}">{{_"Follow Us"}}</h2>
+                                <ul class="sociallist list-inline">
+                                    <li>
+                                        <a href="http://www.instagram.com/safirstores" target="_blank" title="Instagram" id = "instagrampoint"><img width="30" height="30" src="/images/socail_media-01.svg"></a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.facebook.com/safirperfumery" target="_blank" title="Facebook"><img width="30" height="30" src="/images/socail_media-02.svg"></a>
+                                    </li>
+                                    <li>
+                                        <a href="https://plus.google.com/u/0/b/109953347025842075900/+Safirperfumeryofficial/posts" target="_blank" title="Google+"><img width="30" height="30" src="/images/socail_media-03.svg"></a>
+                                    </li>
+                                    <li>
+                                        <a href="http://www.pinterest.com/safirperfume/" target="_blank" title="Pinterest"><img width="30" height="30" src="/images/socail_media-04.svg"></a>
+                                    </li>
+                                    <li>
+                                        <a href="https://twitter.com/safirperfumery" target="_blank" title="Twitter"><img width="30" height="30" src="/images/socail_media-05.svg"></a>
+                                    </li>
+                                    <li>
+                                        <a href="https://Telegram.me/safirstores" target="_blank" title="Telegram"><img width="30" height="30" src="/images/socail_media-06.svg"></a>
+                                    </li>
+                                </ul>
+                                <form action="#" id="formemail" class="searchform">
+                                    <p class="{{footerleft}}">{{_"Sign up for Safir emails"}}</p>
+                                    <div class="row {{newslat}}">
+                                        <div class="input-group">
+
+                                            <input id="newsmail" name="input2-group1" class="form-control newsmail {{footerleft}}" placeholder="{{_"Email"}}" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" style="height: 40px; color: #000; background: #fff;">
+                                            <label><button type="submit" class="fa fa-envelope-o btn btn-fir-action pull-right"></button></label>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-middle">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="single-widget">
+                            <div class="e-name">
+                                <img class="center-block" src="/images/namad1.png">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="single-widget">
+                            <div class="footer-logo text-right">
+                                <img width="140" src="/images/logo_footer-01.svg">
+                            </div>
+                            <p class="text-right pull-right">کلیه حقوق مادی و معنوی متعلق به فروشگاه عطر سفیر می باشد و هرگونه سوء استفاده، موجب پیگرد قانونی است</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <p class="text-center text-footer-bottom">Copyright © 2016 <span><b>Safir Perfumes & Cosmetics</b></span>. All rights reserved. Terms of Use | Privacy Policy - REVISED
+                        <br>info@safirperfumery.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</template>

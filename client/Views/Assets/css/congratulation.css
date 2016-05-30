@@ -1,0 +1,132 @@
+.congratulation{
+	padding:15px;
+	min-height:500px;
+	background:url("../images/bg_congratulation.png") no-repeat;
+}
+.congratulation p.text_cong{
+	font-size: 14px;
+	font-family: Arail;
+	color: #333;
+	margin-bottom:35px;
+	font-weight: 400;
+}
+.btn-cong{
+	background:#000;
+	color:#fff;
+	border-radius:8px;
+	border:1px solid #000;
+	padding: 6px 12px;
+	font-size: 14px
+}
+.btn-cong:hover{
+	background:#e3382a;
+	color:#fff;
+	border-radius:8px;
+	border:1px solid #e3382a;
+	padding: 6px 12px;
+	font-size: 14px
+}
+
+/*after register */
+.after-register{
+	margin: 8em 0px;
+}
+
+/*Contact Us */
+.contactus{
+	padding:15px 4em;
+	min-height:800px;
+	background:url("../images/bg_contact.svg") no-repeat;
+	overflow:hidden;
+}
+.contactus .form-group input, .contactus .form-group textarea{
+	border: 1px solid #333;
+	border-radius: 0px;
+}
+.contactus button{
+	background:#000;
+	color:#fff;
+	border:1px solid #000;
+}
+.contactus button:hover{
+	background:#e3382a;
+	color:#fff;
+	border:1px solid #e3382a;
+}
+/*About Us */
+.aboutus{
+	padding:15px 7em;
+	min-height:800px;
+	background:url("../images/bg_about.svg") no-repeat;
+	overflow:hidden;
+}
+.aboutus .page-header{
+	border-bottom: 8px solid #000;
+}
+.aboutus .sub-header{
+	padding:3em 0px 4em 0px;
+}
+.aboutus hr{
+	border-top: 1px solid #000;
+	border-bottom: 8px solid #000;
+	bottom:0;
+}
+
+.refine_menu ul.nav li a#refine_price_range {
+    border-left: 3px solid rgb(221, 42, 27);
+}
+
+.refine_menu ul.nav li a.border-dashed {
+    font-size: 14px;
+    color: rgb(221, 42, 27);
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 2px dashed rgb(221, 42, 27);
+    padding: 5px;
+}
+
+.footerRelative{
+	position: relative;
+}
+.footerAbsolute{
+	position: absolute;
+	padding-top: 50px;
+}
+.footerAbsolute ul.sociallist{
+	padding-top: 10px;
+}
+
+/* Invoice */
+.facture{
+	min-height:700px;
+	border-bottom:5px solid #000;
+	margin-bottom:5em;
+}
+.facture .facture-well{
+	background:#000;
+	border-radius:0px;
+	color:#fff;
+	padding:0px 15px;	
+	border:1px solid #000;
+	margin-bottom:0px;
+}
+.facture .facture-text-center{
+	padding:5em;
+}
+.facture .well-step{
+	border-radius:0px;
+	padding:10px;
+	margin-bottom:15px;
+	background:#e3e3e3;
+	box-shadow:none;
+	min-height:50px;
+}
+.facture p.text_cong{
+	font-size: 14px;
+	font-family: Arail;
+	color: #333;
+	margin-bottom:0px;
+	font-weight: 400;
+}

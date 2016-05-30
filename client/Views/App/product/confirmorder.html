@@ -1,0 +1,284 @@
+<!-- <template name="confirmorder123">
+    <style>
+    .modal-backdrop .in {
+        display: none;
+    }
+    </style>
+    <div id="wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header" style="text-transform: capitalize;font-size: 26px;">
+					            <b>{{_ "Select a shipping address"}}</b>
+					    </h1>
+                    <div class="col-lg-12">
+                        <ul class="active">
+                            {{#with getprofile}} {{#if services.google.email}}
+                            <b>{{username}}</b>
+                            <p style="margin-bottom: 10px;"></p>
+                            <h5>floor 3</h5>
+                            <p style="margin-bottom: 10px;"></p>
+                            {{#each emails}}
+                            <h5>Email: {{address}}</h5>
+                            <p style="margin-bottom: 10px;"></p>
+                            {{/each}}
+                            <h5 id="oldAddress">{{getAddress1}}</h5>
+                            <p style="margin-bottom: 10px;"></p>
+                            {{else}}
+                            <b>{{username}}</b>
+                            <p style="margin-bottom: 10px;"></p>
+                            <h5>floor 3</h5>
+                            <p style="margin-bottom: 10px;"></p>
+                            {{#each emails}}
+                            <h5>Email: {{address}}</h5>
+                            <p style="margin-bottom: 10px;"></p>
+                            {{/each}}
+                            <h5 id="oldAddress">{{getAddress1}}</h5>
+                            <p style="margin-bottom: 10px;"></p>
+                            {{/if}} {{/with}}
+                        </ul>
+                    </div>
+                    <div class="col-xs-12">
+                        <button type="button" id="btnshopcart" class="btn btn-warning" style="width: 277px; background: transparent -moz-linear-gradient(center top , #F7DFA5, #F0C14B) repeat scroll 0% 0%; font-size: 16px;">
+                            <h5>{{_ "Shop to this address"}}</h5>
+                        </button>
+                        <p style="margin-bottom: 20px;"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="container">
+                        <div class="row">
+                            <form class="form-horizontal">
+                                <fieldset>
+                                    <div class="banner_chien"></div>
+                                    <br>
+                                    <br>
+                                    <h1 class="page-header" style="text-transform: capitalize;font-size: 26px;">
+				            <b>{{_ "Add a new address"}}</b>
+				    </h1>
+                                    <p class="help-block">
+                                        {{_ "Be sure to click the button"}}
+                                    </p>
+                                    <div class="control-group">
+                                        <label class="control-label">{{_ "Address"}} :</label>
+
+                                            <textarea name="newAddress" id="newAddress" rows="4" cols="50"></textarea>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <button class="btn btn-warning col-xs-offset-5" type="button" id="btnAdd" style="background: transparent -moz-linear-gradient(center top , #F7DFA5, #F0C14B) repeat scroll 0% 0%; font-size: 16px; margin-left: 55px; color: black;">
+                                            <h5>{{_ "Ship to this address"}}</h5></button>
+                                        <p style="margin-bottom: 20px;"></p>
+                                    </div>
+                                </fieldset>
+                            </form>
+                            <p style="margin-bottom: 20px;"></p>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $(".modal-backdrop").hide();
+        $('#address1').change(function() {
+            if ($(this).is(":checked")) {
+                $('#address').hide();
+            } else {
+                $('#address').show();
+            }
+        });
+        $("#address").keyup(function() {
+            var str = $('#address1').val();
+            if (str != '') {
+                $('#address1').hide();
+            }
+        });
+        $("#address").mouseout(function() {
+            $('#address1').show();
+        });
+    });
+    </script>
+</template> -->
+<template name="confirmorder">
+    <style type="text/css">
+    .btn-second-action{
+        background: none;
+        color: #000;
+        border-radius: 0px;
+        font-size: 14px;
+        padding: 0.5rem 1rem;
+        border: 1px solid #333;
+    }
+    .btn-second-action:hover, .btn-second-action:focus{
+        background: none;
+        color: #c00;
+        border-radius: 0px;
+        font-size: 14px;
+        padding: 0.5rem 1rem;
+        border: 1px solid #c00;
+    }
+    </style>
+    <section>
+        <div id="exTab1" class="container"> 
+            <div class="progressbar">
+                <ul  class="nav nav-pills">
+
+                    <li id="cart" class="active cart"><a  href="/checkout">{{_"Cart"}}</a></li>
+                    <li id="sum" class="active cart"><a href="/confirmorder">{{_"Summary"}}</a></li>
+                    <li id="conf" class="cart"><a href="{{getGetway}}">{{_"Confirmation"}}</a></li>
+                </ul>
+            </div>
+
+            <div class="tab-content clearfix">
+
+                <!-- tab 2 -->
+                <div >
+                    <div class="col-md-6 col-md-offset-2">
+                        <div class="row">
+                            <div class="col-md-2 col-xs-2">
+                                <label class="pull-right">1</label>
+                            </div>
+                            <div class="col-md-10">
+
+                                <p><label style="font-weight: bold;">{{_"Validate your shipping address"}}</label></p>
+                                <p style="margin-top: 15px; direction: rtl; text-align: right;">{{_"Continue with the shipping address in your profile"}} <br> {{_"or enter a new address"}}</p>
+                                {{#with getprofile}} {{#if services.google.email}}
+                                    <h4 class="name">{{username}}</h4>
+                                    <div class="confirm">
+                                        <table class="table">
+                                            <tr>
+                                                <td class="table-form">{{_"Mail"}} :</td>
+                                                {{#each emails}}
+                                                    <td id="email">{{address}}</td>
+                                                {{/each}}
+                                            </tr><tr>
+                                                <td class="table-form">{{_"Address"}} :</td>
+                                                <td id="address">{{getAddress1}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="table-form">{{_"Phone"}} :</td>
+                                                <td id="phone">{{profile.phone}}</td>
+                                                <button class="btn-back pull-right btn_edit">{{_"Edit"}}</button>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="edit_confirm hidden">
+                                        <table class="table">
+                                            <tr>
+                                                <td class="table-form">{{_"Mail"}} :</td>
+                                                <td>
+                                                    {{#each emails}}
+                                                        <input type="text" class="form-control" value="{{address}}" id="email" />
+                                                    {{/each}}
+                                                </td>
+                                            </tr><tr>
+                                                <td class="table-form">{{_"Address"}} :</td>
+                                                <td>
+                                                    <input type="text" class="form-control" value="{{getAddress1}}" id="address" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="table-form">{{_"Phone"}} :</td>
+                                                <td>
+                                                    <input type="text" class="form-control" value="{{profile.phone}}" id="phone" />
+                                                </td>
+                                                <button class="btn-editform pull-right btn_validation">{{_"Validation"}}</button>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                {{else}}
+                                    <h4 class="name">{{profile.name}}</h4>
+                                    <div class="confirm">
+                                        <table class="table">
+                                            <tr>
+                                                <td class="table-form">{{_"Mail"}} :</td>
+                                                {{#each emails}}
+                                                    <td id="email">{{address}}</td>
+                                                {{/each}}
+                                            </tr><tr>
+                                                <td class="table-form">{{_"Address"}} :</td>
+                                                <td id="address">{{getAddress1}}</td>
+                                            </tr>
+                                            <!-- <tr>
+                                                <td></td><td>14 rue bahr</td>
+                                            </tr>
+                                            <tr>
+                                                <td></td><td>TEHRAN</td>
+                                            </tr>
+                                            <tr>
+                                                <td></td><td>IRAN</td>
+                                            </tr> -->
+                                            <tr>
+                                                <td class="table-form">{{_"Phone"}} :</td>
+                                                <td id="phone">{{profile.phone}}</td>
+                                                <!-- <button class="btn-back pull-right btn_edit">Edit</button> -->
+                                                <button class="btn btn-second-action pull-right btn_edit">{{_"Edit"}}</button>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="edit_confirm hidden" id="hideform">
+                                        <table class="table">
+                                            <tr>
+                                                <td class="table-form">{{_"Mail"}} :</td>
+                                                <td>
+                                                    {{#each emails}}
+                                                    <input type="text" class="form-control editconfirm" value="{{address}}" id="email1" />
+                                                    {{/each}}
+                                                    <p class="error_email" style="margin-top:10px;color:red"></p>
+                                                </td>
+                                            </tr><tr>
+                                                <td class="table-form">{{_"Address"}} :</td>
+                                                <td>
+                                                    <input type="text" class="form-control editconfirm" value="{{getAddress1}}" id="address1" />
+                                                    <p class="error_address" style="margin-top:10px;color:red"></p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="table-form">{{_"Phone"}} :</td>
+                                                <td>
+                                                    <input type="text" class="form-control editconfirm" value="{{profile.phone}}" id="phone1" />
+                                                    <p class="error_phone" style="margin-top:10px;color:red"></p>
+                                                </td>
+                                                <button class="btn-editform pull-right btn_validation">{{_"Validation"}}</button>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                {{/if}}{{/with}}
+                                <hr/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2 col-xs-2">
+                                <label class="pull-right">2</label>
+                            </div>
+                            <div class="col-md-10">
+
+                                <p><label style="font-weight: bold;">{{_"Choose your delivery method"}}</label></p>
+
+                                <div class="checkbox">
+                                    <input value="Normal delivery" type="radio" checked="" id="delivery"><label>{{_"Normal delivery"}}</label>
+                                </div>
+                                <hr/>
+                                <!-- <a href="/checkout"><button class="btn-back butback">{{_"Back"}}</button></a> -->
+                                <a href="/checkout"><button class="btn btn-second-action butback btn-back">{{_"Back"}}</button></a>
+                                <button class="btn-con-server pull-right">{{_"Continue"}} : {{_"Secure server"}}</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="space-img">
+                            <img src="/img/imgpsh_fullsize (1).png" class="img-responsive">
+                        </div>
+                        <div class="space-img">
+                            <img src="/img/imgpsh_fullsize.png" class="img-responsive">
+                        </div>
+                    </div>  
+                </div>
+            </div>
+        </div>
+    </section>
+</template>

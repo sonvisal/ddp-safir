@@ -1,0 +1,49 @@
+<template name="contactus">
+    <div class="container">
+        <!-- {{> myrefine}} -->
+        <div class="contact_us">
+            <h1 class="text-right h1" style="font-size: 45px;">تماس با ما</h1>
+            <p class="text-right text_cong">
+                تلفن: 4420360 - 0764
+                <br> تلفن همراه : 8705059-0912
+                <br> آدرس : جزیره کیش ، پاساژ پانیذ ، طبقه اول ، غرفه هفت .
+                <br>info@safirperfumery.com : پست الکترونیک
+            </p>
+            <h1 class="text-right h1" style="font-size: 45px;">Email or feedback us</h1>
+            <div class="row">
+                <div class="col-md-5">
+                    <form role="form" id="formcomment">
+                        <div class="form-group">
+                            <label for="fname">{{_"First name"}}</label>
+                            <input type="text" class="form-control" id="fname" style="background:  #fff; border-radius: 4px; border: 1px solid #ccc">
+                            <p class="firstname" style="margin-top:10px;color:red"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="lname">{{_"Last name"}}</label>
+                            <input type="text" class="form-control" id="lname" style="background:  #fff; border-radius: 4px; border: 1px solid #ccc">
+                            <p class="lastname" style="margin-top:10px;color:red"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">{{_"Email"}}</label>
+                            <input type="email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" class="form-control" id="useremail" style="background:  #fff; border-radius: 4px; border: 1px solid #ccc">
+                            <p class="email" style="margin-top:10px;color:red"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">{{_"Subject"}}</label>
+                            <input type="text" class="form-control" id="subject" style="background: #fff; border-radius: 4px; border: 1px solid #ccc">
+                            <p class="subject" style="margin-top:10px;color:red"></p>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-7">
+                    <div class="form-group">
+                        <label for="comment">{{_"Comments"}}</label>
+                        <textarea class="form-control" rows="11" id="comment" placeholder='{{_"Enter your comment..."}}' style="background:  #fff; border-radius: 4px; border: 1px solid #ccc"></textarea>
+                        <p class="comment" style="margin-top:10px;color:red"></p>
+                    </div>
+                    <button type="submit" class="btn btn-default pull-right" id="btnContact" style="; border: 1px solid #ccc">{{_"Send"}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

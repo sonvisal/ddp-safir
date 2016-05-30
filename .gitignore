@@ -1,0 +1,10 @@
+bundle/*
+upload/*
+mup.json
+nano.save
+nano.save.1
+nohup.out
+npm-debug.log
+packages
+bundle.tgz
+public/*

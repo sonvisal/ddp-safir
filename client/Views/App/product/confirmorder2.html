@@ -1,0 +1,84 @@
+<!-- <template name = "confirmorder2123">
+	<div class="container">
+		<div class="row">
+			<form dir="{{getDirection}}">
+				<div class="form-group col-md-4 col-md-offset-4" >
+				  <label class="" >{{_ "Select delivery"}}:</label>
+					  <select class="form-control" id="sel1">
+					    <option value="fast">{{_ "Fast"}}</option>
+					    <option value="normal">{{_ "Normal"}}</option>
+					  </select>
+				</div>
+		<div class="col-lg-4">
+
+		<form action='https://sep.shaparak.ir/Payment.aspx' method='POST'>
+		    <input type='hidden' id='Amount' name='Amount' value='{{getTotal}}'>
+		    <input type='hidden' id='MID' name='MID' value='10443844'>
+		    <input type='hidden' id='ResNum' name='ResNum' value='{{resNum}}'>
+		    <input type='hidden' id='RedirectURL' name='RedirectURL' value='http://safirperfumery.com/saman'>
+		    <input type="submit" value="{{_"Pay"}}" id="btnUpdate" class="btn-sm btn-primary btn-block" style="background:#3276b1; box-show:0px; border-radius:0px; border:0px;   margin: 72px 0px 0px -117px !important; width: 29%;">
+		</form>
+		</div>
+	</form>
+	</div>
+</div>
+<div class="clearfix"></div>
+<div class="col-md-3"></div>
+	
+</template> -->
+<template name="confirmorder2">
+	<style type="text/css">
+	    .conser{
+	        background: linear-gradient(180deg, yellow -150%, green);
+	        padding: 2px 20px;
+	        border-radius: 4px;
+	        font-size: 14px;
+	        font-weight: 700;
+	        color: #fff;
+	    }
+	</style>
+	<section>
+		<div id="exTab1" class="container">
+			<div class="progressbar">
+				<ul  class="nav nav-pills">
+					<li id="cart" class="active cart"><a  href="/checkout">{{_"Cart"}}</a></li>
+					<li id="sum" class="active cart"><a href="/confirmorder" >{{_"Summary"}}</a></li>
+					<li id="conf" class="active cart"><a href="/confirmorder2">{{_"Confirmation"}}</a></li>
+				</ul>
+			</div>
+			<div class="tab-content clearfix">
+        		<div id="3a">
+        			<div class="col-md-4 col-md-offset-4">
+        				<div class="confir-footer text-center">
+        					<div class="confirmation">
+        						<p><label>{{_"You will be redirected to the bank"}}</label></p>
+        					</div>
+        					<label>{{_"Your order ID is"}} :</label>
+        					<p class="number">{{getOrderId}}</p>
+        					<div class="con-img">
+        						<img src="/img/imgpsh_fullsize.png" width="120" />
+        					</div>
+                            <form action='https://sep.shaparak.ir/Payment.aspx' method='POST'>
+							    <input type='hidden' id='Amount' name='Amount' value='{{getTotal}}'> <!-- مبلغ -->
+							    <input type='hidden' id='MID' name='MID' value='10443844'> <!-- شماره مشتری بانک سامان -->
+							    <input type='hidden' id='ResNum' name='ResNum' value='{{resNum}}'> <!-- شماره فاکتور -->
+							    <input type='hidden' id='RedirectURL' name='RedirectURL' value='http://safirperfumery.com/saman'> <!-- آدرس بازگشت -->
+							    <input type="submit" value="{{_"Access secure server"}}" id="btnUpdate" data-id="{{getOrderId}}" class="conser clickSubmit">
+							</form>
+        					<div class="hold-contact-confir">
+        						<img src="/img/imgpsh_fullsize (1).png" class="pull-left" width="50">
+        						<div class="contact-confir">
+        							<p>{{_"For more information"}}</p><p>{{#if farsi}}
+        							باشماره8705059-0912تماسبگیرید
+        							{{else}}
+        							Contact us to: 0912-8705059
+        							{{/if}}</p>
+        						</div>
+        					</div>
+        				</div>
+        			</div>
+				</div>
+			</div>
+  		</div>
+	</section>
+</template>

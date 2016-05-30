@@ -1,0 +1,304 @@
+<template name="addreview">
+    <style type="text/css">
+    div.stars {
+        width: 270px;
+        display: inline-block;
+    }
+    .bert-alert.my-error {
+        background: #fff;
+        color: #000;
+        box-shadow: 2px 2px 15px #888;
+    }
+    .fa-review-iconbg{
+        background-image: url('../img/reviewsc.png');
+        background-size: 32px 32px;
+        width: 32px;
+        height: 32px;
+    }
+     .fa-errorfield-iconbg{
+        background-image: url('../img/field.png');
+        background-size: 32px 32px;
+        width: 32px;
+        height: 32px;
+    }
+    .fa-earnpoints-iconbg{
+        background-image: url('../img/earn10s.png');
+        background-size: 32px 32px;
+        width: 32px;
+        height: 32px;
+    }
+    input.star {
+        display: none;
+    }
+    
+    label.star {
+        float: right;
+        padding: 10px;
+        font-size: 36px;
+        color: #444;
+        transition: all .2s;
+    }
+    
+    input.star:checked ~ label.star:before {
+        content: '\f005';
+        color: #FD4;
+        transition: all .25s;
+    }
+    
+    input.star-5:checked ~ label.star:before {
+        color: #FE7;
+        text-shadow: 0 0 20px #952;
+    }
+    
+    input.star-1:checked ~ label.star:before {
+        color: #F62;
+    }
+    
+    label.star:hover {
+        transform: rotate(-15deg) scale(1.3);
+    }
+    
+    label.star:before {
+        content: '\f006';
+        font-family: FontAwesome;
+    }
+    #yellow-star-over{
+        color: #e8c356;
+    }
+    .btn-fir-action{
+        background: #000;
+        color: #fff;
+        border-radius: 0px;
+        font-size: 14px;
+        padding: 0.5rem 1.5rem;
+        border: none;
+    }
+    .btn-fir-action:hover, .btn-fir-action:focus {
+        background: #c00;
+        color: #fff;
+        border-radius: 0px;
+        font-size: 14px;
+        padding: 0.5rem 1.5rem;
+        border: none;
+    }
+    .btn-fir-action-des2{
+        background: #c00;
+        color: #fff;
+        border-radius: 0px;
+        font-size: 14px;
+        padding: 0.5rem 1.5rem;
+        border: none;
+
+    }
+    .btn-fir-action-des2:hover, .btn-fir-action-des2:focus {
+        background: #333;
+        color: #fff;
+        border-radius: 0px;
+        font-size: 14px;
+        padding: 0.5rem 1.5rem;
+        border: none;
+    }
+    </style>
+    <div id="add_review">
+        <div class="hwrite_comments">
+            <form id="form">
+                <div class="row">
+                    <div class="col-md-2">
+                        {{#with getimgArray}}
+                        <img src="{{getImgProfile image}}" onError="this.onerror=null;this.src='{{getImgProfileCDN image}}';" class="img-responsive center-block" style="width: 50%;">
+                        {{/with}}
+                        <h4 class="bold text-center">{{currentUser.profile.firstname}} {{currentUser.profile.lastname}}</h4>
+                    </div>
+                    <div class="col-md-10">
+                        <p id="validwebzine" style="color:red"></p>
+                       <!--  <input id="title" type="text" class="form-control" placeholder="{{_" Your title here "}}..." style="background:  #fff;border-radius: 4px; border: 1px solid #ccc;" />
+                        <p id="validwebzine1" style="color:red"></p> -->
+                        <textarea class="form-control" rows="3" id="comment" placeholder="{{_"Write your review"}}..." style="background:  #fff;border-radius: 4px; border: 1px solid #ccc"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 col-md-offset-2 pull-left col-xs-10">
+                        <form role="form" class="outclass">
+                            <div class="form-group select_grade">
+                                <div class="star">
+                                    <div class="col-xs-2 rate-star ">
+                                        <i class="fa fa-star fa-lg star1 rateStar" data-star="1" id='a'></i>
+                                    </div>
+                                    <div class="col-xs-2 rate-star">
+                                        <i class="fa fa-star fa-lg star2 rateStar" data-star="2" id='a'></i>
+                                    </div>
+                                    <div class="col-xs-2 rate-star">
+                                        <i class="fa fa-star fa-lg star3 rateStar" data-star="3" id='a'></i>
+                                    </div>
+                                    <div class="col-xs-2 rate-star">
+                                        <i class="fa fa-star fa-lg star4 rateStar" data-star="4" id='a'></i>
+                                    </div>
+                                    <div class="col-xs-2 rate-star">
+                                        <i class="fa fa-star fa-lg star5 rateStar" data-star="5" id='a'></i>
+                                    </div>
+                                </div>
+                                <script type="text/javascript">
+                                    $(document).ready(function(){
+                                        $( "div i.rateStar" )
+                                          .mouseover(function(e) {
+                                            var currentStar = $(e.currentTarget).attr('class');
+                                                if (!currentStar.match('yellow-star')) {
+                                                    $(e.currentTarget).addClass('yellow-star');
+                                                    $(e.currentTarget).parent().prevAll('div').children('i').addClass('yellow-star');
+                                                } 
+                                            
+                                          })
+                                          .mouseout(function(e) {
+                                            var myparent=$(e.currentTarget).attr('class');
+                                            var mychild=$(e.currentTarget).parent().prevAll('div').children('i').attr('class');
+                                            if(!myparent.match('star_active') || !mychild.match('star_active')){
+                                                $(e.currentTarget).removeClass('yellow-star');
+                                                $(e.currentTarget).parent().prevAll('div').children('i').removeClass('yellow-star');  
+                                            }
+                                            
+                                          });
+ 
+                                    })
+                                </script>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="col-md-5 pull-right col-xs-2">
+                        <!-- <input type="submit" value="{{_'SEND'}}" class="pull-right btn btn_send" id="addreview" data-toggle="modal" data-target=""> -->
+                        <button class="btn btn-fir-action pull-right" id="addreview" data-toggle="modal" data-target="">{{_"Send"}}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+   
+ <!-- first popup -->
+    {{#if getPointFirst}}
+    <div class="container">
+        <div class="modal alert" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document" style="border-radius:none;">
+                <div class="modal-content">
+                    <div class="modal-header header-win" style="padding: 7px;
+                            margin-top: 0px;">
+                        <div class="header-popup">
+                            <button type="button" class="close" data-dismiss="modal">
+                                <img src="/images/x-close.png" class="img-responsive pull-right" width="20%">
+                            </button>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-md-12">
+                            <div class="col-md-8 col-md-offset-2">
+                                <h3 class="title-win text-center">Congratulations you win your first Safir points</h3>
+                            </div>
+                            <div class="col-md-12">
+                                <img src="/images/celebrate.png" class="img-responsive center-block" width="30%">
+                            </div>
+                            <div class="col-md-12">
+                                <h3 class="win reward text-center">A lot of rewards to win</h3>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="col-md-5">
+                                    <div class="gift-image">
+                                        <img src="/images/gift.png" class="img-gift pull-right img-responsive" width="50%">
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <h3 class="win " style="margin-left:15px;">For more informations</h3>
+                                    <div class="col-md-10">
+                                        <div class="btn btn-block btn-win" style="padding: 3px 0px;"><a href="/reward"> See my Reward page</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+    <!-- end first popup -->
+    <!-- second popup -->
+    {{#if getPontSecond}}
+    <div class="container">
+        <div class="modal alert" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document" style="border-radius:none;">
+                <div class="modal-content">
+                    <div class="modal-header header-win" style="padding: 7px;
+                            margin-top: 0px;">
+                        <div class="header-popup">
+                            <button type="button" class="close" data-dismiss="modal">
+                                <img src="/images/x-close.png" class="img-responsive pull-right" width="20%">
+                            </button>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-md-12">
+                            <h3 class="title-win text-center">Continue to earn more points</h3>
+                            <div class="row">
+                                <div class="instagram-share">
+                                    <div class="col-md-4">
+                                        <a href="">
+                                            <img src="/images/follow-us-instagram.png" width="60%" style="margin: 10px 40px;">
+                                        </a>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h2 class="h2-points">+30 pt</h2>
+                                        <p class="points-description">Following us on <a href="" class="link-point">Instagram</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="sharing-content">
+                                    <div class="col-md-4">
+                                        <a href="">
+                                            <img src="/images/sharing-content.png" width="60%" style="margin: 10px 40px;">
+                                        </a>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h2 class="h2-points">+20 pt</h2>
+                                        <p class="points-description">Sharing content to friend and being sponsor by a friend</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="shop-online">
+                                    <div class="col-md-4">
+                                        <a href="">
+                                            <img src="/images/shop-online.png" width="60%" style="margin: 10px 40px;">
+                                        </a>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h2 class="h2-points">+100 pt</h2>
+                                        <p class="points-description">Shop in the online store</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="see-more-point">
+                                    <div class="col-md-5 col-md-offset-7">
+                                        <div class="btn btn-block btn-win" style="margin-bottom: 3px;">
+                                            <a href="/member">See my Member page</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+    <!-- end second popup -->
+    
+
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle-wrap").hide();
+        $(".toggle-trigger").click(function() {
+            $(this).parent().parent().parent().parent().parent().nextAll('.toggle-wrap').first().toggle('');
+        });
+    });
+    </script>
+</template>

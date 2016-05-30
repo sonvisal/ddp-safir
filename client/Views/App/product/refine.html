@@ -1,0 +1,144 @@
+<template name="myrefine2">
+    <style type="text/css">
+    #allBrands li h4{
+        text-transform: uppercase;
+    }
+    span#refine-category{
+        color: red;
+    }
+    #refine-category:hover, #refine-brand:hover, #refine-tag:hover{
+        color:red;
+        font-weight:bold; 
+    }
+    </style>
+    <section class="main-new-refine-menu">
+        <div class="container">
+            <div class="new-refine-menu hidden-xs" style="margin-bottom:30px;
+  border-bottom: 1px solid rgba(0,0,0,.15);">
+                <ul class="nav nav-justified">
+                    <li class="dropdown" style="border-right:3px solid rgb(221, 42, 27)">
+                        {{#with getCategoryList}}
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span id="refine-category">{{currentcat.title}}</span> <span class="fa fa-caret-down" style="padding-left:15px; color:#777"></span></a>
+                        <ul class="dropdown-menu quick-drop-allcategory">
+                            {{#each subcat}}
+                                {{#with getCategoryByID this}}
+                                <li><a href="#" class="select-category" data-cat="{{_id}}">{{title}}</a></li>
+                                {{/with}}
+                            {{/each}}
+                        </ul>
+                        {{/with}}
+                    </li>                   
+                    <li class="dropdown">
+                        <!--<a href="" class="dropdown-toggle padding-left-price-range" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="refine-price">Price Range <span class="fa fa-caret-down" style="padding-left:15px; color:#777"></span></a>
+                        <ul class="dropdown-menu quick-drop-price-range">
+                            <li><a href="#" class="select-price" data-price="0">0</a></li>
+                            <li><a href="#" class="select-price" data-price="500000">500 K</a></li>
+                            <li><a href="#" class="select-price" data-price="700000">700 K</a></li>
+                            <li><a href="#" class="select-price" data-price="1000000">1 M</a></li>
+                            <li><a href="#" class="select-price" data-price="2000000">2 M</a></li>
+                            <li><a href="#" class="select-price" data-price="3000000">3 M</a></li>
+                            <li><a href="#" class="select-price" data-price="4000000">4 M</a></li>
+                        </ul>-->
+                    </li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span id="refine-brand" style="color:red">{{_"Brands"}} </span> <span class="fa fa-caret-down" style="padding-left:15px; color:#777"></span></a>
+                        <ul class="dropdown-menu quick-drop-brand" id="allBrands">
+                            {{#with getAllBrandRefine}}
+                                {{#each getAllAlphabets}}
+                                    <li><h4 style="padding:10px 10px"><strong>{{this}}</strong></h4></li>
+                                    {{#each getBrandByalphabet this}}
+                                        <li><a href="#" class="select-brand">{{this}}</a></li>
+                                    {{/each}}
+                                {{/each}}
+                            {{/with}}
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle text-center" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span id="refine-tag" style="color:red">{{_"Tag"}} </span><span class="fa fa-caret-down" style="padding-left:15px; color:#777"></span></a>
+                        <ul class="dropdown-menu quick-drop-tage">
+                            {{#each getAllTags}}
+                            <li><a href="#" class="select-tag" data-tag="{{title}}">{{title}}</a></li>
+                            {{/each}}
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <ul class=" ul-showrefine" dir="{{getDirection}}">
+            </ul>
+        </div>
+
+
+        <div class="container hidden-lg hidden-md hidden-sm">
+            <div class="new-refine-menu" style="margin-bottom:30px;
+  border-bottom: 1px solid rgba(0,0,0,.15);">
+                <ul class="nav nav-justified">
+                    <li class="dropdown" style="border-right:3px solid rgb(221, 42, 27)">
+                        {{#with getCategoryList}}
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-group="0"><span id="refine-category">{{currentcat.title}}</span> <span class="fa fa-caret-down" style="padding-left:15px; color:#777"></span></a>
+                        <ul class="dropdown-menu quick-drop-allcategory dropdown-refinemenu" style="margin-left: 130px">
+                            {{#each subcat}}
+                                {{#with getCategoryByID this}}
+                                <li><a href="#" class="select-category" data-cat="{{_id}}">{{title}}</a></li>
+                                {{/with}}
+                            {{/each}}
+                        </ul>
+                        {{/with}}
+                    </li>
+                    <li class="dropdown">
+                    </li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span id="refine-brand">Brands </span> <span class="fa fa-caret-down" style="padding-left:15px; color:#777"></span></a>
+                        <ul class="dropdown-menu quick-drop-brand dropdown-refinemenu" id="allBrands" style="margin-left:20px">
+                            {{#with getAllBrandRefine}}
+                                {{#each getAllAlphabets}}
+                                    <li><h4 style="padding:10px 10px"><strong>{{this}}</strong></h4></li>
+                                    {{#each getBrandByalphabet this}}
+                                        <li><a href="#" class="select-brand">{{this}}</a></li>
+                                    {{/each}}
+                                {{/each}}
+                            {{/with}}
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle text-center" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span id="refine-tag">Tag </span><span class="fa fa-caret-down" style="padding-left:15px; color:#777"></span></a>
+                        <ul class="dropdown-menu quick-drop-tage dropdown-refinemenu" style="margin-left:20px">
+                            {{#each getAllTags}}
+                            <li><a href="#" class="select-tag" data-tag="{{title}}">{{title}}</a></li>
+                            {{/each}}
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <ul class=" ul-showrefine" dir="{{getDirection}}">
+            </ul>
+        </div>
+    </section>
+    <script>
+        $(document).on('mouseenter', '.dropdown', function () {
+            $(this).find(".quick-drop-allcategory").show();
+        }).on('mouseleave', '.dropdown', function () {
+            $(this).find(".quick-drop-allcategory").hide();
+        });
+    </script>
+    <script>
+        $(document).on('mouseenter', '.dropdown', function () {
+            $(this).find(".quick-drop-price-range").show();
+        }).on('mouseleave', '.dropdown', function () {
+            $(this).find(".quick-drop-price-range").hide();
+        });
+    </script>
+    <script>
+        $(document).on('mouseenter', '.dropdown', function () {
+            $(this).find(".quick-drop-brand").show();
+        }).on('mouseleave', '.dropdown', function () {
+            $(this).find(".quick-drop-brand").hide();
+        });
+    </script>
+    <script>
+        $(document).on('mouseenter', '.dropdown', function () {
+            $(this).find(".quick-drop-tage").show();
+        }).on('mouseleave', '.dropdown', function () {
+            $(this).find(".quick-drop-tage").hide();
+        });
+    </script>
+</template>

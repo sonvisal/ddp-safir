@@ -1,0 +1,196 @@
+<template name="quizzQA">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <!--   <h1>Select quizz</h1>
+	        	<h1>{{name}}</h1> -->
+                {{countQuestion _id}}
+            </div>
+            <div class="col-lg-12">
+                <section class="bg_home">
+                    <div class="container">
+                        <div class="quick_view">
+                            <!-- Trigger the modal with a button -->
+                            <button type="button" class="btn btn-default center-block" data-toggle="modal" data-target="#quizz" id="quizzpop"></button>
+                            <!-- Modal -->
+                            <div class="modal" id="quizz" role="dialog">
+                                <div class="modal-dialog modal-lg">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" id="backTo"><img src="/images/pop_cancel.png"></button>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <div class="modal-content1 bg-popup2">
+                                            <div class="modal-header">
+                                                <div class="header-popup">
+                                                    <div class="col-xs-4 col-md-4">
+                                                        <img src="/images/quiz_safir.png" class="logo1 img-responsive">
+                                                    </div>
+                                                    <div class="col-xs-4 col-md-4">
+                                                        <img src="/images/3sum-icons.png" class="logo-3icon center-block img-responsive">
+                                                    </div>
+                                                    <div class="col-xs-4 col-md-4">
+                                                        <h2 class="write text-right">{{type}}</h2>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col-md-8 col-md-offset-2">
+                                                        {{#with getFirstQu question}}
+                                                        <div class="section1-question">
+                                                            <div class="col-md-12">
+                                                                <p class="question text-center" data-tag="{{parent_tag}}">{{question}}</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="answer-radia">
+                                                            {{#each answers}}
+                                                            <div class="col-md-12 col-md-offset-1">
+                                                                <label class="radio">
+                                                                    <input id="radio1" value="{{value}}" data-tag="{{tag}}" type="radio" name="checkbox" checked="">
+                                                                    <span class="outer">
+														<span class="inner"></span>
+                                                                    </span>{{value}}
+                                                                </label>
+                                                            </div>
+                                                            {{/each}}
+                                                        </div>
+                                                        <!-- <div class="section3"> -->
+                                                        <div class="row">
+                                                            <div class="col-md-6 col-md-offset-3">
+                                                                <button class="btn-block btn-Begins pull-right" id="goNext" type="button">Submit </button>
+                                                            </div>
+                                                        </div>
+                                                        <!-- </div> -->
+                                                        {{/with}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/ end model -->
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- first popup -->
+    <div class="container myModalquizz">
+        <div class="modal alert" id="myModalquizz" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document" style="border-radius:none;">
+                <div class="modal-content">
+                    <div class="modal-header header-win" style="padding: 11px;
+                            margin-top: 30px;">
+                        <div class="header-popup">
+                            <button type="button" class="close" data-dismiss="modal">
+                                <img src="/images/x-close.png" id="popup1" class="img-responsive pull-right" width="20%">
+                            </button>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-md-12">
+                            <div class="col-md-8 col-md-offset-2">
+                                <h3 class="title-win text-center">Congratulations you win your first Safir points</h3>
+                            </div>
+                            <div class="col-md-12">
+                                <img src="/images/celebrate.png" class="img-responsive center-block" width="30%">
+                            </div>
+                            <div class="col-md-12">
+                                <h3 class="win reward text-center">A lot of rewards to win</h3>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="col-md-5">
+                                    <div class="gift-image">
+                                        <img src="/images/gift.png" class="img-gift pull-right img-responsive" width="50%">
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <h3 class="win " style="margin-left:15px;">For more informations</h3>
+                                    <div class="col-md-10">
+                                        <div class="btn btn-block btn-win" style="padding: 3px 0px;">See my Reward page</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end first popup -->
+    <!-- second popup -->
+    <!-- <div class="container myModalquizz2">
+        <div class="modal alert" id="myModalquizz2" tabindex="-2" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document" style="border-radius:none;">
+                <div class="modal-content">
+                    <div class="modal-header header-win" style="padding: 11px;
+                            margin-top: 30px;">
+                        <div class="header-popup">
+                            <button type="button" class="close">
+                                <img src="/images/x-close.png" id="popup" class="img-responsive pull-right" width="20%">
+                            </button>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-md-12">
+                            <h3 class="title-win text-center">Continue to earn more points</h3>
+                            <div class="row">
+                                <div class="instagram-share">
+                                    <div class="col-md-4">
+                                        <a href="">
+                                            <img src="/images/follow-us-instagram.png" width="60%" style="margin: 10px 40px;">
+                                        </a>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h2 class="h2-points">+30 pt</h2>
+                                        <p class="points-description">Following us on <a href="" class="link-point">Instagram</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="sharing-content">
+                                    <div class="col-md-4">
+                                        <a href="">
+                                            <img src="/images/sharing-content.png" width="60%" style="margin: 10px 40px;">
+                                        </a>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h2 class="h2-points">+20 pt</h2>
+                                        <p class="points-description">Sharing content to friend and being sponsor by a friend</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="shop-online">
+                                    <div class="col-md-4">
+                                        <a href="">
+                                            <img src="/images/shop-online.png" width="60%" style="margin: 10px 40px;">
+                                        </a>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h2 class="h2-points">+100 pt</h2>
+                                        <p class="points-description">Shop in the online store</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="see-more-point">
+                                    <div class="col-md-5 col-md-offset-7">
+                                        <div class="btn btn-block btn-win" style="margin-bottom: 3px;">See my Member page</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- end second popup -->
+
+</template>

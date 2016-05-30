@@ -1,0 +1,86 @@
+<template name="aboutus">
+    <div class="main-wrapper">
+    <!-- {{> myrefine}} -->
+        <section>
+            <div class="container">
+                <div class="about_us">
+                    <h1 class="text-right h1 page-header" style=" margin-top: 10px;">درباره فروشگاه های عطر و لوازم آرایش سفیر</h1>
+                    <h2 class="text-right sub-header">به فروشگاه های عطر و لوازم آرایش سفیر خوش آمدید</h2>
+                    <p class="text-right">
+                    ارمغان ما در فروشگاه های عطر و لوازم آرایش سفیر برای شما ارائه رایحه های اصیل و ماندگار از عطر ها  و برندهای معتبر جهانیست. ما دغدغه های شما را هم در انتخاب عطر و هم در خصوص اصالت عطر میدانیم و شما در کنار ما مطمئن خواهید شد که اصالت در دستان شما خواهد بود.
+                    </p>
+                    <br>
+                    <p class="text-right">
+                        مجموعه فروشگاه های عطر و لوازم آرایش سفیر  در اواخر سال هزار و سیصد و هشتاد و نه  با رویکرد سلف سرویس و مشاوره حرفه ای فروش با درک مشتری عطر و لوازم آرایشی، دغدغه ها و نیاز های او آغاز به کار کرد. درفروشگاه های عطر و لوازم آرایش سفیر  چیدمان همه شعبه ساده ولی متفاوت است  . دیده شدن برندها به وضوح ، قدرت و القای حس اینکه برندها قهرمانان فروشگاههای عطر و لوازم آرایش سفیر  هستند ، برقراری ارتباط مساوی میان برندها برای جلو گیری از سردرگمی مشتری ،ایجاد فضاهای بزرگ تبلیغاتی ، ویترین های خاص و ممتاز ، سرویس ویژه به مشتریان از اهداف بارز مجموعه فروشگاه های عطر و لوازم آرایش سفیر  می باشد . در فروشگاه های عطر و لوازم آرایش سفیر  شما محدودیت آزمودن ندارید ! گو اینکه بهترین مشاوران ما برای زیبنده ترین انتخاب برای شما به خواست شما در کنارتان خواهند بود.
+                    </p>
+                    <br>
+                    <p class="text-right">
+                       آنچه برای مجموعه فروشگاه های عطر و لوازم آرایش سفیر  اهمیت دارد ایجاد نگاهی متفاوت به عطر و لوازم آرایشی با رویکرد ارئه اطلاعات کامل و دقیق با بیان ساده به مشتریان خود است چرا که بر این باوریم هر چه شما آگاه تر و اطلاعات شما کامل تر شود به ما نزدیک تر میشوید چرا که فروشگاه های عطر و لوازم آرایش سفیر  کلکسیونی از لوکس ترین ، بهترین و اصیل ترین برندهاست . همواره  منتظر میزبانی از شما در فروشگاه های عطر و لوازم آرایش سفیر  هستیم. 
+                    </p>
+                    <img class="center-block" src="/images/safir_logo-01.svg" height="100">
+                    <hr>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script>
+    var swiper = new Swiper('.swiper-container', {
+        /*pagination: '.swiper-pagination',*/
+        slidesPerView: 1,
+        paginationClickable: false,
+        spaceBetween: 30,
+        keyboardControl: true,
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        autoplay: 5500
+    });
+    </script>
+    <script>
+    $(document).ready(function() {
+        $(".search-push-left").hide();
+        var isOn = true;
+        $(function() {
+            $("#btn-all").click(function() {
+                console.log(isOn);
+                if (isOn) {
+                    isOn = false;
+                    $('.search').css("width", '45%');
+                    $(".search-push-left").hide();
+                } else {
+                    isOn = true;
+                    $('.search').css("width", '72%');
+                    $(".search-push-left").show();
+                }
+                return false;
+            });
+        });
+    });
+    </script>
+    <script>
+    $(document).ready(function($) {
+        $('.megamenu').megaMenuCompleteSet({
+            menu_speed_show: 300, // Time (in milliseconds) to show a drop down
+            menu_speed_hide: 200, // Time (in milliseconds) to hide a drop down
+            menu_speed_delay: 200, // Time (in milliseconds) before showing a drop down
+            menu_effect: 'hover_fade', // Drop down effect, choose between 'hover_fade', 'hover_slide', etc.
+            menu_click_outside: 1, // Clicks outside the drop down close it (1 = true, 0 = false)
+            menu_show_onload: 0, // Drop down to show on page load (type the number of the drop down, 0 for none)
+            menu_responsive: 1 // 1 = Responsive, 0 = Not responsive
+        });
+    });
+    </script>
+    <script>
+    $(document).on('mouseenter', '.hold-quickview', function() {
+        $(this).find(":button").show();
+    }).on('mouseleave', '.hold-quickview', function() {
+        $(this).find(":button").hide();
+    });
+    </script>
+    <script>
+    $(document).on('mouseenter', '.dropdown', function() {
+        $(this).find(".dropdown-login").show();
+    }).on('mouseleave', '.dropdown', function() {
+        $(this).find(".dropdown-login").hide();
+    });
+    </script>
+</template>
